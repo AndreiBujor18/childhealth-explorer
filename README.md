@@ -30,6 +30,24 @@ For later sessions, run `.\scripts\start-postgres.ps1` and
 `.\scripts\start-pgadmin.ps1`. Stop PostgreSQL afterwards with
 `.\scripts\stop-postgres.ps1`.
 
+## Five-table schema
+
+The tables are `source`, `country`, `indicator`, `observation` and
+`import_log`. SQLAlchemy models are in `app/models.py`; the SQL reference
+is `db/schema.sql`.
+
+```powershell
+.\.venv\Scripts\python.exe -m app.create_tables
+.\.venv\Scripts\python.exe -m scripts.verify_database
+```
+
+The verification compares columns, keys, constraints and indexes in a
+rolled-back temporary schema, then exports `db/schema_dump.sql` using
+`pg_dump --schema-only`. All five project tables remain empty.
+
+See [PostgreSQL evidence](docs/postgresql.md) and the
+[ER diagram](docs/diagrams/database-erd.svg).
+
 ## Libraries used in this stage
 
 - SQLAlchemy: database connections and session helpers.
@@ -37,3 +55,10 @@ For later sessions, run `.\scripts\start-postgres.ps1` and
 - python-dotenv: local connection settings from .env.
 
 See [environment details](docs/environment.md) for versions and usage.
+
+SQLAlchemy also defines table mappings and constraints. The optional ReportLab
+library generates the ER diagram. Install it with
+`python -m pip install -r requirements-design.txt` and run
+`python -m scripts.build_design_pack`.
+
+The [database design](docs/architecture.md) explains the keys, metadata and constraints.

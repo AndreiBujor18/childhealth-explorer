@@ -19,3 +19,10 @@ The virtual environment is `.venv`, selected in the project VS Code settings.
 `requirements.txt` declares these database dependencies; `requirements-lock.txt`
 pins their installed dependency closure. Versions are recorded in
 `docs/evidence/environment.json`. See the [setup instructions](../README.md).
+
+## Schema and ER diagram
+
+SQLAlchemy also defines the five table mappings and constraints in app/models.py.
+ReportLab generates the SVG database diagram through scripts/build_design_pack.py.
+Install the optional diagram tool with `python -m pip install -r requirements-design.txt`,
+then run `python -m scripts.build_design_pack`.

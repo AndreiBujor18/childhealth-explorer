@@ -1,0 +1,22 @@
+{
+  "database": "global_health",
+  "username": "gh_user",
+  "version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "encoding": "UTF8",
+  "tables": [
+    "import_log",
+    "source",
+    "indicator",
+    "country",
+    "observation"
+  ],
+  "row_counts": {
+    "country": 0,
+    "import_log": 0,
+    "indicator": 0,
+    "observation": 0,
+    "source": 0
+  },
+  "verified_at": "2026-11-02T14:59:02.110616+00:00",
+  "verification": "Read-only queries after starting the existing PostgreSQL instance; no tables or data recreated."
+}

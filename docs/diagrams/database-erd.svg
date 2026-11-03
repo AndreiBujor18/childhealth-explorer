@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="500" height="347" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 347" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="347"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-347)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="0" y="331" style="font-family: CalibriBold; font-size: 15px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,662) scale(1,-1)">Database / entity-relationship model</text>
+			<rect x="0" y="202" width="140" height="106" rx="7" ry="7" style="stroke: rgb(9%,41%,37%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(91%,95%,94%); fill-rule: evenodd;"/>
+			<text x="11" y="289" style="font-family: CalibriBold; font-size: 11px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,578) scale(1,-1)">source</text>
+			<text x="11" y="272" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,544) scale(1,-1)">PK source_id</text>
+			<text x="11" y="259" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,518) scale(1,-1)">name (unique)</text>
+			<text x="11" y="246" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,492) scale(1,-1)">url</text>
+			<rect x="180" y="164" width="155" height="144" rx="7" ry="7" style="stroke: rgb(9%,41%,37%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(91%,95%,94%); fill-rule: evenodd;"/>
+			<text x="191" y="289" style="font-family: CalibriBold; font-size: 11px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,578) scale(1,-1)">indicator</text>
+			<text x="191" y="272" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,544) scale(1,-1)">PK indicator_id</text>
+			<text x="191" y="259" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,518) scale(1,-1)">FK source_id</text>
+			<text x="191" y="246" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,492) scale(1,-1)">code + concept_code</text>
+			<text x="191" y="233" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,466) scale(1,-1)">name + unit</text>
+			<text x="191" y="220" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,440) scale(1,-1)">age_group</text>
+			<rect x="375" y="202" width="125" height="106" rx="7" ry="7" style="stroke: rgb(9%,41%,37%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(91%,95%,94%); fill-rule: evenodd;"/>
+			<text x="386" y="289" style="font-family: CalibriBold; font-size: 11px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,578) scale(1,-1)">country</text>
+			<text x="386" y="272" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,544) scale(1,-1)">PK iso3</text>
+			<text x="386" y="259" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,518) scale(1,-1)">iso2 / name</text>
+			<text x="386" y="246" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,492) scale(1,-1)">region / income_group</text>
+			<rect x="0" y="0" width="150" height="143" rx="7" ry="7" style="stroke: rgb(9%,41%,37%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(91%,95%,94%); fill-rule: evenodd;"/>
+			<text x="11" y="124" style="font-family: CalibriBold; font-size: 11px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,248) scale(1,-1)">import_log</text>
+			<text x="11" y="107" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,214) scale(1,-1)">PK import_id</text>
+			<text x="11" y="94" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,188) scale(1,-1)">source_name</text>
+			<text x="11" y="81" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,162) scale(1,-1)">indicator_code</text>
+			<text x="11" y="68" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,136) scale(1,-1)">url / rows_loaded</text>
+			<text x="11" y="55" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,110) scale(1,-1)">imported_at</text>
+			<rect x="205" y="0" width="210" height="141" rx="7" ry="7" style="stroke: rgb(9%,41%,37%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(91%,95%,94%); fill-rule: evenodd;"/>
+			<text x="216" y="122" style="font-family: CalibriBold; font-size: 11px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,244) scale(1,-1)">observation</text>
+			<text x="216" y="105" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,210) scale(1,-1)">PK observation_id</text>
+			<text x="216" y="92" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,184) scale(1,-1)">FK country_iso3 / indicator_id</text>
+			<text x="216" y="79" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,158) scale(1,-1)">year / sex / value</text>
+			<text x="216" y="66" style="font-family: Calibri; font-size: 9.5px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,132) scale(1,-1)">imported_at</text>
+			<path d="M 140,254 L 180,254 Z" style="stroke: rgb(32%,41%,48%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="174 251, 180 254, 174 257" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,41%,48%); fill-rule: evenodd;"/>
+			<text x="146" y="262" style="font-family: Calibri; font-size: 9px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,524) scale(1,-1)">1:N</text>
+			<path d="M 257,164 L 257,141 Z" style="stroke: rgb(32%,41%,48%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="254 147, 257 141, 260 147" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,41%,48%); fill-rule: evenodd;"/>
+			<text x="264" y="148" style="font-family: Calibri; font-size: 9px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,296) scale(1,-1)">1:N</text>
+			<path d="M 437,202 L 437,175 Z" style="stroke: rgb(32%,41%,48%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 437,175 L 352,175 Z" style="stroke: rgb(32%,41%,48%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 352,175 L 352,141 Z" style="stroke: rgb(32%,41%,48%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="349 147, 352 141, 355 147" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(32%,41%,48%); fill-rule: evenodd;"/>
+			<text x="405" y="181" style="font-family: Calibri; font-size: 9px;fill: rgb(9%,19%,27%); stroke:none;" transform="translate(0,362) scale(1,-1)">1:N</text>
+			<text x="207" y="15" style="font-family: CalibriBold; font-size: 9px;fill: rgb(9%,41%,37%); stroke:none;" transform="translate(0,30) scale(1,-1)">UNIQUE country + indicator + year + sex</text>
+			<text x="1" y="152" style="font-family: Calibri; font-size: 9px;fill: rgb(32%,41%,48%); stroke:none;" transform="translate(0,304) scale(1,-1)">Separate audit; no foreign keys</text>
+		</g>
+	</g>
+</svg>
