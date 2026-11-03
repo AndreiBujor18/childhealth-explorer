@@ -1,0 +1,8 @@
+{
+  "name": "ChildHealth Explorer",
+  "start_year": 2000,
+  "end_year": 2023,
+  "pilot_countries": ["ROU", "BGR", "DEU", "FRA", "POL", "ESP", "GBR", "SWE", "USA", "CAN", "BRA", "MEX", "IND", "IDN", "ZAF", "KEN", "NGA", "EGY", "AUS", "JPN"],
+  "sex": "BTSX",
+  "scope": "Annual country-level data; pilot sample validates compatibility, not representativeness."
+}

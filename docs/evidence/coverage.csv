@@ -1,0 +1,8 @@
+source,code,nonnull,expected_country_years,coverage_percent
+unicef,IM_DTP3,480,480,100.0
+unicef,IM_MCV1,480,480,100.0
+worldbank,SH.DYN.MORT,480,480,100.0
+worldbank,NY.GDP.PCAP.PP.KD,480,480,100.0
+worldbank,SH.XPD.CHEX.GD.ZS,480,480,100.0
+worldbank,SH.H2O.BASW.ZS,470,480,97.92
+worldbank,SH.STA.BASS.ZS,479,480,99.79

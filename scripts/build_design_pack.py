@@ -67,11 +67,40 @@ def database():
     return d
 
 
+def architecture():
+    d = Drawing(500, 430)
+    label(d, 0, 415, 'ChildHealth Explorer / application architecture', 15, True)
+    box(d, 0, 335, 158, 58, '1. UNICEF API', ['Vaccination / SDMX-JSON'])
+    box(d, 171, 335, 158, 58, '1. World Bank API', ['Mortality and context / JSON'])
+    box(d, 342, 335, 158, 58, 'Additional API', ['New adapter, planned'], True)
+    arrow(d, [(79, 335), (79, 317), (195, 317), (195, 299)])
+    arrow(d, [(250, 335), (250, 299)])
+    arrow(d, [(421, 335), (421, 317), (305, 317), (305, 299)])
+    box(d, 60, 230, 300, 69, '2. Import Python / ETL', ['Extractors and validation: implemented', 'Loading, upserts, import_log: planned'])
+    box(d, 385, 230, 115, 69, 'Raw cache', ['JSON + URL', 'Date + SHA-256'])
+    arrow(d, [(360, 264), (385, 264)])
+    arrow(d, [(210, 230), (210, 206)])
+    box(d, 60, 145, 300, 61, '3. PostgreSQL', ['5 tables created / application data store'])
+    arrow(d, [(210, 145), (210, 122)])
+    box(d, 60, 60, 300, 62, '4. FastAPI + SQLAlchemy', ['Queries against our database / JSON'], True)
+    box(d, 385, 60, 115, 62, 'Analysis / ML', ['Plotly', 'scikit-learn'], True)
+    arrow(d, [(360, 92), (385, 92)])
+    arrow(d, [(360, 176), (443, 176), (443, 122)])
+    label(d, 390, 152, 'DB read', 9, color=MUTED)
+    arrow(d, [(210, 60), (210, 38)])
+    box(d, 60, -23, 440, 61, '5. Web interface / Jinja2 + HTML + CSS', ['Tables, filters, charts; estimates after model evaluation'], True)
+    # Move everything up to keep the SVG viewBox strictly inside its content.
+    d.translate(0, 25)
+    d.height = 455
+    return d
+
+
 def main():
     fonts()
     diagrams = ROOT / 'docs/diagrams'
     diagrams.mkdir(parents=True, exist_ok=True)
     renderSVG.drawToFile(database(), str(diagrams / 'database-erd.svg'))
+    renderSVG.drawToFile(architecture(), str(diagrams / 'application-architecture.svg'))
 
 
 if __name__ == '__main__':

@@ -26,3 +26,12 @@ SQLAlchemy also defines the five table mappings and constraints in app/models.py
 ReportLab generates the SVG database diagram through scripts/build_design_pack.py.
 Install the optional diagram tool with `python -m pip install -r requirements-design.txt`,
 then run `python -m scripts.build_design_pack`.
+
+## API checks and tests
+
+requests 2.34.2 retrieves API responses; urllib3 provides retry support.
+pytest 9.1.1 runs the source-contract tests, and Ruff 0.17.1 checks the Python code.
+These packages and their dependencies are added to requirements.txt and its lock
+when the source adapters and tests are introduced. ReportLab now generates both
+the database and application architecture diagrams. No connected web interface
+or model training is implemented.

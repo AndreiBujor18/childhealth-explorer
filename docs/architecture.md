@@ -1,4 +1,50 @@
-# Database design and schema
+# Architecture and data model
+
+## Five-layer architecture
+
+```mermaid
+flowchart TB
+  subgraph External[1. External sources]
+    U[UNICEF SDMX API - vaccination]
+    W[World Bank API - mortality and context]
+    X[Third API - future extension]
+  end
+  U --> A[2. Independent Python adapters]
+  W --> A
+  X -. new adapter .-> A
+  A --> C[Common contract and validation]
+  A --> R[Raw JSON cache and metadata]
+  C --> L[Loading and updates - later stage]
+  L --> D[(3. PostgreSQL - project database)]
+  D --> B[4. FastAPI - parameterized queries]
+  D --> M[Analysis and ML - Python]
+  M <--> B
+  B --> F[5. Web interface - filters, maps, charts, estimates]
+```
+
+Only the import pipeline will contact external sources and write observations to PostgreSQL. The application API and analysis modules will read the project database, and the interface will use the backend. Browsing will therefore be independent of UNICEF/World Bank response times, and the same data version can be reused to reproduce results. Table creation and migrations are administrative operations separate from data imports.
+
+Source access, normalization, validation and the empty database work in Lab 1. Production loading, application endpoints, ML and the connected interface are planned for later stages.
+
+Diagrams for the report and presentation:
+
+- [Application architecture](diagrams/application-architecture.svg)
+- [Database entity-relationship diagram](diagrams/database-erd.svg)
+
+Dashed boxes and descriptions distinguish planned components from existing ones. The diagram is the Lab 1 design; UI implementation is reserved for Lab 3. The earlier prototype is preserved on the separate `codex/lab3-ui-prototype` branch.
+
+## Component contracts
+
+| Connection | Data and responsibilities |
+|---|---|
+| Sources -> adapters | HTTP GET, source-specific JSON, pagination and retries |
+| Adapters -> validation | `source_name`, `indicator_code`, `country_iso3`, `year`, `sex`, `value` |
+| Import -> PostgreSQL | Units and definitions stored separately; loading requires validation, transactions and upserts |
+| FastAPI -> PostgreSQL | Parameterized SQLAlchemy queries; country, indicator and year filters |
+| FastAPI <-> analysis/ML | Analysis reads the project data; the model will return an estimate, model version and evaluated performance |
+| FastAPI -> interface | Jinja2 pages and API responses; Plotly charts in the final implementation |
+
+Model training and saved model files are a separate future workflow. Models will not be retrained on every page view.
 
 ## Entity-relationship diagram
 
@@ -58,9 +104,19 @@ erDiagram
 - **Additional constraints** enforce years 1900-2100, sex codes `BTSX/MLE/FMLE` and nonnegative values. Missing values remain `NULL`; indicator-specific limits, such as percentages from 0 to 100, are validated before loading.
 - The observation key `(country_iso3, indicator_id, year, sex)` and index `(indicator_id, year)` are retained. Future loading will use this key for `ON CONFLICT DO UPDATE`, within the same transaction as import logging.
 
+## Project structure
 
-## Tools used for this design
-
-SQLAlchemy implements the models and constraints; psycopg connects to PostgreSQL.
-ReportLab generates the SVG ER diagram. The corresponding models, SQL design,
-diagram generator and optional dependency are introduced in this schema commit.
+```text
+app/                    connection, SQLAlchemy models, table creation
+config/                 topic, pilot sample and indicator catalog
+db/                     SQL design and PostgreSQL schema export
+etl/                    contracts, API adapters, cache and validation
+scripts/                local setup and schema verification
+docs/                   explanations, diagrams and evidence
+output/pdf/             submission report
+notebooks/              reserved for exploration and ML
+tests/                  JSON, pagination and extensibility checks
+.local/                 PostgreSQL, pgAdmin and server data (ignored)
+.venv/                  Python environment (ignored)
+.env                    local connection and password (ignored)
+```

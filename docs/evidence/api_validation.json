@@ -1,0 +1,492 @@
+{
+  "checked_at": "2026-10-21T16:04:46.283972+00:00",
+  "study": {
+    "name": "ChildHealth Explorer",
+    "start_year": 2000,
+    "end_year": 2023,
+    "pilot_countries": [
+      "ROU",
+      "BGR",
+      "DEU",
+      "FRA",
+      "POL",
+      "ESP",
+      "GBR",
+      "SWE",
+      "USA",
+      "CAN",
+      "BRA",
+      "MEX",
+      "IND",
+      "IDN",
+      "ZAF",
+      "KEN",
+      "NGA",
+      "EGY",
+      "AUS",
+      "JPN"
+    ],
+    "sex": "BTSX",
+    "scope": "Annual country-level data; pilot sample validates compatibility, not representativeness."
+  },
+  "indicators": [
+    {
+      "source": "unicef",
+      "code": "IM_DTP3",
+      "concept_code": "dtp3_coverage",
+      "name": "Acoperire vaccinala DTP3",
+      "unit": "%",
+      "age_group": "surviving infants",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": 100,
+      "rows_returned": 480,
+      "nonnull": 480,
+      "expected_country_years": 480,
+      "missing_country_years": 0,
+      "coverage_percent": 100.0,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:04:46.751909+00:00",
+          "sha256": "f8596aa0e818acfe8d1e41133fb0820e42328d54db625045cafca18a2a7d152d",
+          "bytes": 44455,
+          "cached": false,
+          "cache_file": "631ef075d7c517bb98a87d9f661e407d710882e2b7b7e4e0ee8339f66113e728.json"
+        }
+      ],
+      "romania_2023": "79"
+    },
+    {
+      "source": "unicef",
+      "code": "IM_MCV1",
+      "concept_code": "measles_first_dose_coverage",
+      "name": "Acoperire vaccinala antirujeolica, prima doza",
+      "unit": "%",
+      "age_group": "nationally recommended age",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": 100,
+      "rows_returned": 480,
+      "nonnull": 480,
+      "expected_country_years": 480,
+      "missing_country_years": 0,
+      "coverage_percent": 100.0,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:04:47.008494+00:00",
+          "sha256": "235c66960de51348ec28a76f02e3cceefd43333f3c2201710a0b411ee5b0b4ca",
+          "bytes": 44447,
+          "cached": false,
+          "cache_file": "3a9f9817d4ca269014041c4b93b584efa85e30968b2ec8823320ece9716aa44c.json"
+        }
+      ],
+      "romania_2023": "78"
+    },
+    {
+      "source": "worldbank",
+      "code": "SH.DYN.MORT",
+      "concept_code": "under5_mortality",
+      "name": "Mortalitate copii sub 5 ani",
+      "unit": "per 1,000 live births",
+      "age_group": "under 5 years",
+      "role": "target",
+      "minimum": 0,
+      "maximum": 1000,
+      "rows_returned": 480,
+      "nonnull": 480,
+      "expected_country_years": 480,
+      "missing_country_years": 0,
+      "coverage_percent": 100.0,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.DYN.MORT?date=2000%3A2023&format=json&per_page=1000&page=1",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:04:53.156974+00:00",
+          "sha256": "fb6b35ed2f7bd76eaf50b12c2a3c9810d4ee9375c9bc5c88db51f16680c6c223",
+          "bytes": 106752,
+          "cached": false,
+          "cache_file": "476c11becdb834ee51197d8ef42b064b67fa039a72191de841c6c8bbc352a52c.json"
+        }
+      ],
+      "romania_2023": "6.9",
+      "official_metadata": [
+        {
+          "id": "SH.DYN.MORT",
+          "name": "Mortality rate, under-5 (per 1,000 live births)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Under-five mortality rate is the probability per 1,000 that a newborn baby will die before reaching age five, if subject to age-specific mortality rates of the specified year.",
+          "sourceOrganization": "UN Inter-agency Group for Child Mortality Estimation, UN Children's Fund (UNICEF), uri: www.childmortality.org, publisher: UNICEF, WHO, World Bank, United Nations Population Division;\nWorld Health Organization (WHO), uri: www.childmortality.org, note: UN Inter-agency Group for Child Mortality Estimation;\nWorld Bank (WB), uri: www.childmortality.org, note: UN Inter-agency Group for Child Mortality Estimation;\nUnited Nations (UN), uri: www.childmortality.org, note: UN Inter-agency Group for Child Mortality Estimation, publisher: UN Population Division",
+          "topics": [
+            {
+              "id": "8",
+              "value": "Health "
+            },
+            {
+              "id": "2",
+              "value": "Aid Effectiveness "
+            },
+            {
+              "id": "19",
+              "value": "Climate Change"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "worldbank",
+      "code": "NY.GDP.PCAP.PP.KD",
+      "concept_code": "gdp_per_capita_ppp",
+      "name": "PIB pe locuitor la paritatea puterii de cumparare",
+      "unit": "constant 2021 international $",
+      "age_group": "all ages",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": null,
+      "rows_returned": 480,
+      "nonnull": 480,
+      "expected_country_years": 480,
+      "missing_country_years": 0,
+      "coverage_percent": 100.0,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/NY.GDP.PCAP.PP.KD?date=2000%3A2023&format=json&per_page=1000&page=1",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:04:59.867844+00:00",
+          "sha256": "3e0d7ca7eca31b0442cec25bd27d9e6015b49bf3e903a0a165399af35ef78e63",
+          "bytes": 117582,
+          "cached": false,
+          "cache_file": "68e27c0d9fe757d9d31626e5922a2c05010089000fecb02330d34168ffe630d8.json"
+        }
+      ],
+      "romania_2023": "40116.6891416904",
+      "official_metadata": [
+        {
+          "id": "NY.GDP.PCAP.PP.KD",
+          "name": "GDP per capita, PPP (constant 2021 international $)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "This indicator provides values for gross domestic product (GDP) per person expressed in constant international dollars, converted by purchasing power parities (PPPs). PPPs account for the different price levels across countries and thus PPP-based comparisons of economic output are more appropriate for comparing the output of economies and the average material well-being of their inhabitants than exchange-rate based comparisons. \n\nGross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate. This indicator is expressed in constant prices, meaning the series has been adjusted to account for price changes over time. The reference year for this adjustment is 2021. The PPP conversion factor is a currency conversion factor and a spatial price deflator. PPPs convert different currencies to a common currency and, in the process of conversion, equalize their purchasing power by eliminating the differences in price levels between countries, thereby allowing volume or output comparisons of GDP and its expenditure components.",
+          "sourceOrganization": "International Comparison Program (ICP), World Bank (WB), uri: https://www.worldbank.org/en/programs/icp/data, note: This information is for ICP’s PPPs utilized in WDI, publisher: International Comparison Program (ICP), date accessed: May 30, 2024, date published: May 30, 2024;\nThe Eurostat PPP Programme, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/databrowser/explore/all/all_themes, publisher: Eurostat;\nThe OECD PPP Programme, Organisation for Economic Co-operation and Development (OECD), uri: https://data-explorer.oecd.org/, publisher: OECD;\nStaff estimates, World Bank (WB);\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nWorld Economic Outlook database, International Monetary Fund (IMF)",
+          "topics": [
+            {
+              "id": "3",
+              "value": "Economy & Growth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "worldbank",
+      "code": "SH.XPD.CHEX.GD.ZS",
+      "concept_code": "health_expenditure_gdp",
+      "name": "Cheltuieli curente pentru sanatate",
+      "unit": "% of GDP",
+      "age_group": "all ages",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": 100,
+      "rows_returned": 480,
+      "nonnull": 480,
+      "expected_country_years": 480,
+      "missing_country_years": 0,
+      "coverage_percent": 100.0,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.XPD.CHEX.GD.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:05:01.630060+00:00",
+          "sha256": "ebdddcb1dc64d189fb95d20c89cf9cea90403ab34d58d275a15453888960ce30",
+          "bytes": 108106,
+          "cached": false,
+          "cache_file": "22cb58f57f352d24120d28bc5fec4443281f97fee461efd02360c2301ba274dc.json"
+        }
+      ],
+      "romania_2023": "5.70901489",
+      "official_metadata": [
+        {
+          "id": "SH.XPD.CHEX.GD.ZS",
+          "name": "Current health expenditure (% of GDP)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "Level of current health expenditure expressed as a percentage of GDP.  Estimates of current health expenditures include healthcare goods and services consumed during each year. This indicator does not include capital health expenditures such as buildings, machinery, IT and stocks of vaccines for emergency or outbreaks.",
+          "sourceOrganization": "Global Health Expenditure Database, updated December 12th, 2025, World Health Organization (WHO), uri: https://apps.who.int/nha/database",
+          "topics": [
+            {
+              "id": "8",
+              "value": "Health "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "worldbank",
+      "code": "SH.H2O.BASW.ZS",
+      "concept_code": "basic_drinking_water",
+      "name": "Acces la servicii de baza de apa potabila",
+      "unit": "% of population",
+      "age_group": "all ages",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": 100,
+      "rows_returned": 480,
+      "nonnull": 470,
+      "expected_country_years": 480,
+      "missing_country_years": 10,
+      "coverage_percent": 97.92,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.H2O.BASW.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:05:02.526503+00:00",
+          "sha256": "85b7c2d9238ccdeabe8793dcf3806ba38dbd9f161ae3ab3da3012fc3bdd004e1",
+          "bytes": 123989,
+          "cached": false,
+          "cache_file": "c770f7636da67b53afd4a7e47d5edb4af2f60b561f086e0924da8f15a166910b.json"
+        }
+      ],
+      "romania_2023": "99.9999974664564",
+      "official_metadata": [
+        {
+          "id": "SH.H2O.BASW.ZS",
+          "name": "People using at least basic drinking water services (% of population)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "The percentage of people using at least basic water services.  This indicator encompasses both people using basic water services as well as those using safely managed water services.  Basic drinking water services is defined as drinking water from an improved source, provided collection time is not more than 30 minutes for a round trip.  Improved water sources include piped water, boreholes or tubewells, protected dug wells, protected springs, and packaged or delivered water.",
+          "sourceOrganization": "WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene, World Health Organization (WHO), uri: washdata.org, publisher: WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene (washdata.org), date accessed: 2025-09-30, date published: 2025-08-25;\nUN Children's Fund (UNICEF), uri: washdata.org, note: WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene",
+          "topics": [
+            {
+              "id": "8",
+              "value": "Health "
+            },
+            {
+              "id": "6",
+              "value": "Environment "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "worldbank",
+      "code": "SH.STA.BASS.ZS",
+      "concept_code": "basic_sanitation",
+      "name": "Acces la servicii de baza de salubritate",
+      "unit": "% of population",
+      "age_group": "all ages",
+      "role": "feature",
+      "minimum": 0,
+      "maximum": 100,
+      "rows_returned": 480,
+      "nonnull": 479,
+      "expected_country_years": 480,
+      "missing_country_years": 1,
+      "coverage_percent": 99.79,
+      "countries_with_data": 20,
+      "requests": [
+        {
+          "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.STA.BASS.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+          "status": 200,
+          "retrieved_at": "2026-10-21T16:05:03.627055+00:00",
+          "sha256": "ba7afcf81dfa036b4c5d2dd9350b308354761b76081158f3db8292e576bba6e4",
+          "bytes": 122818,
+          "cached": false,
+          "cache_file": "97dbf3c0186291ce53e98502d05fab95ac667199f3595a039ec0a9677f61b2b1.json"
+        }
+      ],
+      "romania_2023": "90.505532492932",
+      "official_metadata": [
+        {
+          "id": "SH.STA.BASS.ZS",
+          "name": "People using at least basic sanitation services (% of population)",
+          "unit": "",
+          "source": {
+            "id": "2",
+            "value": "World Development Indicators"
+          },
+          "sourceNote": "The percentage of people using at least basic sanitation services, that is, improved sanitation facilities that are not shared with other households.  This indicator encompasses both people using basic sanitation services as well as those using safely managed sanitation services.   Improved sanitation facilities include flush/pour flush to piped sewer systems, septic tanks or pit latrines; ventilated improved pit latrines, composting toilets or pit latrines with slabs.",
+          "sourceOrganization": "WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene, World Health Organization (WHO), uri: washdata.org, publisher: WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene (washdata.org), date accessed: 2025-09-30, date published: 2025-08-25;\nUN Children's Fund (UNICEF), uri: washdata.org, note: WHO/UNICEF Joint Monitoring Programme (JMP) for Water Supply, Sanitation and Hygiene",
+          "topics": [
+            {
+              "id": "8",
+              "value": "Health "
+            },
+            {
+              "id": "6",
+              "value": "Environment "
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "purpose": "API feasibility check only; no database imports",
+  "complete_country_years_all_indicators": 469,
+  "complete_countries_all_indicators": 20,
+  "complete_country_years_by_country": {
+    "ROU": 23,
+    "BGR": 24,
+    "DEU": 24,
+    "FRA": 24,
+    "POL": 19,
+    "ESP": 24,
+    "GBR": 24,
+    "SWE": 24,
+    "USA": 19,
+    "CAN": 24,
+    "BRA": 24,
+    "MEX": 24,
+    "IND": 24,
+    "IDN": 24,
+    "ZAF": 24,
+    "KEN": 24,
+    "NGA": 24,
+    "EGY": 24,
+    "AUS": 24,
+    "JPN": 24
+  },
+  "all_requests": [
+    {
+      "url": "https://api.worldbank.org/v2/country?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:46.282528+00:00",
+      "sha256": "99c199efc2fc2880c169eb611f5a32ba69adc0e225b83f54fe384a5d66ba2448",
+      "bytes": 113955,
+      "cached": false,
+      "cache_file": "2eac69494ded1889759600059a27e0ad63167e683759d609ea80d3244d37bb4a.json"
+    },
+    {
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:46.751909+00:00",
+      "sha256": "f8596aa0e818acfe8d1e41133fb0820e42328d54db625045cafca18a2a7d152d",
+      "bytes": 44455,
+      "cached": false,
+      "cache_file": "631ef075d7c517bb98a87d9f661e407d710882e2b7b7e4e0ee8339f66113e728.json"
+    },
+    {
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:47.008494+00:00",
+      "sha256": "235c66960de51348ec28a76f02e3cceefd43333f3c2201710a0b411ee5b0b4ca",
+      "bytes": 44447,
+      "cached": false,
+      "cache_file": "3a9f9817d4ca269014041c4b93b584efa85e30968b2ec8823320ece9716aa44c.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.DYN.MORT?date=2000%3A2023&format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:53.156974+00:00",
+      "sha256": "fb6b35ed2f7bd76eaf50b12c2a3c9810d4ee9375c9bc5c88db51f16680c6c223",
+      "bytes": 106752,
+      "cached": false,
+      "cache_file": "476c11becdb834ee51197d8ef42b064b67fa039a72191de841c6c8bbc352a52c.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:53.541835+00:00",
+      "sha256": "c6a3736b659c04fc7e3837e826a510c21829309012b7c0050f857a16f881063b",
+      "bytes": 1101,
+      "cached": false,
+      "cache_file": "75458e0eb0fc13f3d5e26bd322ed572d7609047d873ef468c0a74a213f01a91b.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/NY.GDP.PCAP.PP.KD?date=2000%3A2023&format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:04:59.867844+00:00",
+      "sha256": "3e0d7ca7eca31b0442cec25bd27d9e6015b49bf3e903a0a165399af35ef78e63",
+      "bytes": 117582,
+      "cached": false,
+      "cache_file": "68e27c0d9fe757d9d31626e5922a2c05010089000fecb02330d34168ffe630d8.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/NY.GDP.PCAP.PP.KD?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:00.255634+00:00",
+      "sha256": "9d2547692b9a99cde0410254b99d423ab20465d9121aa64b9fde80302f4cca55",
+      "bytes": 2446,
+      "cached": false,
+      "cache_file": "589a6ba0b303f5518d282e63a38f39a5de971216d4fae335a202860702c560a5.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.XPD.CHEX.GD.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:01.630060+00:00",
+      "sha256": "ebdddcb1dc64d189fb95d20c89cf9cea90403ab34d58d275a15453888960ce30",
+      "bytes": 108106,
+      "cached": false,
+      "cache_file": "22cb58f57f352d24120d28bc5fec4443281f97fee461efd02360c2301ba274dc.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/SH.XPD.CHEX.GD.ZS?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:02.033218+00:00",
+      "sha256": "e2f2f900a89268fad631770f3614351b68c83b95efbedd79b8ca03cf3a31a607",
+      "bytes": 735,
+      "cached": false,
+      "cache_file": "1cd29ec9909b9c6c8af842c41b6a127fc1796887c78184e7538a42647287d7f2.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.H2O.BASW.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:02.526503+00:00",
+      "sha256": "85b7c2d9238ccdeabe8793dcf3806ba38dbd9f161ae3ab3da3012fc3bdd004e1",
+      "bytes": 123989,
+      "cached": false,
+      "cache_file": "c770f7636da67b53afd4a7e47d5edb4af2f60b561f086e0924da8f15a166910b.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/SH.H2O.BASW.ZS?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:02.879518+00:00",
+      "sha256": "a15cfee6b0e0e61a9a5b73ed5ba27b4ef0a34685295ec37dbcd674eea3408d2b",
+      "bytes": 1269,
+      "cached": false,
+      "cache_file": "a9d4a6766886f79b617285129359898ef10b3a6ff1fe79607f83aa790547098c.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/ROU;BGR;DEU;FRA;POL;ESP;GBR;SWE;USA;CAN;BRA;MEX;IND;IDN;ZAF;KEN;NGA;EGY;AUS;JPN/indicator/SH.STA.BASS.ZS?date=2000%3A2023&format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:03.627055+00:00",
+      "sha256": "ba7afcf81dfa036b4c5d2dd9350b308354761b76081158f3db8292e576bba6e4",
+      "bytes": 122818,
+      "cached": false,
+      "cache_file": "97dbf3c0186291ce53e98502d05fab95ac667199f3595a039ec0a9677f61b2b1.json"
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/SH.STA.BASS.ZS?format=json&per_page=1000&page=1",
+      "status": 200,
+      "retrieved_at": "2026-10-21T16:05:03.960169+00:00",
+      "sha256": "4f1c5c498b1638813c90842b09382703f9c8b7ba1ec9a1c32a7a43ed14ca004d",
+      "bytes": 1259,
+      "cached": false,
+      "cache_file": "36ac81e35cb1f7cc3f20cddedd790b5d357cd84fbd9abf15da7bbc5932ccd278.json"
+    }
+  ]
+}

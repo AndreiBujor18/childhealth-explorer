@@ -7,9 +7,12 @@
   "packages": {
     "sqlalchemy": "2.1.5",
     "psycopg": "3.3.6",
-    "python-dotenv": "1.2.4"
+    "python-dotenv": "1.2.4",
+    "requests": "2.34.2",
+    "pytest": "9.1.1",
+    "ruff": "0.17.1"
   },
-  "scope": "Database configuration and schema authoring",
+  "scope": "Database and API feasibility checks",
   "verified_snapshot": "2026-10-21",
   "authoring_packages": {
     "reportlab": "4.4.9"

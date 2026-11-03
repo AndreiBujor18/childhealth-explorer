@@ -48,6 +48,27 @@ rolled-back temporary schema, then exports `db/schema_dump.sql` using
 See [PostgreSQL evidence](docs/postgresql.md) and the
 [ER diagram](docs/diagrams/database-erd.svg).
 
+## API feasibility checks
+
+Existing adapters retrieve and normalize UNICEF vaccination data and
+World Bank mortality and socioeconomic indicators. They share an
+observation contract, raw-response cache and validation rules.
+
+The pilot covers 20 countries, seven indicators and 2000-2023. It contains
+3,360 normalized records, including 11 missing values, and 469 complete
+country-year combinations. Missing values are preserved.
+
+```powershell
+.\.venv\Scripts\python.exe -m etl.verify_sources
+.\.venv\Scripts\python.exe -m scripts.check_indicator_urls
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+These commands verify source availability and save files. They do not
+load observations into PostgreSQL. See [Indicators](docs/indicators.md),
+`docs/evidence/api_validation.json`, `coverage.csv` and
+`sample_observations.csv` in the same evidence folder.
+
 ## Libraries used in this stage
 
 - SQLAlchemy: database connections and session helpers.
@@ -62,3 +83,9 @@ library generates the ER diagram. Install it with
 `python -m scripts.build_design_pack`.
 
 The [database design](docs/architecture.md) explains the keys, metadata and constraints.
+
+The source adapters use requests for HTTP and urllib3 for retries. pytest and Ruff
+are used for verification. The topic, source selection and API-specific challenges
+are documented with the adapters in [lab notes](docs/lab1.md) and
+[challenge notes](docs/challenges.md). The architecture diagram includes clearly
+marked planned components; they are not active dependencies.
