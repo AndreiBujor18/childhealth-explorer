@@ -1,0 +1,14 @@
+{
+  "python": "3.14.6",
+  "git": "git version 2.51.0.windows.1",
+  "postgresql": "psql (PostgreSQL) 18.6",
+  "pgadmin_version": "9.18",
+  "vscode_active_version": "1.143.0",
+  "packages": {
+    "sqlalchemy": "2.1.5",
+    "psycopg": "3.3.6",
+    "python-dotenv": "1.2.4"
+  },
+  "scope": "Database configuration: installed and used libraries only",
+  "verified_snapshot": "2026-10-21"
+}
