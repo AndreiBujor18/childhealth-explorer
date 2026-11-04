@@ -1,8 +1,10 @@
-"""Build Lab 1 architecture diagrams and the four-page report.
+"""Build Lab 1 diagrams, the prototype dataset and the four-page report.
 
 Uses optional authoring dependencies in requirements-design.txt.
 Run from the repository root with a Python interpreter containing these tools.
 """
+import csv
+import json
 from copy import deepcopy
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -107,6 +109,37 @@ def database():
     label(d, 207, 15, 'UNIQUE country + indicator + year + sex', 9, True, GREEN)
     label(d, 1, 152, 'Separate audit; no foreign keys', 9, color=MUTED)
     return d
+
+
+COUNTRIES = {'ROU': 'Romania', 'BGR': 'Bulgaria', 'DEU': 'Germany', 'FRA': 'France', 'POL': 'Poland',
+             'ESP': 'Spain', 'GBR': 'United Kingdom', 'SWE': 'Sweden', 'USA': 'United States', 'CAN': 'Canada',
+             'BRA': 'Brazil', 'MEX': 'Mexico', 'IND': 'India', 'IDN': 'Indonesia', 'ZAF': 'South Africa',
+             'KEN': 'Kenya', 'NGA': 'Nigeria', 'EGY': 'Egypt', 'AUS': 'Australia', 'JPN': 'Japan'}
+LABELS = {'IM_DTP3': 'DTP3 vaccination coverage', 'IM_MCV1': 'First-dose measles vaccination coverage',
+          'SH.DYN.MORT': 'Under-five mortality', 'NY.GDP.PCAP.PP.KD': 'GDP per capita (PPP)',
+          'SH.XPD.CHEX.GD.ZS': 'Current health expenditure', 'SH.H2O.BASW.ZS': 'Basic drinking water access',
+          'SH.STA.BASS.ZS': 'Basic sanitation access'}
+
+
+def prototype_data():
+    indicators = json.loads((ROOT / 'config/indicators.json').read_text(encoding='utf-8'))
+    data = {'countries': COUNTRIES, 'indicators': {}, 'series': {}}
+    for i in indicators:
+        unit = i['unit']
+        data['indicators'][i['code']] = {'label': LABELS[i['code']], 'unit': unit,
+                                       'source': 'UNICEF' if i['source'] == 'unicef' else 'World Bank'}
+    with (ROOT / 'docs/evidence/sample_observations.csv').open(encoding='utf-8', newline='') as f:
+        for r in csv.DictReader(f):
+            value = round(float(r['value']), 4) if r['value'] else None
+            data['series'].setdefault(r['country_iso3'], {}).setdefault(r['indicator_code'], {})[r['year']] = value
+    fragment = ROOT / 'docs/prototype/childhealth-ui.html'
+    content = fragment.read_text(encoding='utf-8')
+    import re
+    payload = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
+    content = re.sub(r'(<script type="application/json" id="ch-data">).*?(</script>)',
+                     lambda m: m[1] + payload + m[2], content, flags=re.S)
+    fragment.write_text(content, encoding='utf-8')
+    print(f'Prototype: {len(content.encode())} bytes; {len(data["countries"])} countries.')
 
 
 def report(arch, erd):
@@ -277,6 +310,7 @@ def report(arch, erd):
 
 def main():
     fonts()
+    prototype_data()
     diagrams = ROOT / 'docs/diagrams'
     diagrams.mkdir(exist_ok=True)
     arch, erd = architecture(), database()

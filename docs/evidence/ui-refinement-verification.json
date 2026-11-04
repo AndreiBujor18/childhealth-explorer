@@ -1,0 +1,44 @@
+{
+  "verified_date": "2026-11-03",
+  "prototype": "docs/prototype/childhealth-ui.html",
+  "baseline": "docs/prototype/childhealth-ui-initial.html",
+  "data_snapshot": "2026-10-21",
+  "checks": {
+    "embedded_dataset_unchanged": true,
+    "dataset_sha256": "506f9191e0803dc4c73e30f7c3081e8809b0676fb5f9f6b3d896f838c0feadbe",
+    "country_indicator_year_filters": "passed",
+    "missing_values_as_unavailable": "passed",
+    "three_country_limit_and_feedback": "passed",
+    "source_note_expanded_state": "passed",
+    "ml_calculation_disabled": "passed",
+    "javascript_errors": 0,
+    "responsive_widths": [
+      {
+        "viewport": 390,
+        "app_client_width": 343,
+        "app_scroll_width": 343
+      },
+      {
+        "viewport": 320,
+        "app_client_width": 274,
+        "app_scroll_width": 274
+      }
+    ],
+    "mobile_country_indicator_full_row": true,
+    "reduced_motion": "CSS and JavaScript guards reviewed; OS preference not emulated",
+    "theme_visually_checked": "dark"
+  },
+  "fonts": [
+    "Source Sans 3",
+    "Source Serif 4"
+  ],
+  "font_delivery": "Google Fonts with system/Georgia fallbacks",
+  "screenshots": [
+    "docs/evidence/screenshots/prototype-refined-explore.jpg",
+    "docs/evidence/screenshots/prototype-refined-compare.jpg",
+    "docs/evidence/screenshots/prototype-refined-ml.jpg",
+    "docs/evidence/screenshots/prototype-refined-mobile.jpg"
+  ],
+  "production_app_implemented": false,
+  "report_pdf_updated": false
+}

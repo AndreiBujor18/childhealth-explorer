@@ -1,3 +1,11 @@
+# Preserved UI prototype for future Lab 3 review
+
+This branch preserves the earlier design prototype and its original screenshots.
+It is separate from the current Lab 1 work on `main`. No Lab 2 implementation
+has been started here. See [the prototype notes](docs/ui-prototype.md).
+
+---
+
 # ChildHealth Explorer
 
 **Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality** is an individual global health project. This repository contains the deliverables for **Lab 1 - Topic, Environment and Architecture**.

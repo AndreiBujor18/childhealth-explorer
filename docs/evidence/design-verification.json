@@ -1,0 +1,23 @@
+{
+  "verified_date": "2026-11-02",
+  "prototype": "docs/prototype/childhealth-ui.html",
+  "data_snapshot": "2026-10-21",
+  "checks": {
+    "country_indicator_year_filters": "passed",
+    "three_country_limit": "passed",
+    "missing_values_as_unavailable": "passed",
+    "ml_prediction_disabled": "passed",
+    "javascript_errors": 0,
+    "mobile_horizontal_overflow": false,
+    "mobile_viewport_width": 390,
+    "mobile_app_client_width": 326,
+    "mobile_app_scroll_width": 326
+  },
+  "report_pages": 5,
+  "remaining": [
+    "Confirm all seven source URLs in the user browser",
+    "Publish GitHub repository"
+  ],
+  "production_web_app_implemented": false,
+  "database_populated": false
+}

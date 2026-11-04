@@ -1,0 +1,51 @@
+{
+  "verified_date": "2026-11-04",
+  "language": "English",
+  "documentation_files": [
+    "README.md",
+    "docs/architecture.md",
+    "docs/challenges.md",
+    "docs/design-direction.md",
+    "docs/environment.md",
+    "docs/indicators.md",
+    "docs/lab1-checklist.md",
+    "docs/lab1.md",
+    "docs/postgresql.md",
+    "docs/submission-lab1.md",
+    "docs/ui-prototype.md"
+  ],
+  "indicator_names_translated": 7,
+  "country_names_translated": 20,
+  "prototypes": [
+    {
+      "file": "docs/prototype/childhealth-ui.html",
+      "numeric_series_preserved": true,
+      "series_sha256": "fff30df90fd15753b1adf87e39546280a6e7bb838b735829d656a075af42cda3"
+    },
+    {
+      "file": "docs/prototype/childhealth-ui-initial.html",
+      "numeric_series_preserved": true,
+      "series_sha256": "fff30df90fd15753b1adf87e39546280a6e7bb838b735829d656a075af42cda3"
+    }
+  ],
+  "checks": {
+    "relative_document_links": "passed",
+    "javascript_syntax": "passed for both prototypes",
+    "pytest": "9 passed",
+    "ruff": "passed",
+    "browser_explore_compare_ml": "passed",
+    "three_country_limit_message": "English, selection rejected as expected",
+    "missing_values": "Poland water 2000-2004 displayed as Unavailable",
+    "ml_calculation": "disabled",
+    "browser_console_errors": 0
+  },
+  "screenshots": [
+    "docs/evidence/screenshots/prototype-english-explore.jpg",
+    "docs/evidence/screenshots/prototype-english-compare.jpg",
+    "docs/evidence/screenshots/prototype-english-ml.jpg"
+  ],
+  "submitted_pdf_unchanged": true,
+  "submitted_pdf_sha256": "e1b5a4ea960e32301d323a96948733145b30b0d0331dec371afed73d6ac21198",
+  "historical_evidence": "Original source responses and older screenshots retain their original text; observed values were preserved.",
+  "submission": "Author-supplied Classroom screenshot confirms PDF and GitHub link submitted on 4 November 2026"
+}
