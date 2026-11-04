@@ -1,0 +1,25 @@
+{
+  "verified_at": "2026-11-04T13:42:10.320399+00:00",
+  "database": "global_health",
+  "user": "gh_user",
+  "version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "tables": [
+    "country",
+    "import_log",
+    "indicator",
+    "observation",
+    "source"
+  ],
+  "row_counts": {
+    "source": 0,
+    "country": 0,
+    "indicator": 0,
+    "observation": 0,
+    "import_log": 0
+  },
+  "read_only": true,
+  "pgadmin_connected": true,
+  "pgadmin_query": "SELECT version();",
+  "pgadmin_result": "PostgreSQL 18.6; one result row",
+  "screenshot": "docs/evidence/screenshots/pgadmin-ready-2026-11-04.jpg"
+}

@@ -1,0 +1,12 @@
+{
+  "verified_date": "2026-11-04",
+  "report": "output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf",
+  "language": "English",
+  "pdf_lang": "en-GB",
+  "page_count": 4,
+  "text_and_diagrams_in_english": true,
+  "all_pages_visually_reviewed": true,
+  "report_sha256": "e1b5a4ea960e32301d323a96948733145b30b0d0331dec371afed73d6ac21198",
+  "lab_handout_explicit_report_language_requirement": false,
+  "prototype_archive_branch": "codex/lab3-ui-prototype"
+}

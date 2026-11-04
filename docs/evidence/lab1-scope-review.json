@@ -1,0 +1,21 @@
+{
+  "verified_date": "2026-11-05",
+  "branch": "main",
+  "scope": "Lab 1 only",
+  "teacher_guidance": [
+    "First commit contains only database work",
+    "UI implementation belongs to Lab 3",
+    "Bug-fix messages must identify the actual defect",
+    "Document each technology in the commit where its component first uses it"
+  ],
+  "ui_prototype_branch": "codex/lab3-ui-prototype",
+  "ui_artifacts_preserved": 20,
+  "lab2_implementation_started": false,
+  "database_loader_implemented": false,
+  "source_checks": "Existing read-only API feasibility checks retained; no new extraction or import functionality added",
+  "submitted_pdf_unchanged": true,
+  "submitted_pdf_sha256": "e1b5a4ea960e32301d323a96948733145b30b0d0331dec371afed73d6ac21198",
+  "documentation_introduced_with_components": true,
+  "main_commit_count": 4,
+  "active_dependencies": "Database, HTTP extraction and verification only; optional diagram/report tools separate"
+}

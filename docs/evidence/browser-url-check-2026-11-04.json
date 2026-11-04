@@ -1,0 +1,96 @@
+{
+  "checked_date": "2026-11-04",
+  "browser": "Google Chrome",
+  "opened_by": "Project author",
+  "reviewed_by": "Assistant",
+  "verification_method": "Visual review of seven screenshots supplied by the author in this conversation",
+  "all_opened": true,
+  "screenshots_reviewed": 7,
+  "scope": "Confirms browser rendering of the requested JSON responses. Full record validation is documented separately in url-check-2026-11-03.json.",
+  "previous_integrated_browser_attempt": "browser-url-check-2026-11-03.json",
+  "urls": [
+    {
+      "code": "IM_DTP3",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/unicef-dtp3.png",
+      "screenshot_sha256": "3c77f42c3083f9ca18e1d64408c905add72098c1bd724b80a4d4d10c6c8a5e83",
+      "visible_evidence": [
+        "Requested indicator and ROU in address bar",
+        "meta and data.dataSets",
+        "reportingBegin: 2000-01-01T00:00:00",
+        "reportingEnd: 2023-01-01T23:59:59",
+        "series and observations"
+      ]
+    },
+    {
+      "code": "IM_MCV1",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/unicef-mcv1.png",
+      "screenshot_sha256": "33e3dac4fe5ba3b3c043c4215dabace04f607f759f6a9efc450900be29fecb08",
+      "visible_evidence": [
+        "Requested indicator and ROU in address bar",
+        "meta and data.dataSets",
+        "reportingBegin: 2000-01-01T00:00:00",
+        "reportingEnd: 2023-01-01T23:59:59",
+        "series and observations"
+      ]
+    },
+    {
+      "code": "SH.DYN.MORT",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.DYN.MORT?format=json&date=2000:2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/worldbank-mortality.png",
+      "screenshot_sha256": "f5e102958267c1be377e2c71f002d770601abb753d026e12ac2773fcb4176eba",
+      "visible_country_iso3": "ROU",
+      "visible_year": 2023,
+      "visible_value": 6.9,
+      "visible_total_records": 24
+    },
+    {
+      "code": "NY.GDP.PCAP.PP.KD",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/worldbank-gdp.png",
+      "screenshot_sha256": "8230340ffd90db6baaaf7b50313d21c686468c540da57df2b3871e14c3c53e47",
+      "visible_country_iso3": "ROU",
+      "visible_year": 2023,
+      "visible_value": 40116.6891416904,
+      "visible_total_records": 24
+    },
+    {
+      "code": "SH.XPD.CHEX.GD.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/worldbank-health-expenditure.png",
+      "screenshot_sha256": "25e2558a8cbbcb7cf15fc0db3d7a7e403672af8c9e58c86f1b95867654f06a20",
+      "visible_country_iso3": "ROU",
+      "visible_year": 2023,
+      "visible_value": 5.70901489,
+      "visible_total_records": 24
+    },
+    {
+      "code": "SH.H2O.BASW.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/worldbank-water.png",
+      "screenshot_sha256": "30189f17cee80a414aad955ef2245a192263cdaede05907262de4bf8538f401a",
+      "visible_country_iso3": "ROU",
+      "visible_year": 2023,
+      "visible_value": 99.9999974664564,
+      "visible_total_records": 24
+    },
+    {
+      "code": "SH.STA.BASS.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023",
+      "result": "JSON response visible in browser",
+      "screenshot": "docs/evidence/screenshots/api-browser-2026-11-04/worldbank-sanitation.png",
+      "screenshot_sha256": "afee7cf5df0a2e823e42a9c7f82aa9f447e12aa574a2cf2ce739148e3088d7d7",
+      "visible_country_iso3": "ROU",
+      "visible_year": 2023,
+      "visible_value": 90.505332492932,
+      "visible_total_records": 24
+    }
+  ]
+}

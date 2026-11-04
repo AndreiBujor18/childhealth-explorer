@@ -1,1 +1,4 @@
+# Optional dependencies for rebuilding design deliverables, not the web runtime.
 reportlab>=4,<5
+pypdf>=5,<7
+pypdfium2>=4,<6

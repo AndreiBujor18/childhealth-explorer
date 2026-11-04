@@ -53,7 +53,7 @@ The pilot covers Romania, Bulgaria, Germany, France, Poland, Spain, the United K
 
 The 21 October 2026 check found 480/480 non-null values for the first five indicators, 470/480 for water and 479/480 for sanitation. **469/480 country-year combinations are complete.** Extending to more countries will require the same checks. Each request records its timestamp, URL and response hash. `docs/evidence/api_validation.json` contains the full URLs; `coverage.csv` summarizes coverage and `sample_observations.csv` contains real normalized observations.
 
-The [indicator catalog](indicators.md) lists reproducible Romania URLs. API checks save evidence files and leave PostgreSQL empty.
+The [indicator catalog](indicators.md) lists all seven clickable URLs for Romania. On 3 November, each returned HTTP 200 and 24 annual records, validated for source, code, ISO3, year and numeric limits. The pilot snapshot was preserved. On 4 November, the author opened all seven URLs in Chrome and supplied screenshots of the JSON responses, which were reviewed. Task 1.7 is complete. Evidence: `docs/evidence/url-check-2026-11-03.json`, `browser-url-check-2026-11-04.json` and the associated screenshots. The earlier integrated-browser failure is retained as historical evidence.
 
 ## 1.8 Database schema
 
@@ -65,7 +65,6 @@ SQLAlchemy models in `app/models.py` are instantiated by `python -m app.create_t
 
 Verified result: all five tables exist and are empty; the SQLAlchemy schema matches the SQL design. API verification has not populated the database. Tests cover SDMX decoding, World Bank pagination, missing values, duplicates, numeric limits and an additional adapter.
 
-## Lab 1 scope
+## Submission and scope
 
-Source adapters, validation and the empty database are implemented. Production
-loading, the connected application and trained models remain later work.
+The public [GitHub repository](https://github.com/AndreiBujor18/childhealth-explorer) and the four-page PDF in `output/pdf/` were submitted by the author in Google Classroom on 4 November 2026. All eight Lab 1 checklist items are complete. Production imports, the connected application and ML will be developed in later stages. Scripts and evidence files support reproduction of the work.

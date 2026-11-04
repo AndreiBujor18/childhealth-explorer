@@ -1,0 +1,36 @@
+{
+  "verified_date": "2026-11-04",
+  "report": "output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf",
+  "report_sha256": "e1b5a4ea960e32301d323a96948733145b30b0d0331dec371afed73d6ac21198",
+  "previous_page_count": 5,
+  "page_count": 4,
+  "previous_word_count": 1362,
+  "word_count": 1163,
+  "language": "English",
+  "all_pages_visually_reviewed": true,
+  "removed": [
+    "Repeated completion-status table",
+    "Submission instructions and submission-state commentary",
+    "Repeated browser-verification and database-check narratives",
+    "UI-prototype and hosting commentary unrelated to required report content"
+  ],
+  "checklist_coverage": {
+    "1.2": 1,
+    "1.3": 1,
+    "1.4": 1,
+    "1.5": 2,
+    "1.6": 2,
+    "1.7": 3,
+    "1.8": 4,
+    "1.9": 4
+  },
+  "retained": [
+    "Research question, relevance, two sources, intended users and ML idea",
+    "Installed environment versions and pgAdmin evidence",
+    "Two topic-specific challenges and solutions",
+    "Architecture and project folders",
+    "Seven indicators, units and browser-verification evidence",
+    "ER diagram, justified schema changes, creation, export and comparison of five empty tables"
+  ],
+  "english_wording_reviewed": true
+}

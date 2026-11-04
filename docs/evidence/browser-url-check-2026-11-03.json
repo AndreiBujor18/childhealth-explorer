@@ -1,0 +1,42 @@
+{
+  "checked_date": "2026-11-03",
+  "browser": "Codex In-app Browser",
+  "all_opened": false,
+  "urls": [
+    {
+      "code": "SH.DYN.MORT",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.DYN.MORT?format=json&date=2000:2023",
+      "result": "ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "IM_DTP3",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "result": "Browser Use cannot open https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_DTP3._T in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "IM_MCV1",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+      "result": "Browser Use cannot open https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU.IM_MCV1._T in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "NY.GDP.PCAP.PP.KD",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023",
+      "result": "Browser Use cannot open https://api.worldbank.org/v2/country/ROU/indicator/NY.GDP.PCAP.PP.KD in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "SH.XPD.CHEX.GD.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023",
+      "result": "Browser Use cannot open https://api.worldbank.org/v2/country/ROU/indicator/SH.XPD.CHEX.GD.ZS in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "SH.H2O.BASW.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023",
+      "result": "Browser Use cannot open https://api.worldbank.org/v2/country/ROU/indicator/SH.H2O.BASW.ZS in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    },
+    {
+      "code": "SH.STA.BASS.ZS",
+      "url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023",
+      "result": "Browser Use cannot open https://api.worldbank.org/v2/country/ROU/indicator/SH.STA.BASS.ZS in tab 3. Browser reported: net::ERR_BLOCKED_BY_CLIENT"
+    }
+  ]
+}
