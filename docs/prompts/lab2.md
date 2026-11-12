@@ -20,3 +20,8 @@ One implementation authorization covers the following incremental commits. Conti
 - Date: 2026-11-12
 - Result: executed `notebooks/lab2_exploration.ipynb`, recorded `docs/evidence/lab2-exploration.json`, and added optional notebook dependencies. Commit: `Lab 2: explore saved source data and report missing-value coverage`.
 - Checks and corrections: notebook cells run against verified cached files, with no database access. Distinguish global raw missingness, pilot missingness, absent country-years and WHO dimension exclusions. No additional student edits or additional user prompts were supplied.
+
+## Prompt 1 continuation - cleaning and database migration
+- Date: 2026-11-12
+- Result: `etl/clean.py`, cleaning profiles/tests, Alembic baseline and revision 0002, model `is_outlier`, and guarded existing-database migration. Commit: `Lab 2: clean observations and migrate retained IQR outlier flags`.
+- Checks and corrections: preserve real zero values, reject fractional years before integer conversion, map WHO sex codes, keep exclusive per-rule rejection counts, and retain IQR outliers. Verify an existing Lab 1 schema before stamping it. Test fresh upgrades and a reversible downgrade against a synthetic observation in a rolled-back schema. No manual student edits reported.

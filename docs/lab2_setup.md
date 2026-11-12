@@ -35,3 +35,19 @@ Install `requirements-notebook.txt`, then open `notebooks/lab2_exploration.ipynb
 ```
 
 The committed notebook includes actual outputs from all nine series, plus the per-indicator missing-value summary in `docs/evidence/lab2-exploration.json`. Existing valid snapshots allow execution without network requests.
+
+## Cleaning and migration (Task 2.2)
+
+Pandas and NumPy implement identifier/type/sex normalization, missing/non-finite value rejection, whole-year checks, valid-entity and pilot filters, plausible bounds and natural-key deduplication (last record wins). Genuine zero values are retained when the indicator permits them. Each rejection is assigned to the first applicable rule, so rejection counts sum exactly to normalized rows minus cleaned rows. WHO dimension exclusions occur before this table and are reported separately.
+
+For each source-specific indicator across the study sample, compute Q1 and Q3 with pandas linear quantiles, IQR = Q3 - Q1, and flag values strictly outside Q1 - 1.5*IQR and Q3 + 1.5*IQR. Values on the fences are unflagged. IQR=0 uses the same formula; different values can be flagged. Outliers remain in the database and are not assumed to be errors. These pooled thresholds describe this pilot, not clinical validity.
+
+Alembic is introduced with revision 0001 (frozen Lab 1 schema) and 0002 (non-null `observation.is_outlier`, default false). Do not use `create_all` to update an existing schema. Run:
+
+```powershell
+.\scripts\start-postgres.ps1
+.\.venv\Scripts\python.exe -m scripts.migrate_database
+.\.venv\Scripts\python.exe -m scripts.profile_cleaning
+```
+
+The migration helper verifies all five existing tables against the Lab 1 SQL before stamping the baseline, then upgrades. Empty databases are built from the migration chain. It does not delete observations. A second invocation is safe. The Lab 1 schema/evidence/report remain historical snapshots; current schema changes are represented by migrations.

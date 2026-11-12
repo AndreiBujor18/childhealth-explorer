@@ -1,0 +1,272 @@
+[
+  {
+    "source": "unicef",
+    "indicator": "IM_DTP3",
+    "raw_rows": 480,
+    "clean_rows": 480,
+    "rejected_rows": 0,
+    "rejections": {
+      "invalid_country_or_aggregate": 0,
+      "country_outside_study": 0,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "IM_DTP3": {
+        "q1": 87.0,
+        "q3": 97.0,
+        "iqr": 10.0,
+        "lower": 72.0,
+        "upper": 112.0
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 43
+  },
+  {
+    "source": "unicef",
+    "indicator": "IM_MCV1",
+    "raw_rows": 480,
+    "clean_rows": 480,
+    "rejected_rows": 0,
+    "rejections": {
+      "invalid_country_or_aggregate": 0,
+      "country_outside_study": 0,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "IM_MCV1": {
+        "q1": 87.0,
+        "q3": 96.0,
+        "iqr": 9.0,
+        "lower": 73.5,
+        "upper": 109.5
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 50
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.DYN.MORT",
+    "raw_rows": 6384,
+    "clean_rows": 480,
+    "rejected_rows": 5904,
+    "rejections": {
+      "invalid_country_or_aggregate": 1176,
+      "country_outside_study": 4728,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "SH.DYN.MORT": {
+        "q1": 4.5,
+        "q3": 29.95,
+        "iqr": 25.45,
+        "lower": -33.675,
+        "upper": 68.125
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 45
+  },
+  {
+    "source": "worldbank",
+    "indicator": "NY.GDP.PCAP.PP.KD",
+    "raw_rows": 6384,
+    "clean_rows": 480,
+    "rejected_rows": 5904,
+    "rejections": {
+      "invalid_country_or_aggregate": 1176,
+      "country_outside_study": 4728,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "NY.GDP.PCAP.PP.KD": {
+        "q1": 13439.652899441651,
+        "q3": 50360.63414712868,
+        "iqr": 36920.98124768703,
+        "lower": -41941.81897208889,
+        "upper": 105742.10601865922
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.XPD.CHEX.GD.ZS",
+    "raw_rows": 6384,
+    "clean_rows": 480,
+    "rejected_rows": 5904,
+    "rejections": {
+      "invalid_country_or_aggregate": 1176,
+      "country_outside_study": 4728,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "SH.XPD.CHEX.GD.ZS": {
+        "q1": 5.0471279625,
+        "q3": 10.0003948225,
+        "iqr": 4.95326686,
+        "lower": -2.3827723275000006,
+        "upper": 17.4302951125
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 1
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.H2O.BASW.ZS",
+    "raw_rows": 6384,
+    "clean_rows": 470,
+    "rejected_rows": 5914,
+    "rejections": {
+      "invalid_country_or_aggregate": 1176,
+      "country_outside_study": 4728,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 10,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "SH.H2O.BASW.ZS": {
+        "q1": 92.11859538929497,
+        "q3": 99.96971621274767,
+        "iqr": 7.851120823452703,
+        "lower": 80.34191415411591,
+        "upper": 111.74639744792673
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 54
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.STA.BASS.ZS",
+    "raw_rows": 6384,
+    "clean_rows": 479,
+    "rejected_rows": 5905,
+    "rejections": {
+      "invalid_country_or_aggregate": 1176,
+      "country_outside_study": 4728,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 1,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "SH.STA.BASS.ZS": {
+        "q1": 76.0719237152131,
+        "q3": 99.22498196901606,
+        "iqr": 23.153058253802953,
+        "lower": 41.34233633450867,
+        "upper": 133.9545693497205
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 52
+  },
+  {
+    "source": "who",
+    "indicator": "MDG_0000000007",
+    "raw_rows": 4800,
+    "clean_rows": 480,
+    "rejected_rows": 4320,
+    "rejections": {
+      "invalid_country_or_aggregate": 96,
+      "country_outside_study": 4224,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 0,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "MDG_0000000007": {
+        "q1": 4.460757385,
+        "q3": 29.93237420625,
+        "iqr": 25.47161682125,
+        "lower": -33.746667846875,
+        "upper": 68.139799438125
+      }
+    },
+    "excluded_dimensions": 12720,
+    "outliers": 45
+  },
+  {
+    "source": "owid",
+    "indicator": "child-mortality",
+    "raw_rows": 17066,
+    "clean_rows": 480,
+    "rejected_rows": 16586,
+    "rejections": {
+      "invalid_country_or_aggregate": 1209,
+      "country_outside_study": 13480,
+      "unknown_indicator": 0,
+      "missing_or_non_numeric_year_value": 0,
+      "fractional_year": 0,
+      "year_outside_study": 1897,
+      "unknown_sex": 0,
+      "sex_outside_study": 0,
+      "outside_plausible_bounds": 0,
+      "duplicate_natural_key": 0
+    },
+    "iqr": {
+      "child-mortality": {
+        "q1": 4.5,
+        "q3": 29.950000000000003,
+        "iqr": 25.450000000000003,
+        "lower": -33.675000000000004,
+        "upper": 68.125
+      }
+    },
+    "excluded_dimensions": 0,
+    "outliers": 45
+  }
+]

@@ -6,3 +6,5 @@ urllib3>=2,<3
 pytest>=8,<10
 ruff>=0.11,<1
 pandas>=2.2,<4
+numpy>=2,<3
+alembic>=1.16,<2

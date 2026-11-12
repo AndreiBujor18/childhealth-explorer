@@ -54,8 +54,8 @@ Download the **Windows x86-64 ZIP** from the [official EDB page](https://www.ent
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.setup_postgres
-.\.venv\Scripts\python.exe -m app.create_tables
-.\.venv\Scripts\python.exe -m scripts.verify_database
+.\.venv\Scripts\python.exe -m scripts.migrate_database
+.\.venv\Scripts\python.exe -m alembic check
 .\.venv\Scripts\python.exe -m scripts.setup_pgadmin
 .\scripts\start-pgadmin.ps1
 ```
@@ -75,7 +75,7 @@ If PostgreSQL is already installed, create the project user and database, copy `
 
 ## Lab 2 extraction
 
-Run `.\.venv\Scripts\python.exe -m etl.extract` after installing the requirements. The [Lab 2 guide](docs/lab2_setup.md) documents the four sources, saved snapshots and local transformations. Pandas is introduced here for normalized observation tables.
+Run `.\.venv\Scripts\python.exe -m etl.extract` after installing the requirements. The [Lab 2 guide](docs/lab2_setup.md) documents the four sources, saved snapshots and local transformations. Pandas and NumPy provide normalized tables and cleaning; Alembic manages database schema changes. The migration helper also handles an existing Lab 1 database safely.
 
 ## Libraries used in the current code
 
