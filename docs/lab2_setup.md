@@ -23,3 +23,15 @@ The mandatory sources are WHO, World Bank and OWID. UNICEF is retained as a four
 - [UNICEF SDMX documentation](https://data.unicef.org/sdmx-api-documentation/): DTP3 and first-dose measles coverage remain separate indicators.
 
 These providers may redistribute UN IGME estimates. They are source-specific comparison series, not independent measurements or additional ML training examples. Differences can reflect revisions, precision and processing. Metadata and retrieval times remain with every snapshot. Public aggregates contain no patient records; source attribution and original-provider terms still apply.
+
+## Notebook (Task 2.1)
+
+Install `requirements-notebook.txt`, then open `notebooks/lab2_exploration.ipynb` in JupyterLab using the project environment. To reproduce the executed outputs from the root:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-notebook.txt
+.\.venv\Scripts\python.exe -m ipykernel install --prefix .venv --name childhealth --display-name "Python (ChildHealth Explorer)"
+.\.venv\Scripts\python.exe -m jupyter lab
+```
+
+The committed notebook includes actual outputs from all nine series, plus the per-indicator missing-value summary in `docs/evidence/lab2-exploration.json`. Existing valid snapshots allow execution without network requests.

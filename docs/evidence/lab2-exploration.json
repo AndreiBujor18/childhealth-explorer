@@ -1,0 +1,110 @@
+[
+  {
+    "source": "unicef",
+    "indicator": "IM_DTP3",
+    "normalized_rows": 480,
+    "missing_values": 0,
+    "missing_percent": 0.0,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "unicef",
+    "indicator": "IM_MCV1",
+    "normalized_rows": 480,
+    "missing_values": 0,
+    "missing_percent": 0.0,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.DYN.MORT",
+    "normalized_rows": 6384,
+    "missing_values": 528,
+    "missing_percent": 8.271,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "NY.GDP.PCAP.PP.KD",
+    "normalized_rows": 6384,
+    "missing_values": 511,
+    "missing_percent": 8.004,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.XPD.CHEX.GD.ZS",
+    "normalized_rows": 6384,
+    "missing_values": 692,
+    "missing_percent": 10.84,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.H2O.BASW.ZS",
+    "normalized_rows": 6384,
+    "missing_values": 236,
+    "missing_percent": 3.697,
+    "study_rows": 480,
+    "study_missing_values": 10,
+    "study_missing_percent": 2.083,
+    "study_country_year_gaps": 10,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "worldbank",
+    "indicator": "SH.STA.BASS.ZS",
+    "normalized_rows": 6384,
+    "missing_values": 262,
+    "missing_percent": 4.104,
+    "study_rows": 480,
+    "study_missing_values": 1,
+    "study_missing_percent": 0.208,
+    "study_country_year_gaps": 1,
+    "excluded_dimensions": 0
+  },
+  {
+    "source": "who",
+    "indicator": "MDG_0000000007",
+    "normalized_rows": 4800,
+    "missing_values": 0,
+    "missing_percent": 0.0,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 12720
+  },
+  {
+    "source": "owid",
+    "indicator": "child-mortality",
+    "normalized_rows": 17066,
+    "missing_values": 0,
+    "missing_percent": 0.0,
+    "study_rows": 480,
+    "study_missing_values": 0,
+    "study_missing_percent": 0.0,
+    "study_country_year_gaps": 0,
+    "excluded_dimensions": 0
+  }
+]

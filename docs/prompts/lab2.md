@@ -15,3 +15,8 @@
 - Your changes: no manual student code edits have been reported. The assistant selected WHO under-five mortality rather than copying the life-expectancy example, kept UNICEF, retained the documented 2000-2023 / 20-country scope, validated WHO age/wealth dimensions and converted OWID deaths per 100 births to per 1,000 explicitly. These are assistant implementation choices for the student to review, not claimed student edits.
 
 One implementation authorization covers the following incremental commits. Continuation notes identify the files, checks and corrections produced in each step; they are not invented additional user prompts. No code is claimed to have been written independently by the student.
+
+## Prompt 1 continuation - exploratory notebook
+- Date: 2026-11-12
+- Result: executed `notebooks/lab2_exploration.ipynb`, recorded `docs/evidence/lab2-exploration.json`, and added optional notebook dependencies. Commit: `Lab 2: explore saved source data and report missing-value coverage`.
+- Checks and corrections: notebook cells run against verified cached files, with no database access. Distinguish global raw missingness, pilot missingness, absent country-years and WHO dimension exclusions. No additional student edits or additional user prompts were supplied.
