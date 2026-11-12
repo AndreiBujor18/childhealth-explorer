@@ -25,3 +25,8 @@ One implementation authorization covers the following incremental commits. Conti
 - Date: 2026-11-12
 - Result: `etl/clean.py`, cleaning profiles/tests, Alembic baseline and revision 0002, model `is_outlier`, and guarded existing-database migration. Commit: `Lab 2: clean observations and migrate retained IQR outlier flags`.
 - Checks and corrections: preserve real zero values, reject fractional years before integer conversion, map WHO sex codes, keep exclusive per-rule rejection counts, and retain IQR outliers. Verify an existing Lab 1 schema before stamping it. Test fresh upgrades and a reversible downgrade against a synthetic observation in a rolled-back schema. No manual student edits reported.
+
+## Prompt 1 continuation - PostgreSQL import and idempotency
+- Date: 2026-11-12
+- Result: shared `etl/load.py`, source import scripts, `scripts/verify_imports.py`, transactional integration test and two-run evidence. Commit: `Lab 2: load source snapshots with transactional idempotent upserts`.
+- Checks and corrections: both value and is_outlier are updated on conflict; an indicator and its import_log row commit together; failed indicators roll back and cause a failing exit status. Real source URLs (not local filenames) are written to import_log. rows_loaded means processed upserts, with new/updated counts reported separately. Two real imports preserve 4,309 observations and add 18 logs; isolated tests verify updated flags and rollback of a failed log. No manual student code changes reported.

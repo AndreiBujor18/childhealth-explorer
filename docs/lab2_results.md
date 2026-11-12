@@ -22,6 +22,16 @@ The executed notebook is `notebooks/lab2_exploration.ipynb`; missingness profile
 
 Total: 4,309 cleaned observations, including 335 retained outliers. Exact Q1, Q3, IQR and rejection counts are in `docs/evidence/lab2-cleaning.json`. Thresholds are computed separately by source and indicator across the pilot. An outlier is not automatically an error.
 
-## Tasks 2.3 and 2.4
+## Task 2.3 - repeated imports
 
-Import repetition and SQL verification are the next implementation step; no database-import result is claimed in this commit.
+| State | Observation rows | Import log rows | Duplicate keys |
+|---|---:|---:|---:|
+| Before | 0 | 0 | 0 |
+| After first import | 4309 | 9 | 0 |
+| After second import | 4309 | 18 | 0 |
+
+Both runs processed 4,309 upserts. The first inserted 4,309 new observations; the second inserted zero and updated 4,309 existing observations. Source-specific counts, values and flags stayed the same. Nine indicators produced nine import_log entries per run. Evidence: `docs/evidence/lab2-imports.json`.
+
+## Task 2.4 - SQL and source comparison
+
+SQL checks and independent source spot checks follow in the next implementation step.

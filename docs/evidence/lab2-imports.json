@@ -1,0 +1,1126 @@
+{
+  "checked_at": "2026-11-12T16:28:17.761345+00:00",
+  "before": {
+    "counts": [],
+    "total_rows": 0,
+    "duplicates": 0,
+    "content_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "import_log_count": 0,
+    "import_log": []
+  },
+  "runs": [
+    {
+      "run": 1,
+      "reports": [
+        {
+          "source": "worldbank",
+          "finished_at": "2026-11-12T16:28:18.446953+00:00",
+          "indicators": [
+            {
+              "source": "worldbank",
+              "indicator": "SH.DYN.MORT",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.DYN.MORT": {
+                  "q1": 4.5,
+                  "q3": 29.95,
+                  "iqr": 25.45,
+                  "lower": -33.675,
+                  "upper": 68.125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 45,
+              "snapshot_sha256": "ea0e812fa3ee16347732f7057217bb30f7667b75317986e1a8f4c9d6d02155d3",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "NY.GDP.PCAP.PP.KD",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "NY.GDP.PCAP.PP.KD": {
+                  "q1": 13439.652899441651,
+                  "q3": 50360.63414712868,
+                  "iqr": 36920.98124768703,
+                  "lower": -41941.81897208889,
+                  "upper": 105742.10601865922
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 0,
+              "snapshot_sha256": "39491fcdf206fb2e9f365d3cf7a8f33f6f6b35f5fe45e63511c4771c55fe8129",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.XPD.CHEX.GD.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.XPD.CHEX.GD.ZS": {
+                  "q1": 5.0471279625,
+                  "q3": 10.0003948225,
+                  "iqr": 4.95326686,
+                  "lower": -2.3827723275000006,
+                  "upper": 17.4302951125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 1,
+              "snapshot_sha256": "94f4505c62526f23a5ebc2204524a1ad0bfe35f9b8e5c1adac73356f0d366292",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.H2O.BASW.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 470,
+              "rejected_rows": 5914,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 10,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.H2O.BASW.ZS": {
+                  "q1": 92.11859538929497,
+                  "q3": 99.96971621274767,
+                  "iqr": 7.851120823452703,
+                  "lower": 80.34191415411591,
+                  "upper": 111.74639744792673
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 470,
+              "new_rows": 470,
+              "updated_rows": 0,
+              "outliers": 54,
+              "snapshot_sha256": "3244d0b2c532bd6cda32c61331116e82c8d29d6df0ef0b03f1599128dac8f47b",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.STA.BASS.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 479,
+              "rejected_rows": 5905,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 1,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.STA.BASS.ZS": {
+                  "q1": 76.0719237152131,
+                  "q3": 99.22498196901606,
+                  "iqr": 23.153058253802953,
+                  "lower": 41.34233633450867,
+                  "upper": 133.9545693497205
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 479,
+              "new_rows": 479,
+              "updated_rows": 0,
+              "outliers": 52,
+              "snapshot_sha256": "5e615c4c5593935b0726e22b6be71d8349184ccea09da8af58a4ac91b2d78bbe",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "who",
+          "finished_at": "2026-11-12T16:28:18.636384+00:00",
+          "indicators": [
+            {
+              "source": "who",
+              "indicator": "MDG_0000000007",
+              "raw_rows": 4800,
+              "clean_rows": 480,
+              "rejected_rows": 4320,
+              "rejections": {
+                "invalid_country_or_aggregate": 96,
+                "country_outside_study": 4224,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "MDG_0000000007": {
+                  "q1": 4.460757385,
+                  "q3": 29.93237420625,
+                  "iqr": 25.47161682125,
+                  "lower": -33.746667846875,
+                  "upper": 68.139799438125
+                }
+              },
+              "excluded_dimensions": 12720,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 45,
+              "snapshot_sha256": "bcb7e8f092a8e1c7410b7fecc839668bf8cf6fbd45fc144f27917b4150996ea6",
+              "requests": [
+                {
+                  "url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDimType+eq+%27COUNTRY%27+and+TimeDim+ge+2000+and+TimeDim+le+2023+and+Dim1+eq+%27SEX_BTSX%27",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "owid",
+          "finished_at": "2026-11-12T16:28:18.732726+00:00",
+          "indicators": [
+            {
+              "source": "owid",
+              "indicator": "child-mortality",
+              "raw_rows": 17066,
+              "clean_rows": 480,
+              "rejected_rows": 16586,
+              "rejections": {
+                "invalid_country_or_aggregate": 1209,
+                "country_outside_study": 13480,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 1897,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "child-mortality": {
+                  "q1": 4.5,
+                  "q3": 29.950000000000003,
+                  "iqr": 25.450000000000003,
+                  "lower": -33.675000000000004,
+                  "upper": 68.125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 45,
+              "snapshot_sha256": "ac87ef5c0c4ba409b95e8c85833ab51093476b2475e315cba5dd079154e175ff",
+              "requests": [
+                {
+                  "url": "https://ourworldindata.org/grapher/child-mortality.csv",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "unicef",
+          "finished_at": "2026-11-12T16:28:18.886026+00:00",
+          "indicators": [
+            {
+              "source": "unicef",
+              "indicator": "IM_DTP3",
+              "raw_rows": 480,
+              "clean_rows": 480,
+              "rejected_rows": 0,
+              "rejections": {
+                "invalid_country_or_aggregate": 0,
+                "country_outside_study": 0,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "IM_DTP3": {
+                  "q1": 87.0,
+                  "q3": 97.0,
+                  "iqr": 10.0,
+                  "lower": 72.0,
+                  "upper": 112.0
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 43,
+              "snapshot_sha256": "c55dcb40755635b1149c99f936a0a2751d4d6eb34bc95559041c8c57e0b149ea",
+              "requests": [
+                {
+                  "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "unicef",
+              "indicator": "IM_MCV1",
+              "raw_rows": 480,
+              "clean_rows": 480,
+              "rejected_rows": 0,
+              "rejections": {
+                "invalid_country_or_aggregate": 0,
+                "country_outside_study": 0,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "IM_MCV1": {
+                  "q1": 87.0,
+                  "q3": 96.0,
+                  "iqr": 9.0,
+                  "lower": 73.5,
+                  "upper": 109.5
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 480,
+              "updated_rows": 0,
+              "outliers": 50,
+              "snapshot_sha256": "dc81818106c70db566468f4f200b7bec5e6c8db4f7f9996f8baa827c3dd936d7",
+              "requests": [
+                {
+                  "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        }
+      ],
+      "after": {
+        "counts": [
+          {
+            "source": "owid",
+            "code": "child-mortality",
+            "rows": 480
+          },
+          {
+            "source": "unicef",
+            "code": "IM_DTP3",
+            "rows": 480
+          },
+          {
+            "source": "unicef",
+            "code": "IM_MCV1",
+            "rows": 480
+          },
+          {
+            "source": "who",
+            "code": "MDG_0000000007",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "NY.GDP.PCAP.PP.KD",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.DYN.MORT",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.H2O.BASW.ZS",
+            "rows": 470
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.STA.BASS.ZS",
+            "rows": 479
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.XPD.CHEX.GD.ZS",
+            "rows": 480
+          }
+        ],
+        "total_rows": 4309,
+        "duplicates": 0,
+        "content_sha256": "e86cf85bc33284bc6c5645192cee76dd96abdfc8211d50e6e195cb87b20e3a2c",
+        "import_log_count": 9,
+        "import_log": [
+          {
+            "import_id": 1,
+            "source_name": "worldbank",
+            "indicator_code": "SH.DYN.MORT",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.020516+02:00"
+          },
+          {
+            "import_id": 2,
+            "source_name": "worldbank",
+            "indicator_code": "NY.GDP.PCAP.PP.KD",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.112640+02:00"
+          },
+          {
+            "import_id": 3,
+            "source_name": "worldbank",
+            "indicator_code": "SH.XPD.CHEX.GD.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.224905+02:00"
+          },
+          {
+            "import_id": 4,
+            "source_name": "worldbank",
+            "indicator_code": "SH.H2O.BASW.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 470,
+            "imported_at": "2026-11-12 18:28:18.310021+02:00"
+          },
+          {
+            "import_id": 5,
+            "source_name": "worldbank",
+            "indicator_code": "SH.STA.BASS.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 479,
+            "imported_at": "2026-11-12 18:28:18.394248+02:00"
+          },
+          {
+            "import_id": 6,
+            "source_name": "who",
+            "indicator_code": "MDG_0000000007",
+            "url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDimType+eq+%27COUNTRY%27+and+TimeDim+ge+2000+and+TimeDim+le+2023+and+Dim1+eq+%27SEX_BTSX%27",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.582426+02:00"
+          },
+          {
+            "import_id": 7,
+            "source_name": "owid",
+            "indicator_code": "child-mortality",
+            "url": "https://ourworldindata.org/grapher/child-mortality.csv",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.677680+02:00"
+          },
+          {
+            "import_id": 8,
+            "source_name": "unicef",
+            "indicator_code": "IM_DTP3",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.755226+02:00"
+          },
+          {
+            "import_id": 9,
+            "source_name": "unicef",
+            "indicator_code": "IM_MCV1",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.834176+02:00"
+          }
+        ]
+      }
+    },
+    {
+      "run": 2,
+      "reports": [
+        {
+          "source": "worldbank",
+          "finished_at": "2026-11-12T16:28:19.361638+00:00",
+          "indicators": [
+            {
+              "source": "worldbank",
+              "indicator": "SH.DYN.MORT",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.DYN.MORT": {
+                  "q1": 4.5,
+                  "q3": 29.95,
+                  "iqr": 25.45,
+                  "lower": -33.675,
+                  "upper": 68.125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 45,
+              "snapshot_sha256": "ea0e812fa3ee16347732f7057217bb30f7667b75317986e1a8f4c9d6d02155d3",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "NY.GDP.PCAP.PP.KD",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "NY.GDP.PCAP.PP.KD": {
+                  "q1": 13439.652899441651,
+                  "q3": 50360.63414712868,
+                  "iqr": 36920.98124768703,
+                  "lower": -41941.81897208889,
+                  "upper": 105742.10601865922
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 0,
+              "snapshot_sha256": "39491fcdf206fb2e9f365d3cf7a8f33f6f6b35f5fe45e63511c4771c55fe8129",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.XPD.CHEX.GD.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 480,
+              "rejected_rows": 5904,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.XPD.CHEX.GD.ZS": {
+                  "q1": 5.0471279625,
+                  "q3": 10.0003948225,
+                  "iqr": 4.95326686,
+                  "lower": -2.3827723275000006,
+                  "upper": 17.4302951125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 1,
+              "snapshot_sha256": "94f4505c62526f23a5ebc2204524a1ad0bfe35f9b8e5c1adac73356f0d366292",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.H2O.BASW.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 470,
+              "rejected_rows": 5914,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 10,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.H2O.BASW.ZS": {
+                  "q1": 92.11859538929497,
+                  "q3": 99.96971621274767,
+                  "iqr": 7.851120823452703,
+                  "lower": 80.34191415411591,
+                  "upper": 111.74639744792673
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 470,
+              "new_rows": 0,
+              "updated_rows": 470,
+              "outliers": 54,
+              "snapshot_sha256": "3244d0b2c532bd6cda32c61331116e82c8d29d6df0ef0b03f1599128dac8f47b",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "worldbank",
+              "indicator": "SH.STA.BASS.ZS",
+              "raw_rows": 6384,
+              "clean_rows": 479,
+              "rejected_rows": 5905,
+              "rejections": {
+                "invalid_country_or_aggregate": 1176,
+                "country_outside_study": 4728,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 1,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "SH.STA.BASS.ZS": {
+                  "q1": 76.0719237152131,
+                  "q3": 99.22498196901606,
+                  "iqr": 23.153058253802953,
+                  "lower": 41.34233633450867,
+                  "upper": 133.9545693497205
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 479,
+              "new_rows": 0,
+              "updated_rows": 479,
+              "outliers": 52,
+              "snapshot_sha256": "5e615c4c5593935b0726e22b6be71d8349184ccea09da8af58a4ac91b2d78bbe",
+              "requests": [
+                {
+                  "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023&per_page=20000",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "who",
+          "finished_at": "2026-11-12T16:28:19.548966+00:00",
+          "indicators": [
+            {
+              "source": "who",
+              "indicator": "MDG_0000000007",
+              "raw_rows": 4800,
+              "clean_rows": 480,
+              "rejected_rows": 4320,
+              "rejections": {
+                "invalid_country_or_aggregate": 96,
+                "country_outside_study": 4224,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "MDG_0000000007": {
+                  "q1": 4.460757385,
+                  "q3": 29.93237420625,
+                  "iqr": 25.47161682125,
+                  "lower": -33.746667846875,
+                  "upper": 68.139799438125
+                }
+              },
+              "excluded_dimensions": 12720,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 45,
+              "snapshot_sha256": "bcb7e8f092a8e1c7410b7fecc839668bf8cf6fbd45fc144f27917b4150996ea6",
+              "requests": [
+                {
+                  "url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDimType+eq+%27COUNTRY%27+and+TimeDim+ge+2000+and+TimeDim+le+2023+and+Dim1+eq+%27SEX_BTSX%27",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "owid",
+          "finished_at": "2026-11-12T16:28:19.641816+00:00",
+          "indicators": [
+            {
+              "source": "owid",
+              "indicator": "child-mortality",
+              "raw_rows": 17066,
+              "clean_rows": 480,
+              "rejected_rows": 16586,
+              "rejections": {
+                "invalid_country_or_aggregate": 1209,
+                "country_outside_study": 13480,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 1897,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "child-mortality": {
+                  "q1": 4.5,
+                  "q3": 29.950000000000003,
+                  "iqr": 25.450000000000003,
+                  "lower": -33.675000000000004,
+                  "upper": 68.125
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 45,
+              "snapshot_sha256": "ac87ef5c0c4ba409b95e8c85833ab51093476b2475e315cba5dd079154e175ff",
+              "requests": [
+                {
+                  "url": "https://ourworldindata.org/grapher/child-mortality.csv",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        },
+        {
+          "source": "unicef",
+          "finished_at": "2026-11-12T16:28:19.811776+00:00",
+          "indicators": [
+            {
+              "source": "unicef",
+              "indicator": "IM_DTP3",
+              "raw_rows": 480,
+              "clean_rows": 480,
+              "rejected_rows": 0,
+              "rejections": {
+                "invalid_country_or_aggregate": 0,
+                "country_outside_study": 0,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "IM_DTP3": {
+                  "q1": 87.0,
+                  "q3": 97.0,
+                  "iqr": 10.0,
+                  "lower": 72.0,
+                  "upper": 112.0
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 43,
+              "snapshot_sha256": "c55dcb40755635b1149c99f936a0a2751d4d6eb34bc95559041c8c57e0b149ea",
+              "requests": [
+                {
+                  "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+                  "status": 200
+                }
+              ]
+            },
+            {
+              "source": "unicef",
+              "indicator": "IM_MCV1",
+              "raw_rows": 480,
+              "clean_rows": 480,
+              "rejected_rows": 0,
+              "rejections": {
+                "invalid_country_or_aggregate": 0,
+                "country_outside_study": 0,
+                "unknown_indicator": 0,
+                "missing_or_non_numeric_year_value": 0,
+                "fractional_year": 0,
+                "year_outside_study": 0,
+                "unknown_sex": 0,
+                "sex_outside_study": 0,
+                "outside_plausible_bounds": 0,
+                "duplicate_natural_key": 0
+              },
+              "iqr": {
+                "IM_MCV1": {
+                  "q1": 87.0,
+                  "q3": 96.0,
+                  "iqr": 9.0,
+                  "lower": 73.5,
+                  "upper": 109.5
+                }
+              },
+              "excluded_dimensions": 0,
+              "rows_loaded": 480,
+              "new_rows": 0,
+              "updated_rows": 480,
+              "outliers": 50,
+              "snapshot_sha256": "dc81818106c70db566468f4f200b7bec5e6c8db4f7f9996f8baa827c3dd936d7",
+              "requests": [
+                {
+                  "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+                  "status": 200
+                }
+              ]
+            }
+          ],
+          "failed": []
+        }
+      ],
+      "after": {
+        "counts": [
+          {
+            "source": "owid",
+            "code": "child-mortality",
+            "rows": 480
+          },
+          {
+            "source": "unicef",
+            "code": "IM_DTP3",
+            "rows": 480
+          },
+          {
+            "source": "unicef",
+            "code": "IM_MCV1",
+            "rows": 480
+          },
+          {
+            "source": "who",
+            "code": "MDG_0000000007",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "NY.GDP.PCAP.PP.KD",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.DYN.MORT",
+            "rows": 480
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.H2O.BASW.ZS",
+            "rows": 470
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.STA.BASS.ZS",
+            "rows": 479
+          },
+          {
+            "source": "worldbank",
+            "code": "SH.XPD.CHEX.GD.ZS",
+            "rows": 480
+          }
+        ],
+        "total_rows": 4309,
+        "duplicates": 0,
+        "content_sha256": "e86cf85bc33284bc6c5645192cee76dd96abdfc8211d50e6e195cb87b20e3a2c",
+        "import_log_count": 18,
+        "import_log": [
+          {
+            "import_id": 1,
+            "source_name": "worldbank",
+            "indicator_code": "SH.DYN.MORT",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.020516+02:00"
+          },
+          {
+            "import_id": 2,
+            "source_name": "worldbank",
+            "indicator_code": "NY.GDP.PCAP.PP.KD",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.112640+02:00"
+          },
+          {
+            "import_id": 3,
+            "source_name": "worldbank",
+            "indicator_code": "SH.XPD.CHEX.GD.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.224905+02:00"
+          },
+          {
+            "import_id": 4,
+            "source_name": "worldbank",
+            "indicator_code": "SH.H2O.BASW.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 470,
+            "imported_at": "2026-11-12 18:28:18.310021+02:00"
+          },
+          {
+            "import_id": 5,
+            "source_name": "worldbank",
+            "indicator_code": "SH.STA.BASS.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 479,
+            "imported_at": "2026-11-12 18:28:18.394248+02:00"
+          },
+          {
+            "import_id": 6,
+            "source_name": "who",
+            "indicator_code": "MDG_0000000007",
+            "url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDimType+eq+%27COUNTRY%27+and+TimeDim+ge+2000+and+TimeDim+le+2023+and+Dim1+eq+%27SEX_BTSX%27",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.582426+02:00"
+          },
+          {
+            "import_id": 7,
+            "source_name": "owid",
+            "indicator_code": "child-mortality",
+            "url": "https://ourworldindata.org/grapher/child-mortality.csv",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.677680+02:00"
+          },
+          {
+            "import_id": 8,
+            "source_name": "unicef",
+            "indicator_code": "IM_DTP3",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.755226+02:00"
+          },
+          {
+            "import_id": 9,
+            "source_name": "unicef",
+            "indicator_code": "IM_MCV1",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.834176+02:00"
+          },
+          {
+            "import_id": 10,
+            "source_name": "worldbank",
+            "indicator_code": "SH.DYN.MORT",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:18.970831+02:00"
+          },
+          {
+            "import_id": 11,
+            "source_name": "worldbank",
+            "indicator_code": "NY.GDP.PCAP.PP.KD",
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.061046+02:00"
+          },
+          {
+            "import_id": 12,
+            "source_name": "worldbank",
+            "indicator_code": "SH.XPD.CHEX.GD.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.XPD.CHEX.GD.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.143988+02:00"
+          },
+          {
+            "import_id": 13,
+            "source_name": "worldbank",
+            "indicator_code": "SH.H2O.BASW.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.H2O.BASW.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 470,
+            "imported_at": "2026-11-12 18:28:19.229739+02:00"
+          },
+          {
+            "import_id": 14,
+            "source_name": "worldbank",
+            "indicator_code": "SH.STA.BASS.ZS",
+            "url": "https://api.worldbank.org/v2/en/country/all/indicator/SH.STA.BASS.ZS?format=json&date=2000:2023&per_page=20000",
+            "rows_loaded": 479,
+            "imported_at": "2026-11-12 18:28:19.310610+02:00"
+          },
+          {
+            "import_id": 15,
+            "source_name": "who",
+            "indicator_code": "MDG_0000000007",
+            "url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDimType+eq+%27COUNTRY%27+and+TimeDim+ge+2000+and+TimeDim+le+2023+and+Dim1+eq+%27SEX_BTSX%27",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.496973+02:00"
+          },
+          {
+            "import_id": 16,
+            "source_name": "owid",
+            "indicator_code": "child-mortality",
+            "url": "https://ourworldindata.org/grapher/child-mortality.csv",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.592083+02:00"
+          },
+          {
+            "import_id": 17,
+            "source_name": "unicef",
+            "indicator_code": "IM_DTP3",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_DTP3._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.666476+02:00"
+          },
+          {
+            "import_id": 18,
+            "source_name": "unicef",
+            "indicator_code": "IM_MCV1",
+            "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/ROU+BGR+DEU+FRA+POL+ESP+GBR+SWE+USA+CAN+BRA+MEX+IND+IDN+ZAF+KEN+NGA+EGY+AUS+JPN.IM_MCV1._T?format=sdmx-json&startPeriod=2000&endPeriod=2023",
+            "rows_loaded": 480,
+            "imported_at": "2026-11-12 18:28:19.760745+02:00"
+          }
+        ]
+      }
+    }
+  ],
+  "passed": true
+}

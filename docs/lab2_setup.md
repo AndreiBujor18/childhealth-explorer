@@ -51,3 +51,20 @@ Alembic is introduced with revision 0001 (frozen Lab 1 schema) and 0002 (non-nul
 ```
 
 The migration helper verifies all five existing tables against the Lab 1 SQL before stamping the baseline, then upgrades. Empty databases are built from the migration chain. It does not delete observations. A second invocation is safe. The Lab 1 schema/evidence/report remain historical snapshots; current schema changes are represented by migrations.
+
+## Load saved files (Task 2.3)
+
+With PostgreSQL running and migrations applied, import World Bank first to populate the valid country table, then the other sources:
+
+```powershell
+.\.venv\Scripts\python.exe -m etl.import_worldbank
+.\.venv\Scripts\python.exe -m etl.import_who
+.\.venv\Scripts\python.exe -m etl.import_owid
+.\.venv\Scripts\python.exe -m etl.import_unicef
+```
+
+Or run `python -m etl.import_all` using the project environment. Imports read saved files only and never silently download replacements. Missing files or invalid data make the command fail. Each successful indicator transaction writes its observations and import_log row atomically; expected failures roll back that indicator and allow the remaining indicators to be checked, then produce an error exit. Unexpected programming errors stop immediately.
+
+Each line distinguishes raw normalized rows, clean rows, rejected rows, processed upserts (`loaded`), new observations and existing observations updated. Rule logs give rejection reasons. `rows_loaded` in import_log counts processed upserts, not only newly inserted observations. On a second run loaded remains positive while new is zero. `value`, `is_outlier` and `imported_at` update on conflict. Previous observations absent from a revised snapshot are not automatically deleted, so stored counts may exceed a later snapshot's loaded count; investigate and explain any such difference.
+
+Run `python -m scripts.verify_imports` to perform the required two-run check and write `docs/evidence/lab2-imports.json`. This intentionally writes data and adds import logs. It also checks stable values/flags with a digest that excludes refresh timestamps. Latest per-source operational summaries remain locally in `.local/imports/`; the committed verification evidence includes exact counts and rejections.
