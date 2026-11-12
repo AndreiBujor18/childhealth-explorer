@@ -1,4 +1,4 @@
--- Task 1.8: design reference; app/models.py must describe the same schema.
+-- Historical Lab 1 design reference. Current schema changes are in migrations/.
 CREATE TABLE source (
     source_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,

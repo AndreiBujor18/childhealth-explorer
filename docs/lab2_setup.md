@@ -68,3 +68,38 @@ Or run `python -m etl.import_all` using the project environment. Imports read sa
 Each line distinguishes raw normalized rows, clean rows, rejected rows, processed upserts (`loaded`), new observations and existing observations updated. Rule logs give rejection reasons. `rows_loaded` in import_log counts processed upserts, not only newly inserted observations. On a second run loaded remains positive while new is zero. `value`, `is_outlier` and `imported_at` update on conflict. Previous observations absent from a revised snapshot are not automatically deleted, so stored counts may exceed a later snapshot's loaded count; investigate and explain any such difference.
 
 Run `python -m scripts.verify_imports` to perform the required two-run check and write `docs/evidence/lab2-imports.json`. This intentionally writes data and adds import logs. It also checks stable values/flags with a digest that excludes refresh timestamps. Latest per-source operational summaries remain locally in `.local/imports/`; the committed verification evidence includes exact counts and rejections.
+
+## SQL and independent source comparisons (Task 2.4)
+
+Open `db/lab2_checks.sql` in pgAdmin, or execute the same queries with:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.check_lab2_data
+.\.venv\Scripts\python.exe -m scripts.compare_lab2_sources
+```
+
+The SQL checker is read-only. The comparison command needs internet access: it fetches fresh official website API/CSV exports independently of the ETL cache. The result records website links, exact request URLs, hashes, original values, conversions and differences. This is a comparison with official downloadable data, not a claimed visual reading of rounded chart labels. Tolerance is 0.00005 because observation.value stores four decimals. If an export changes or a source revises its data, investigate the mismatch instead of changing the recorded value to force agreement.
+
+The lab's life-expectancy trend/coverage examples are adapted to World Bank under-five mortality, the project's target. Query 7 runs against the full 217-country metadata catalog; its 197 missing economies are outside the 20-country pilot. The checker separately verifies that no pilot country lacks this target. Query 6 is scoped by source and indicator, so redistributed series or reused codes cannot inflate the comparison.
+
+## Tests
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q --basetemp=tmp/pytest
+.\.venv\Scripts\python.exe -m ruff check app etl scripts tests migrations
+.\.venv\Scripts\python.exe -m alembic check
+```
+
+PostgreSQL integration checks are opt-in and use temporary schemas rolled back at completion:
+
+```powershell
+$env:LAB2_TEST_DATABASE='1'
+.\.venv\Scripts\python.exe -m pytest -q --basetemp=tmp/pytest-integration
+Remove-Item Env:LAB2_TEST_DATABASE
+```
+
+`requirements-lock.txt` pins the active ETL/database/test environment. Interactive notebook tools are optional in `requirements-notebook.txt`. The original `scripts.verify_database` and Lab 1 schema dump describe the historical Lab 1 baseline; use Alembic and the Lab 2 checks for the current database.
+
+## Submission branch
+
+The PDF names `master`, while this existing repository uses `main`. Lab 2 is published on `master` as well as `main`, at the same commit, to satisfy that literal requirement without renaming the established default branch. The Lab 3 prototype remains on its separate branch. No UI, model training or separate PDF report is part of this delivery.

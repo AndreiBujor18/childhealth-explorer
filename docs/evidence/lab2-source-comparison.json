@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-11-12T16:31:39.405713+00:00",
+  "method": "Fresh official website API/CSV data exports, not reused ETL snapshots or a visual reading of rounded chart labels.",
+  "comparisons": [
+    {
+      "source": "worldbank",
+      "indicator": "SH.DYN.MORT",
+      "country": "ROU",
+      "year": 2023,
+      "website": "https://data.worldbank.org/indicator/SH.DYN.MORT?locations=RO",
+      "download_url": "https://api.worldbank.org/v2/country/ROU/indicator/SH.DYN.MORT?format=json&date=2000:2023",
+      "response_sha256": "bc2d5950b8bd9e65df0c170b5fa9025d195ec0d755d3ad2ce6662ce34ee5766b",
+      "source_value": "6.9",
+      "conversion_factor": "1",
+      "normalized_value": "6.9",
+      "stored_value": "6.9000",
+      "absolute_difference": "0.0000",
+      "tolerance": "0.00005",
+      "passed": true
+    },
+    {
+      "source": "who",
+      "indicator": "MDG_0000000007",
+      "country": "ROU",
+      "year": 2023,
+      "website": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/under-five-mortality-rate-(probability-of-dying-by-age-5-per-1000-live-births)",
+      "download_url": "https://ghoapi.azureedge.net/api/MDG_0000000007?%24filter=SpatialDim+eq+%27ROU%27+and+TimeDim+eq+2023+and+Dim1+eq+%27SEX_BTSX%27",
+      "response_sha256": "63dc2405a767216b1a009d159e10b9dcbb032779afccaa9a75bad03140b87af2",
+      "source_value": "6.873308064",
+      "conversion_factor": "1",
+      "normalized_value": "6.873308064",
+      "stored_value": "6.8733",
+      "absolute_difference": "0.000008064",
+      "tolerance": "0.00005",
+      "passed": true
+    },
+    {
+      "source": "owid",
+      "indicator": "child-mortality",
+      "country": "ROU",
+      "year": 2023,
+      "website": "https://ourworldindata.org/grapher/child-mortality?tab=table&time=2023&country=~ROU",
+      "download_url": "https://ourworldindata.org/grapher/child-mortality.csv",
+      "response_sha256": "ac87ef5c0c4ba409b95e8c85833ab51093476b2475e315cba5dd079154e175ff",
+      "source_value": "0.69",
+      "conversion_factor": "10",
+      "normalized_value": "6.90",
+      "stored_value": "6.9000",
+      "absolute_difference": "0.0000",
+      "tolerance": "0.00005",
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

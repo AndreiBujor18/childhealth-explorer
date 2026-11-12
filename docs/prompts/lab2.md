@@ -30,3 +30,16 @@ One implementation authorization covers the following incremental commits. Conti
 - Date: 2026-11-12
 - Result: shared `etl/load.py`, source import scripts, `scripts/verify_imports.py`, transactional integration test and two-run evidence. Commit: `Lab 2: load source snapshots with transactional idempotent upserts`.
 - Checks and corrections: both value and is_outlier are updated on conflict; an indicator and its import_log row commit together; failed indicators roll back and cause a failing exit status. Real source URLs (not local filenames) are written to import_log. rows_loaded means processed upserts, with new/updated counts reported separately. Two real imports preserve 4,309 observations and add 18 logs; isolated tests verify updated flags and rollback of a failed log. No manual student code changes reported.
+
+## Prompt 1 continuation - SQL verification and final deliverables
+- Date: 2026-11-12
+- Result: `db/lab2_checks.sql`, `scripts/check_lab2_data.py`, `scripts/compare_lab2_sources.py`, SQL and source evidence, completed results, checklist and reproduction instructions. Commit: `Lab 2: verify stored data and document reproducible lab results`.
+- Checks and corrections: run all seven lab checks; partition latest imports by source and indicator with import_id as a timestamp tie-breaker; explain 197 global coverage gaps as outside the 20-country pilot. Compare fresh official exports for WHO, World Bank and OWID to stored Romania 2023 values, allowing only four-decimal storage rounding. Check documentation links, ignored secrets/raw files, full tests and migration state before publication. No manual student edits have been reported.
+
+## Commit trace
+
+- `b61e6f6`: extraction and local transforms.
+- `e45f559`: executed notebook and missingness evidence.
+- `e9edf6a`: cleaning and Alembic migration.
+- `1b07e49`: transactional imports and two-run evidence.
+- The final SQL/results commit is identified above by its unique full title; its hash is available in Git history. The prompt record is included in every implementation commit.

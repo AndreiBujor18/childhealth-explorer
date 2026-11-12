@@ -1,123 +1,126 @@
 # ChildHealth Explorer
 
-**Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality** is an individual global health project. This repository contains the completed Lab 1 deliverables and the incremental implementation of **Lab 2 - Importing, cleaning and storing data**.
+**Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality**
 
-## Research question
+An individual global health project studying associations between vaccination coverage, economic resources, basic services and under-five mortality. It uses public country-level aggregates, with no patient records. The approved pilot covers **20 countries, 2000-2023, both sexes**. Associations are not interpreted as causal effects.
 
-How are vaccination coverage, economic resources and access to basic services associated with under-five mortality across countries from 2000 to 2023?
+Lab 1 was submitted on 4 November 2026. **Lab 2 implements extraction, cleaning, PostgreSQL storage and verification:** 4,309 observations, nine source-specific indicators, four providers and 335 retained IQR outlier flags. Two import runs preserve the observation count, with no duplicates, and produce 18 import-log entries.
 
-The planned application will help students, public health analysts and NGOs compare countries, explore trends and estimate under-five mortality. It uses public country-level aggregates, with no individual medical records. Results will describe associations rather than causal effects.
+## Lab 2 deliverables
 
-## Completed in Lab 1
-
-- Topic proposal, intended users and a machine learning plan.
-- A local Python environment and portable PostgreSQL from the official EDB ZIP archive.
-- A five-layer architecture and a database schema with five tables.
-- Working API adapters for UNICEF and the World Bank.
-- Validation of seven indicators across 20 countries, 2000-2023.
-- Complete data for 469 of 480 country-year combinations; raw responses cached locally.
-- Five empty PostgreSQL tables, a schema export and an automated comparison with the SQL design.
-- Browser verification of all seven indicator URLs on 4 November 2026.
-
-Lab 1 stopped before production data loading. Application endpoints, a connected interface and model training belong to later stages. API verification saves evidence files without populating the database.
-
-## Deliverables
-
-| Requirement | Files / evidence |
+| Requirement | Deliverable |
 |---|---|
-| 1.2 Topic proposal | [Lab notes](docs/lab1.md), section 1.2 |
-| 1.3 Environment and versions | [Environment](docs/environment.md), `requirements-lock.txt` |
-| 1.4 PostgreSQL and pgAdmin | [Database setup](docs/postgresql.md), `docs/evidence/screenshots/` |
-| 1.5 Challenges and solutions | [Topic-specific challenges](docs/challenges.md) |
-| 1.6 Architecture and project structure | [Architecture](docs/architecture.md), `docs/diagrams/` |
-| 1.7 Indicators and API verification | [Indicator catalog](docs/indicators.md), `config/indicators.json`, `docs/evidence/` |
-| 1.8 Database design | `db/schema.sql`, `app/models.py`, [schema explanation](docs/architecture.md) |
-| 1.9 Tables and schema export | `db/schema_dump.sql`, `docs/evidence/database_verification.json` |
-| Short report | [Lab-1-Report-ChildHealth-Explorer.pdf](output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf), 4 pages |
+| Extraction and saved-file transformation | `etl/extract_*.py`, `etl/transform_*.py`, `config/lab2_indicators.json` |
+| Task 2.1: exploration and missingness | [Executed notebook](notebooks/lab2_exploration.ipynb), [evidence](docs/evidence/lab2-exploration.json) |
+| Task 2.2: cleaning, retained IQR flags and migration | `etl/clean.py`, `migrations/`, [counts and explanations](docs/lab2_results.md) |
+| Task 2.3: two idempotent imports | `etl/load.py`, `etl/import_*.py`, [two-run evidence](docs/evidence/lab2-imports.json) |
+| Task 2.4: seven SQL checks and three source comparisons | [Queries](db/lab2_checks.sql), [results](docs/lab2_results.md) |
+| Reproduction | This README and the [detailed guide](docs/lab2_setup.md) |
+| AI assistance and delivery review | [Prompts and commit trace](docs/prompts/lab2.md), [checklist](docs/lab2-checklist.md) |
 
-All eight Lab 1 checklist items are complete. The author submitted the PDF and repository link in Google Classroom on **4 November 2026**. See the [checklist](docs/lab1-checklist.md) and [submission record](docs/submission-lab1.md).
+Lab 2 requires **no separate PDF report**. Delivery is on [`master`](https://github.com/AndreiBujor18/childhealth-explorer/tree/master), as named in the PDF, and on the existing default branch `main`, at the same commit. The earlier UI prototype remains on [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype). UI implementation and ML training belong to later labs.
 
-UI implementation is reserved for Lab 3. The earlier design prototype is preserved separately on [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype). The `main` branch contains the Lab 1 database, API feasibility checks and required design documentation. Lab 2 extends this foundation with saved-file extraction and transformation; see [Lab 2 setup](docs/lab2_setup.md).
+## Setup from scratch (Windows / PowerShell)
 
-## Local setup (Windows / PowerShell)
-
-Run these commands from the repository root:
+Install Python 3.12+ and Git, then run:
 
 ```powershell
+git clone https://github.com/AndreiBujor18/childhealth-explorer.git
+cd childhealth-explorer
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-Use `requirements-lock.txt` to reproduce the active database, source-check and test dependencies verified with Python 3.14.6. `requirements.txt` provides version ranges for Python 3.12+. Optional diagram/report tools are listed separately in `requirements-design.txt`. Planned web and ML frameworks are not runtime dependencies at this stage.
+`requirements.txt` gives dependency ranges; `requirements-lock.txt` pins the active ETL/database/test environment verified with Python 3.14.6 on Windows. Notebook tools are optional in `requirements-notebook.txt`; historical diagram/report tools are in `requirements-design.txt`.
 
-Download the **Windows x86-64 ZIP** from the [official EDB page](https://www.enterprisedb.com/download-postgresql-binaries) and extract the `pgsql` folder into `.local/pgsql`. Then run:
+For a new local PostgreSQL installation, download the **Windows x86-64 ZIP** from the [official EDB page](https://www.enterprisedb.com/download-postgresql-binaries), extract `pgsql` into `.local/pgsql`, then run:
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.setup_postgres
 .\.venv\Scripts\python.exe -m scripts.migrate_database
 .\.venv\Scripts\python.exe -m alembic check
+```
+
+If PostgreSQL is already installed, create a project user/database, copy `.env.example` to `.env`, set `DATABASE_URL`, and run the migration instead. Existing Lab 1 databases are verified before stamping the baseline and adding `is_outlier`; existing observations are preserved.
+
+The portable setup uses `global_health`, user `gh_user`, localhost port 5432 (or 5433 if 5432 was occupied during setup). Random credentials are kept in `.env`; the administrator password is in `.local/postgres-admin-password.txt`. Both are ignored. Data is in `.local/pgdata`, separate from the binaries. For later sessions, start PostgreSQL with `.\scripts\start-postgres.ps1`.
+
+To use pgAdmin with the portable installation:
+
+```powershell
 .\.venv\Scripts\python.exe -m scripts.setup_pgadmin
 .\scripts\start-pgadmin.ps1
 ```
 
-Open `http://127.0.0.1:5051/` for pgAdmin. It uses a separate local profile with the project server already registered. The database is `global_health` and the user is `gh_user`. Randomly generated credentials are stored only in `.env`; the administrator password is in `.local/postgres-admin-password.txt`. These files are excluded from Git.
+Open `http://127.0.0.1:5051/`; the server is registered in a separate local profile. Keep pgAdmin running during the session. See [database setup](docs/postgresql.md) for details. Stop PostgreSQL afterwards with `.\scripts\stop-postgres.ps1`.
 
-For later sessions:
-
-```powershell
-.\scripts\start-postgres.ps1
-.\scripts\start-pgadmin.ps1
-```
-
-Keep pgAdmin running during the session. To stop PostgreSQL afterwards, run `.\scripts\stop-postgres.ps1`. Server data is in `.local/pgdata`, separate from the binaries. The server listens only on `127.0.0.1`, using port 5432, or 5433 if 5432 was already occupied during setup. Paths containing spaces are handled explicitly.
-
-If PostgreSQL is already installed, create the project user and database, copy `.env.example` to `.env` and fill in the connection settings. A second server installation is unnecessary.
-
-## Lab 2 extraction
-
-Run `.\.venv\Scripts\python.exe -m etl.extract` after installing the requirements. The [Lab 2 guide](docs/lab2_setup.md) documents the four sources, saved snapshots and local transformations. Pandas and NumPy provide normalized tables and cleaning; Alembic manages database schema changes. The migration helper also handles an existing Lab 1 database safely.
-
-## Libraries used in the current code
-
-| Component | Libraries and purpose |
-|---|---|
-| PostgreSQL connection and models | SQLAlchemy for connections/models, psycopg for the PostgreSQL driver, python-dotenv for local connection settings |
-| API extraction and validation | requests for HTTP; urllib3 retry support; Python standard-library JSON, CSV and decimal handling |
-| Verification | pytest for the source-contract tests; Ruff for static checks |
-| Diagram/report authoring | Optional ReportLab for SVG/PDF generation; pypdf and pypdfium2 for PDF inspection |
-
-## Source verification and checks
+## Extract and explore
 
 ```powershell
-.\.venv\Scripts\python.exe -m etl.verify_sources
-.\.venv\Scripts\python.exe -m scripts.check_indicator_urls
-.\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe -m ruff check app etl scripts tests
+.\.venv\Scripts\python.exe -m etl.extract
 ```
 
-`etl.verify_sources` reuses `data/raw/` after the first download; use `--refresh` to download new responses. `scripts.check_indicator_urls` always checks the seven Romania URLs live while preserving the pilot snapshot. The checks record full URLs, retrieval times and SHA-256 hashes. Pilot verification also saves coverage and normalized observations. Original responses and metadata stay in `data/raw/`, excluded from Git; a small public sample is in `docs/evidence/sample_observations.csv`.
+Validated snapshots and URL/hash metadata are saved under `data/raw/<source>/`, outside Git. Existing snapshots are reused; add `--refresh` to deliberately replace them. Transformations read local files without API calls. Downloads validate response shapes, follow pagination and fail on HTTP errors. The [guide](docs/lab2_setup.md) explains provider-specific filters and units.
 
-All seven Romania URLs returned HTTP 200 with 24 annual records each on 3 November. Their JSON responses were also opened in Chrome on 4 November. The [indicator catalog](docs/indicators.md) links to the checks and screenshots.
+The committed notebook includes real outputs. To rerun it interactively:
 
-## Adding a third API
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-notebook.txt
+.\.venv\Scripts\python.exe -m ipykernel install --prefix .venv --name childhealth --display-name "Python (ChildHealth Explorer)"
+.\.venv\Scripts\python.exe -m jupyter lab
+```
 
-1. Implement `fetch(indicator, countries, start, end)` in a new adapter returning `ObservationRecord` objects.
-2. Register the adapter in `etl/registry.py`.
-3. Add the source, indicators, units and limits to `config/indicators.json`.
-4. Verify the contract, original source, dimensions and compatibility of the series.
+Open `notebooks/lab2_exploration.ipynb` and select the ChildHealth kernel. It displays head/info/missingness for all nine series, distinguishing missing measurements from absent country-year combinations.
 
-Validation and coverage checks remain shared. Indicators that fit the existing dimensions do not require a schema change. New dimensions, such as subnational observations or multiple age groups within one series, require a justified model extension. `test_third_source_needs_only_registration_and_contract` demonstrates this extension point with a test adapter; it does not claim a third live integration.
+## Clean, import and verify
 
-## Sources
+With PostgreSQL running and migrations applied:
 
-- [UNICEF - SDMX API documentation](https://data.unicef.org/sdmx-api-documentation/)
-- [UNICEF - immunization and WUENIC metadata](https://data.unicef.org/topic/child-health/immunization/)
-- [World Bank - Indicators API documentation](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures)
-- [World Bank - under-five mortality](https://data.worldbank.org/indicator/SH.DYN.MORT)
-- [Our World in Data - API for a possible extension](https://docs.owid.io/projects/etl/api/chart-api/)
+```powershell
+.\.venv\Scripts\python.exe -m scripts.profile_cleaning
+.\.venv\Scripts\python.exe -m scripts.verify_imports
+.\.venv\Scripts\python.exe -m scripts.check_lab2_data
+.\.venv\Scripts\python.exe -m scripts.compare_lab2_sources
+```
 
-UNICEF and the World Bank may redistribute the same international estimates. The project uses complementary indicators; republished values are not treated as independent observations. Attribution and reuse conditions must be checked in each indicator's metadata.
+`verify_imports` intentionally loads the snapshots twice and records the result in `docs/evidence/lab2-imports.json`. For a normal single import, use `python -m etl.import_all` in the project environment. Individual commands are `etl.import_worldbank`, `etl.import_who`, `etl.import_owid` and `etl.import_unicef`; World Bank must run first to populate the country catalog.
 
-## Commit organization
+Each indicator reports normalized input, clean, rejected, loaded, new and updated rows. Rule logs explain exclusions. Most exclusions select the study's countries/years; IQR outliers are retained. `rows_loaded` counts processed upserts, so a repeated import reports updates and zero new rows. An indicator's data and success log commit together or both roll back. Further runs add logs while preserving observations for unchanged snapshots.
 
-The four Lab 1 commits cover PostgreSQL configuration, schema implementation, API feasibility checks and final verification/submission. Each component introduces its own setup instructions, libraries and design explanation. Report generation and its optional dependencies are documented with the final deliverables. Future bug-fix messages will identify the actual defect and the correction. Verify each task before committing and publishing it.
+The SQL checker is read-only and executes [lab2_checks.sql](db/lab2_checks.sql), which can also be opened in pgAdmin. The source comparison needs internet access and retrieves fresh official API/CSV exports for Romania, 2023. [Results](docs/lab2_results.md) explain every check, coverage gap, outlier count and source comparison.
+
+## Tests
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q --basetemp=tmp/pytest
+.\.venv\Scripts\python.exe -m ruff check app etl scripts tests migrations
+```
+
+To include the two PostgreSQL integration tests (isolated schemas, test changes rolled back):
+
+```powershell
+$env:LAB2_TEST_DATABASE='1'
+.\.venv\Scripts\python.exe -m pytest -q --basetemp=tmp/pytest-integration
+Remove-Item Env:LAB2_TEST_DATABASE
+```
+
+## Sources and interpretation
+
+The mandatory providers are **WHO, World Bank and Our World in Data**. UNICEF is retained for vaccination coverage. WHO/OWID mortality series supplement the World Bank target for comparison; providers can redistribute the same UN IGME estimates, so these are not independent extra training observations.
+
+- [WHO GHO OData](https://www.who.int/data/gho/info/gho-odata-api): under-five mortality, with age/wealth dimensions checked explicitly.
+- [World Bank API](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures): mortality, GDP PPP, health expenditure, water, sanitation and non-aggregate country metadata.
+- [OWID chart API](https://docs.owid.io/projects/etl/api/chart-api/): mortality CSV and unit metadata; deaths per 100 births are multiplied by 10 to match per 1,000 births.
+- [UNICEF SDMX](https://data.unicef.org/sdmx-api-documentation/): DTP3 and first-dose measles coverage.
+
+Definitions, attribution, provider terms, processing and retrieval dates are recorded in the guide/snapshots. Missing values are not converted to zero. Pilot IQR flags do not establish clinical abnormality or causality.
+
+## Libraries and commits
+
+SQLAlchemy defines models and upserts; psycopg connects to PostgreSQL; python-dotenv loads local settings. Requests/urllib3 handle HTTP and retries. Pandas/NumPy transform and clean tables; Alembic manages migrations. Pytest/Ruff verify the implementation. Jupyter is optional for exploration; ReportLab/PDF tools remain optional Lab 1 authoring dependencies.
+
+The four Lab 1 commits are preserved. Five `Lab 2:` commits cover extraction/transformation, the executed notebook, cleaning/migration, imports and final verification. Each includes its setup/documentation and prompt trace. Bug-fix messages should name the actual defect corrected. `.env`, `.local/` and `data/raw/` remain outside Git.
+
+## Historical Lab 1
+
+The [checklist](docs/lab1-checklist.md), [report](output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf), [architecture](docs/architecture.md), [indicator catalog](docs/indicators.md) and [submission record](docs/submission-lab1.md) document the original stage. Its five tables were empty at submission; that schema dump and evidence remain historical snapshots. Current schema changes are in the migration chain; current data checks are the Lab 2 commands above.
