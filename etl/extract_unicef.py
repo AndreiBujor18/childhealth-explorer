@@ -7,6 +7,22 @@ BASE = 'https://sdmx.data.unicef.org/ws/public/sdmxapi/rest'
 SEX = {'_T': 'BTSX', 'M': 'MLE', 'F': 'FMLE'}
 
 
+def download_unicef_indicator(code, countries, year_from=2000, year_to=2023, *, output_dir=None):
+    from etl.raw_files import RAW, http_session, save_snapshot
+    key = f'{"+".join(countries)}.{code}._T'
+    with http_session() as session:
+        response = session.get(f'{BASE}/data/UNICEF,GLOBAL_DATAFLOW,1.0/{key}',
+                               params={'format': 'sdmx-json', 'startPeriod': year_from,
+                                       'endPeriod': year_to}, timeout=(15, 120))
+        response.raise_for_status()
+        document = response.json()
+        if not isinstance(document, dict) or not document.get('data', document).get('dataSets'):
+            raise ValueError('Invalid UNICEF SDMX envelope')
+        path = (output_dir or RAW / 'unicef') / f'{code}_{year_from}_{year_to}.json'
+        return save_snapshot(path, response.content,
+                             [{'url': response.url, 'status': response.status_code}])
+
+
 def dimensions_at(dimensions, key):
     if not dimensions:
         return {}

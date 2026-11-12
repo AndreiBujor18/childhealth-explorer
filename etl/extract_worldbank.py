@@ -4,6 +4,27 @@ from etl.contracts import ObservationRecord, numeric
 BASE = 'https://api.worldbank.org/v2'
 
 
+def download_worldbank_countries(*, output_dir=None):
+    from etl.raw_files import RAW, download_json_pages
+    return download_json_pages(f'{BASE}/country', {'format': 'json', 'per_page': 100, 'page': 1},
+                               (output_dir or RAW / 'worldbank') / 'countries.json', 'worldbank')
+
+
+def download_worldbank_indicator(code, countries, year_from=2000, year_to=2023, *, output_dir=None):
+    from etl.raw_files import RAW, download_json_pages
+    # Bulk country/all is reliable when country-specific API routes return 502.
+    # Keep all source records intact; the shared cleaner applies the study scope.
+    url = (f'{BASE}/en/country/all/indicator/{code}?format=json'
+           f'&date={year_from}:{year_to}&per_page=20000')
+    return download_json_pages(url, None,
+                               (output_dir or RAW / 'worldbank') / f'{code}_{year_from}_{year_to}.json',
+                               'worldbank')
+
+
+def download_worldbank_for_year(code, countries, year, **kwargs):
+    return download_worldbank_indicator(code, countries, year, year, **kwargs)
+
+
 class WorldBankAdapter:
     def __init__(self, client):
         self.client = client

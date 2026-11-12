@@ -1,6 +1,6 @@
 # ChildHealth Explorer
 
-**Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality** is an individual global health project. This repository contains the deliverables for **Lab 1 - Topic, Environment and Architecture**.
+**Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality** is an individual global health project. This repository contains the completed Lab 1 deliverables and the incremental implementation of **Lab 2 - Importing, cleaning and storing data**.
 
 ## Research question
 
@@ -19,7 +19,7 @@ The planned application will help students, public health analysts and NGOs comp
 - Five empty PostgreSQL tables, a schema export and an automated comparison with the SQL design.
 - Browser verification of all seven indicator URLs on 4 November 2026.
 
-Production data loading, application endpoints, a connected interface and model training are planned for later stages. API verification saves evidence files without populating the database.
+Lab 1 stopped before production data loading. Application endpoints, a connected interface and model training belong to later stages. API verification saves evidence files without populating the database.
 
 ## Deliverables
 
@@ -37,7 +37,7 @@ Production data loading, application endpoints, a connected interface and model 
 
 All eight Lab 1 checklist items are complete. The author submitted the PDF and repository link in Google Classroom on **4 November 2026**. See the [checklist](docs/lab1-checklist.md) and [submission record](docs/submission-lab1.md).
 
-UI implementation is reserved for Lab 3. The earlier design prototype is preserved separately on [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype). The `main` branch contains the Lab 1 database, API feasibility checks and required design documentation. Lab 2 implementation has not started.
+UI implementation is reserved for Lab 3. The earlier design prototype is preserved separately on [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype). The `main` branch contains the Lab 1 database, API feasibility checks and required design documentation. Lab 2 extends this foundation with saved-file extraction and transformation; see [Lab 2 setup](docs/lab2_setup.md).
 
 ## Local setup (Windows / PowerShell)
 
@@ -72,6 +72,10 @@ For later sessions:
 Keep pgAdmin running during the session. To stop PostgreSQL afterwards, run `.\scripts\stop-postgres.ps1`. Server data is in `.local/pgdata`, separate from the binaries. The server listens only on `127.0.0.1`, using port 5432, or 5433 if 5432 was already occupied during setup. Paths containing spaces are handled explicitly.
 
 If PostgreSQL is already installed, create the project user and database, copy `.env.example` to `.env` and fill in the connection settings. A second server installation is unnecessary.
+
+## Lab 2 extraction
+
+Run `.\.venv\Scripts\python.exe -m etl.extract` after installing the requirements. The [Lab 2 guide](docs/lab2_setup.md) documents the four sources, saved snapshots and local transformations. Pandas is introduced here for normalized observation tables.
 
 ## Libraries used in the current code
 

@@ -1,0 +1,101 @@
+[
+  {
+    "source": "unicef",
+    "code": "IM_DTP3",
+    "concept_code": "dtp3_coverage",
+    "name": "DTP3 vaccination coverage",
+    "unit": "%",
+    "age_group": "surviving infants",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": 100
+  },
+  {
+    "source": "unicef",
+    "code": "IM_MCV1",
+    "concept_code": "measles_first_dose_coverage",
+    "name": "First-dose measles vaccination coverage",
+    "unit": "%",
+    "age_group": "nationally recommended age",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": 100
+  },
+  {
+    "source": "worldbank",
+    "code": "SH.DYN.MORT",
+    "concept_code": "under5_mortality",
+    "name": "Under-five mortality",
+    "unit": "per 1,000 live births",
+    "age_group": "under 5 years",
+    "role": "target",
+    "minimum": 0,
+    "maximum": 1000
+  },
+  {
+    "source": "worldbank",
+    "code": "NY.GDP.PCAP.PP.KD",
+    "concept_code": "gdp_per_capita_ppp",
+    "name": "GDP per capita, PPP",
+    "unit": "constant 2021 international $",
+    "age_group": "all ages",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": null
+  },
+  {
+    "source": "worldbank",
+    "code": "SH.XPD.CHEX.GD.ZS",
+    "concept_code": "health_expenditure_gdp",
+    "name": "Current health expenditure",
+    "unit": "% of GDP",
+    "age_group": "all ages",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": 100
+  },
+  {
+    "source": "worldbank",
+    "code": "SH.H2O.BASW.ZS",
+    "concept_code": "basic_drinking_water",
+    "name": "People using at least basic drinking water services",
+    "unit": "% of population",
+    "age_group": "all ages",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": 100
+  },
+  {
+    "source": "worldbank",
+    "code": "SH.STA.BASS.ZS",
+    "concept_code": "basic_sanitation",
+    "name": "People using at least basic sanitation services",
+    "unit": "% of population",
+    "age_group": "all ages",
+    "role": "feature",
+    "minimum": 0,
+    "maximum": 100
+  },
+  {
+    "source": "who",
+    "code": "MDG_0000000007",
+    "concept_code": "under5_mortality",
+    "name": "Under-five mortality (WHO)",
+    "unit": "per 1,000 live births",
+    "age_group": "under 5 years",
+    "role": "comparison",
+    "minimum": 0,
+    "maximum": 1000
+  },
+  {
+    "source": "owid",
+    "code": "child-mortality",
+    "concept_code": "under5_mortality",
+    "name": "Under-five mortality (OWID)",
+    "unit": "per 1,000 live births",
+    "age_group": "under 5 years",
+    "role": "comparison",
+    "minimum": 0,
+    "maximum": 1000
+  }
+]
