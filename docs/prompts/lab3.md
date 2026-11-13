@@ -22,3 +22,8 @@
 - Your changes: this is an explicit architecture requirement supplied by the student. No independently written student code is claimed.
 
 Further implementation entries refer to these actual prompts; they do not invent extra user prompts.
+
+## Prompts 1-2 continuation - observation service
+- Date: 2026-11-13
+- Result: `app/services/observation_service.py`, immutable ObservationPage and fake-repository tests. Commit: `Lab 3: add observation service pagination and browsing rules`.
+- Checks and corrections: service contains no SQL, session creation or HTTP. Empty results are page 1 of 1; a page beyond the end is clamped to the last real page; reversed year ranges raise a plain ValueError. No manual student code edits reported.
