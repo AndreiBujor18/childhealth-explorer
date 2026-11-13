@@ -17,3 +17,7 @@ FastAPI and Uvicorn serve the application; Jinja2 builds complete HTML pages on 
 `POST /actions/extract` calls EtlService.extract_all. `POST /actions/load` calls EtlService.transform_and_load_all. Jobs are composed from the same nine-indicator catalog; World Bank imports its country catalog first. Both return typed results and render an action table without JavaScript. These synchronous actions can take a minute. Refreshing the POST result can repeat the action; the page states this explicitly.
 
 All SQL writes and country lookups now live in `app/repositories/import_repository.py`; `etl/load.py` is a compatibility export. `etl/import_runner.py` coordinates transform/clean/repository calls and owns commit/rollback. It receives a session factory. Each source exposes import_all() returning StepResult values, while the CLI retains its reports and failing exit status. Dependency wiring supplies the session factory and a shared process lock; services contain no SQL/session creation/HTTP code.
+
+## Sex filtering
+
+The shared criterion uses Sex | None. The HTTP parser accepts BTSX/MLE/FMLE and ignores unknown codes. The repository adds a bound sex predicate; the service provides all three enum choices and forwards the criteria unchanged. Repository, service and presentation tests cover this path. `/?sex=MLE&country=ROU` returns exactly one row in the isolated nine-observation fixture. It returns no live rows because the approved Lab 2 pilot contains only BTSX totals; test data never enters the project database.

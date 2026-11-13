@@ -26,7 +26,8 @@ class MemoryRepository:
                      and (criteria.region is None or r.region == criteria.region)
                      and (criteria.source_name is None or r.source_name == criteria.source_name)
                      and (criteria.year_from is None or r.year >= criteria.year_from)
-                     and (criteria.year_to is None or r.year <= criteria.year_to))
+                     and (criteria.year_to is None or r.year <= criteria.year_to)
+                     and (criteria.sex is None or r.sex == criteria.sex))
 
     def count(self, criteria): return len(self.matches(criteria))
     def find(self, criteria, *, limit, offset): return self.matches(criteria)[offset:offset + limit]

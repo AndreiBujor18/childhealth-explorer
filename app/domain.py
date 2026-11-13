@@ -12,6 +12,7 @@ class ObservationCriteria:
     year_from: int | None = None
     year_to: int | None = None
     source_name: str | None = None
+    sex: Sex | None = None
 
 
 @dataclass(frozen=True)
@@ -41,3 +42,4 @@ class FilterOptions:
     indicators: tuple[Option, ...]
     regions: tuple[Option, ...]
     sources: tuple[Option, ...]
+    sexes: tuple[Option, ...] = ()

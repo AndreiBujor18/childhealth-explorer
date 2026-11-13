@@ -40,3 +40,14 @@ def test_external_labels_are_autoescaped(client):
 def test_json_documentation_is_disabled(client):
     assert client.get('/docs').status_code == 404
     assert client.get('/openapi.json').status_code == 404
+
+
+def test_sex_filter_one_male_row_and_unknown_codes_ignored(client):
+    use_fake(client)
+    response = client.get('/?sex=MLE&country=ROU')
+    assert response.status_code == 200
+    assert response.text.count('<td class="country">Romania') == 1
+    assert 'value="MLE" selected' in response.text
+    assert '>1</strong>' in response.text
+    response = client.get('/?sex=UNKNOWN&country=ROU')
+    assert response.status_code == 200 and '>3</strong>' in response.text

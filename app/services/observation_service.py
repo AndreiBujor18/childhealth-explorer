@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from math import ceil
 from typing import Protocol
 from app.domain import ObservationCriteria, ObservationListItem, FilterOptions, Option
+from app.models import Sex
 
 
 class ObservationReader(Protocol):
@@ -60,5 +61,7 @@ class ObservationService:
         return ObservationPage(tuple(items), number, self._page_size, total)
 
     def get_filter_options(self) -> FilterOptions:
+        labels = {Sex.BOTH: 'Both sexes (BTSX)', Sex.MALE: 'Male (MLE)', Sex.FEMALE: 'Female (FMLE)'}
         return FilterOptions(self._repository.list_countries(), self._repository.list_indicators(),
-                             self._repository.list_regions(), self._repository.list_sources())
+                             self._repository.list_regions(), self._repository.list_sources(),
+                             tuple(Option(s.value, labels[s]) for s in Sex))

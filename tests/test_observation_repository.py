@@ -1,6 +1,7 @@
 """Repository queries use only a rolled-back synthetic PostgreSQL dataset."""
 from app.domain import ObservationCriteria
 from app.repositories.observation_repository import ObservationRepository
+from app.models import Sex
 
 
 def test_stable_pagination_and_domain_values(repository_session):
@@ -28,3 +29,11 @@ def test_filter_options_come_from_observed_data(repository_session):
     assert {r.value for r in repo.list_indicators()} == {'MORT', 'GDP'}
     assert len(repo.list_regions()) == 3
     assert repo.list_sources()[0].value == 'worldbank'
+
+
+def test_sex_filter_returns_only_one_seeded_male_romania_row(repository_session):
+    repo = ObservationRepository(repository_session)
+    criteria = ObservationCriteria(country_iso3='ROU', sex=Sex.MALE)
+    rows = repo.find(criteria, limit=100, offset=0)
+    assert repo.count(criteria) == 1 and len(rows) == 1
+    assert rows[0].sex == Sex.MALE

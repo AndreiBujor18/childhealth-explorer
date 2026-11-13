@@ -37,3 +37,8 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: import_repository moves existing SQL into the DAL; import_runner returns typed StepResult objects; EtlService runs injected extraction/import jobs; POST controllers render a result table. Commit: `Lab 3: run shared ETL jobs through services and POST actions`.
 - Checks and corrections: repositories never commit; the import runner owns per-indicator transactions. Legacy Lab 2 imports keep their report format and exit behavior through compatibility wrappers. Expected errors become failed results, programming exceptions propagate, simultaneous local pipeline actions are serialized, and GET never starts an action. UI displays loaded/new/updated/rejected counts. Tests use stubs and rolled-back schemas, not live downloads or production writes. No manual student code edits reported.
+
+## Prompts 1-2 continuation - sex filter through all layers
+- Date: 2026-11-13
+- Result: optional Sex criterion, repository predicate, service-provided enum options, tolerant HTTP parsing and HTML select; one new test per layer. Commit: `Lab 3: add the sex filter across repository service and presentation`.
+- Checks and corrections: unknown codes are ignored as the lab requests. The exact `sex=MLE&country=ROU` assertion uses a synthetic fixture with one male row; production Lab 2 data intentionally contains both-sex totals only, so that live request truthfully returns no rows. No fabricated male/female observations were inserted into the project database. No student code edits reported.

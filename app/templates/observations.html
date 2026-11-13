@@ -12,6 +12,7 @@
   <label>Source<select name="source"><option value="">All sources</option>{% for option in options.sources %}<option value="{{ option.value }}" {% if option.value == criteria.source_name %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
   <label>From year<input name="year_from" type="number" min="1900" max="2100" placeholder="2000" value="{{ criteria.year_from if criteria.year_from is not none else '' }}"></label>
   <label>To year<input name="year_to" type="number" min="1900" max="2100" placeholder="2023" value="{{ criteria.year_to if criteria.year_to is not none else '' }}"></label>
+  <label>Sex<select name="sex"><option value="">All categories</option>{% for option in options.sexes %}<option value="{{ option.value }}" {% if criteria.sex and option.value == criteria.sex.value %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
   <div class="filter-actions"><button type="submit">Apply filters</button><a href="/">Clear</a></div>
 </form>
 <section aria-labelledby="observations-heading">

@@ -2,6 +2,7 @@
 import pytest
 from app.domain import ObservationCriteria
 from app.services.observation_service import ObservationService
+from app.models import Sex
 
 
 class FakeRepository:
@@ -47,3 +48,12 @@ def test_invalid_page_and_year_order_raise_domain_errors():
         ObservationService(FakeRepository()).get_page(ObservationCriteria(), 0)
     with pytest.raises(ValueError, match='start year'):
         ObservationService(FakeRepository()).get_page(ObservationCriteria(year_from=2023, year_to=2000), 1)
+
+
+def test_sex_criteria_is_forwarded_and_enum_options_are_complete():
+    repo = FakeRepository()
+    criteria = ObservationCriteria(country_iso3='ROU', sex=Sex.MALE)
+    service = ObservationService(repo, 4)
+    service.get_page(criteria, 1)
+    assert repo.calls == [(criteria, 4, 0)]
+    assert [r.value for r in service.get_filter_options().sexes] == ['BTSX', 'MLE', 'FMLE']

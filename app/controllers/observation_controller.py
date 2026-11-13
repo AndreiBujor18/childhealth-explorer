@@ -2,7 +2,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, Query, Request
 from fastapi.responses import HTMLResponse
-from app.controllers.form_fields import blank_to_none, to_int_or_none
+from app.controllers.form_fields import blank_to_none, to_int_or_none, to_sex_or_none
 from app.dependencies import get_observation_service
 from app.domain import ObservationCriteria
 from app.services.observation_service import ObservationService
@@ -13,10 +13,12 @@ router = APIRouter()
 
 def observation_criteria(country: str | None = None, indicator: str | None = None,
                          region: str | None = None, year_from: str | None = None,
-                         year_to: str | None = None, source: str | None = None) -> ObservationCriteria:
+                         year_to: str | None = None, source: str | None = None,
+                         sex: str | None = None) -> ObservationCriteria:
     return ObservationCriteria(country_iso3=blank_to_none(country), indicator_code=blank_to_none(indicator),
                                region=blank_to_none(region), year_from=to_int_or_none(year_from),
-                               year_to=to_int_or_none(year_to), source_name=blank_to_none(source))
+                               year_to=to_int_or_none(year_to), source_name=blank_to_none(source),
+                               sex=to_sex_or_none(blank_to_none(sex)))
 
 
 @router.get('/', response_class=HTMLResponse)
