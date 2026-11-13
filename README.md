@@ -4,9 +4,37 @@
 
 An individual global health project studying associations between vaccination coverage, economic resources, basic services and under-five mortality. It uses public country-level aggregates, with no patient records. The approved pilot covers **20 countries, 2000-2023, both sexes**. Associations are not interpreted as causal effects.
 
-Lab 1 was submitted on 4 November 2026. **Lab 2 implements extraction, cleaning, PostgreSQL storage and verification:** 4,309 observations, nine source-specific indicators, four providers and 335 retained IQR outlier flags. Two import runs preserve the observation count, with no duplicates, and produce 18 import-log entries.
+**Lab 3 is a working server-rendered application:** browse the PostgreSQL data at **http://127.0.0.1:8000/**, filter observations and run the pipeline from HTML forms. All pages are built on the server, with no browser JavaScript. The direction is **presentation -> service -> data access**: only repositories query/write data; controllers only parse HTTP input, call services and render templates.
+
+The approved 20-country, 2000-2023 dataset contains **4,309 observations and 335 retained IQR outlier flags**. The Lab 2 verification snapshot contains 18 import logs; two additional browser imports in Lab 3 increased the current log count to 36 without adding duplicate observations.
+
+## Run the application
+
+After the database setup below, start PostgreSQL and the application from the repository root:
+
+```powershell
+.\scripts\start-postgres.ps1
+.\scripts\start-web.ps1
+```
+
+Or run `.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload`. Open **http://127.0.0.1:8000/**. Keep the server terminal running.
+
+| Layer / responsibility | Implementation |
+|---|---|
+| Presentation: parse requests and render HTML | `app/controllers/`, `app/templates/`, `app/views.py` |
+| Services: pagination, validation and job orchestration | `app/services/` |
+| DAL: parameterized reads and writes, injected sessions | `app/repositories/` |
+| Shared immutable values | `app/domain.py`, `etl/step_result.py` |
+| Dependency wiring / application entry | `app/dependencies.py`, `app/main.py` |
+| Pipeline transaction owner | `etl/import_runner.py`; repositories never commit |
+
+[Lab 3 results](docs/lab3_results.md) contain the three required screenshots, the request call chain, the region demonstration, sex-filter tests and the architecture-test failure demonstration. See the [checklist](docs/lab3-checklist.md), [layer guide](docs/lab3_layers.md) and [prompts](docs/prompts/lab3.md).
+
+Useful URLs: [Romania 2023](http://127.0.0.1:8000/?country=ROU&year_from=2023&year_to=2023), [Sub-Saharan Africa](http://127.0.0.1:8000/?region=Sub-Saharan+Africa). `GET /actions/extract` and `GET /actions/load` return 405: only the explicit POST buttons run these actions. The sex filter supports BTSX/MLE/FMLE; live male/female filters are empty because the pilot uses BTSX totals. The required one-male-row test runs against an isolated synthetic fixture, never fabricated production data.
 
 ## Lab 2 deliverables
+
+
 
 | Requirement | Deliverable |
 |---|---|
@@ -18,7 +46,7 @@ Lab 1 was submitted on 4 November 2026. **Lab 2 implements extraction, cleaning,
 | Reproduction | This README and the [detailed guide](docs/lab2_setup.md) |
 | AI assistance and delivery review | [Prompts and commit trace](docs/prompts/lab2.md), [checklist](docs/lab2-checklist.md) |
 
-Lab 2 requires **no separate PDF report**. Delivery is on [`master`](https://github.com/AndreiBujor18/childhealth-explorer/tree/master), as named in the PDF, and on the existing default branch `main`, at the same commit. The earlier UI prototype remains on [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype). UI implementation and ML training belong to later labs.
+Lab 2 is preserved on [`master`](https://github.com/AndreiBujor18/childhealth-explorer/tree/master) at its submitted version. **Lab 3 is delivered on `main`**, as its PDF requires. The earlier [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype) branch is a historical design reference; the connected application is now on `main`. Neither lab needs a separate PDF report. ML training is a later stage.
 
 ## Setup from scratch (Windows / PowerShell)
 
@@ -87,7 +115,7 @@ With PostgreSQL running and migrations applied:
 
 Each indicator reports normalized input, clean, rejected, loaded, new and updated rows. Rule logs explain exclusions. Most exclusions select the study's countries/years; IQR outliers are retained. `rows_loaded` counts processed upserts, so a repeated import reports updates and zero new rows. An indicator's data and success log commit together or both roll back. Further runs add logs while preserving observations for unchanged snapshots.
 
-The SQL checker is read-only and executes [lab2_checks.sql](db/lab2_checks.sql), which can also be opened in pgAdmin. The source comparison needs internet access and retrieves fresh official API/CSV exports for Romania, 2023. [Results](docs/lab2_results.md) explain every check, coverage gap, outlier count and source comparison.
+The historical Lab 2 SQL checker is read-only and executes [lab2_checks.sql](db/lab2_checks.sql), which can also be opened in pgAdmin. Re-running verification updates its evidence files and import logs. The source comparison needs internet access and retrieves fresh official API/CSV exports for Romania, 2023. [Results](docs/lab2_results.md) explain every check, coverage gap, outlier count and source comparison.
 
 ## Tests
 
@@ -117,9 +145,9 @@ Definitions, attribution, provider terms, processing and retrieval dates are rec
 
 ## Libraries and commits
 
-SQLAlchemy defines models and upserts; psycopg connects to PostgreSQL; python-dotenv loads local settings. Requests/urllib3 handle HTTP and retries. Pandas/NumPy transform and clean tables; Alembic manages migrations. Pytest/Ruff verify the implementation. Jupyter is optional for exploration; ReportLab/PDF tools remain optional Lab 1 authoring dependencies.
+FastAPI handles routes and dependency injection, Uvicorn serves the app, Jinja2 renders HTML, and httpx2 supports presentation tests. SQLAlchemy defines models and upserts; psycopg connects to PostgreSQL; python-dotenv loads local settings. Requests/urllib3 handle HTTP and retries. Pandas/NumPy transform and clean tables; Alembic manages migrations. Pytest/Ruff verify the implementation. Jupyter is optional for exploration; ReportLab/PDF tools remain optional Lab 1 authoring dependencies.
 
-The four Lab 1 commits are preserved. Five `Lab 2:` commits cover extraction/transformation, the executed notebook, cleaning/migration, imports and final verification. Each includes its setup/documentation and prompt trace. Bug-fix messages should name the actual defect corrected. `.env`, `.local/` and `data/raw/` remain outside Git.
+The four Lab 1 and five Lab 2 commits are preserved. Lab 3 uses separate commits for DAL, service, presentation, pipeline actions, sex filtering and verification. Two specific fixes identify their actual defects: trailing spaces in region metadata and unreadable import counts on narrow screens. Each implementation step includes its documentation and prompt trace. `.env`, `.local/` and `data/raw/` remain outside Git.
 
 ## Historical Lab 1
 

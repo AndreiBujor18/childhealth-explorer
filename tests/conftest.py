@@ -12,10 +12,11 @@ from app.models import Base, Source, Country, Indicator, Observation
 
 @pytest.fixture
 def repository_session():
-    engine = create_engine(os.environ['TEST_DATABASE_URL']) if os.getenv('TEST_DATABASE_URL') else get_engine()
     try:
+        url = os.environ.get('TEST_DATABASE_URL') or get_engine().url
+        engine = create_engine(url, connect_args={'connect_timeout': 3})
         connection = engine.connect()
-    except OperationalError:
+    except (OperationalError, RuntimeError):
         pytest.skip('PostgreSQL unavailable; use TEST_DATABASE_URL or start the project database')
     schema = 'lab3_test_' + uuid.uuid4().hex
     transaction = connection.begin()
@@ -47,6 +48,7 @@ def repository_session():
     finally:
         transaction.rollback()
         connection.close()
+        engine.dispose()
 
 
 @pytest.fixture

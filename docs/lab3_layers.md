@@ -21,3 +21,16 @@ All SQL writes and country lookups now live in `app/repositories/import_reposito
 ## Sex filtering
 
 The shared criterion uses Sex | None. The HTTP parser accepts BTSX/MLE/FMLE and ignores unknown codes. The repository adds a bound sex predicate; the service provides all three enum choices and forwards the criteria unchanged. Repository, service and presentation tests cover this path. `/?sex=MLE&country=ROU` returns exactly one row in the isolated nine-observation fixture. It returns no live rows because the approved Lab 2 pilot contains only BTSX totals; test data never enters the project database.
+
+## Dependency diagram
+
+```mermaid
+flowchart TD
+    P[Presentation: controllers and Jinja templates] --> S[Services: rules and orchestration]
+    S --> R[DAL: repositories with injected sessions]
+    R --> D[(PostgreSQL)]
+    W[Dependency composition] -. supplies objects .-> P
+    W -. supplies repositories .-> S
+```
+
+Task evidence and exact call chains are in [Lab 3 results](lab3_results.md). The local process serves on 127.0.0.1 only; external hosting and a JSON API are outside this lab.

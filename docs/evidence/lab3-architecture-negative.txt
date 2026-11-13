@@ -1,0 +1,15 @@
+F..                                                                      [100%]
+================================== FAILURES ===================================
+____________ test_lower_layers_never_import_presentation_or_wiring ____________
+
+    def test_lower_layers_never_import_presentation_or_wiring():
+        files = [APP / 'domain.py', *(APP / 'repositories').rglob('*.py'), *(APP / 'services').rglob('*.py')]
+        errors = violations(files, ('fastapi', 'app.controllers', 'app.dependencies'))
+>       assert not errors, '\n'.join(errors)
+E       AssertionError: app\services\observation_service.py imports fastapi
+E       assert not ['app\\services\\observation_service.py imports fastapi']
+
+tests\test_architecture.py:36: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_architecture.py::test_lower_layers_never_import_presentation_or_wiring
+1 failed, 2 passed in 1.67s

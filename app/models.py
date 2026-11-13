@@ -1,4 +1,4 @@
-"""Five PostgreSQL tables corresponding to db/schema.sql."""
+"""Shared PostgreSQL models; versioned schema changes live in migrations/."""
 from datetime import datetime
 from decimal import Decimal
 from enum import Enum

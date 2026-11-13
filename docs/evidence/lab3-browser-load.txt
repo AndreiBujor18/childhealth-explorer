@@ -1,0 +1,71 @@
+DATA UPDATE
+
+Transform & load results
+
+Saved source files were transformed, cleaned and imported.
+
+Back to observations →
+
+9 successful · 0 failed. All steps finished successfully.
+
+Transform & load results for each source and indicator
+Source / item	Status	Rows processed	Details
+World Bank
+SH.DYN.MORT
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 6384 · Clean 480 · Rejected 5904
+	Saved observations and import log.
+World Bank
+NY.GDP.PCAP.PP.KD
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 6384 · Clean 480 · Rejected 5904
+	Saved observations and import log.
+World Bank
+SH.XPD.CHEX.GD.ZS
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 6384 · Clean 480 · Rejected 5904
+	Saved observations and import log.
+World Bank
+SH.H2O.BASW.ZS
+	Success
+Loaded 470 · New 0 · Updated 470
+Input 6384 · Clean 470 · Rejected 5914
+	Saved observations and import log.
+World Bank
+SH.STA.BASS.ZS
+	Success
+Loaded 479 · New 0 · Updated 479
+Input 6384 · Clean 479 · Rejected 5905
+	Saved observations and import log.
+WHO
+MDG_0000000007
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 4800 · Clean 480 · Rejected 4320
+	Saved observations and import log.
+Our World in Data
+child-mortality
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 17066 · Clean 480 · Rejected 16586
+	Saved observations and import log.
+UNICEF
+IM_DTP3
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 480 · Clean 480 · Rejected 0
+	Saved observations and import log.
+UNICEF
+IM_MCV1
+	Success
+Loaded 480 · New 0 · Updated 480
+Input 480 · Clean 480 · Rejected 0
+	Saved observations and import log.
+What happened
+
+Loaded counts include both new and updated observations. Repeating an import updates matching records; it does not create duplicates. An unsuccessful indicator is rolled back together with its import-log entry.
+
+Refreshing this result page may submit the action again. Return to observations to browse without repeating it.

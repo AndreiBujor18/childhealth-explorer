@@ -52,3 +52,19 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: compact per-indicator count summaries with all input/clean/rejected/loaded/new/updated values retained. Commit: `Lab 3: keep import counts readable on narrow screens`.
 - Actual defect: the initial ten-column action table squeezed the message into a few pixels in the in-app browser. Group source/item and count pairs into readable cells with minimum widths and horizontal scrolling on smaller screens. No processing rules or database values changed. No manual student edits reported.
+
+## Prompts 1-2 continuation - architecture enforcement and delivery evidence
+- Date: 2026-11-13
+- Result: AST layer-boundary tests, recorded intentional failure, real-browser screenshots, region pagination proof, live HTTP/database evidence, results/checklist and README. Commit: `Lab 3: verify layer boundaries and document browser workflows`.
+- Checks and corrections: an actual temporary forbidden import made the test fail; the original service was restored byte-for-byte before the passing run. Browser POST imports retained 4,309 observations and added nine success logs each. Ten live HTTP checks cover real filters, pagination, empty sex results, disabled API docs and GET action rejection. Presentation tests guard against accidental live database/download calls; repository fixtures skip missing/unreachable test databases and use rolled-back schemas. No manual student code edits reported.
+
+## Commit trace
+
+- ce482e2: domain objects and DAL.
+- 44111a0: observation service.
+- 07645c1: server-rendered presentation and dependency wiring.
+- 591a72e: shared ETL jobs, write DAL and POST actions.
+- 9be5f8e: sex filtering through all layers.
+- 035b5c8: region metadata whitespace regression fix.
+- 08366ab: readable action counts on narrow screens.
+- Final verification commit: uniquely identified above by its full title; its hash is available in Git history.

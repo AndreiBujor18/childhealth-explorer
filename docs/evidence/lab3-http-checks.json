@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-11-13T15:00:22.125360+00:00",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "?country=ROU&year_from=2023&year_to=2023",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "?region=Sub-Saharan+Africa",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "?sex=MLE&country=ROU",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "?year_from=abc",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "?page=0",
+      "status": 422,
+      "passed": true
+    },
+    {
+      "path": "actions/load",
+      "status": 405,
+      "passed": true
+    },
+    {
+      "path": "actions/extract",
+      "status": 405,
+      "passed": true
+    },
+    {
+      "path": "docs",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "path": "static/app.css",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "database": {
+    "observations": 4309,
+    "outliers": 335,
+    "import_logs": 36,
+    "male_romania_rows": 0,
+    "region_rows": 648,
+    "trailing_space_regions": 0,
+    "duplicates": 0
+  }
+}

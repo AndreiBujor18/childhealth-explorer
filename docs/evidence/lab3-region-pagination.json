@@ -1,0 +1,7 @@
+{
+  "first_url": "http://127.0.0.1:8000/?region=Sub-Saharan+Africa",
+  "second_url": "http://127.0.0.1:8000/?region=Sub-Saharan+Africa&page=2",
+  "first_page": "← Previous\nPage 1 of 26\nNext →",
+  "second_page": "← Previous\nPage 2 of 26\nNext →",
+  "preserved": true
+}
