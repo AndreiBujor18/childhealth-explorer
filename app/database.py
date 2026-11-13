@@ -20,5 +20,9 @@ def get_engine():
 
 
 def get_db():
-    with sessionmaker(bind=get_engine(), autoflush=False)() as db:
+    with get_session_factory()() as db:
         yield db
+
+
+def get_session_factory():
+    return sessionmaker(bind=get_engine(), autoflush=False)

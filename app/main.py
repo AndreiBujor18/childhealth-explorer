@@ -2,7 +2,7 @@
 from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from app.controllers import observation_controller
+from app.controllers import observation_controller, etl_controller
 from app.views import templates
 
 
@@ -10,6 +10,7 @@ def create_app():
     app = FastAPI(title='ChildHealth Explorer', openapi_url=None, docs_url=None, redoc_url=None)
     app.mount('/static', StaticFiles(directory=str(Path(__file__).parent / 'static')), name='static')
     app.include_router(observation_controller.router)
+    app.include_router(etl_controller.router)
 
     @app.exception_handler(ValueError)
     async def invalid_filters(request: Request, error: ValueError):

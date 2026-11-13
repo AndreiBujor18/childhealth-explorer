@@ -32,3 +32,8 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: FastAPI app/dependency wiring, HTTP controllers, Jinja templates, local CSS, launch script and dependency-overridden presentation tests. Commit: `Lab 3: render database observations through controllers and templates`.
 - Checks and corrections: GET filters preserve selected values and pagination URLs; templates receive immutable records and contain no SQL/ORM operations. Invalid years are ignored, reversed ranges become an HTML error, and external labels are autoescaped. The design carries over the approved restrained colors/type hierarchy without JavaScript or fake data. No student code edits reported.
+
+## Prompts 1-2 continuation - pipeline actions and write DAL
+- Date: 2026-11-13
+- Result: import_repository moves existing SQL into the DAL; import_runner returns typed StepResult objects; EtlService runs injected extraction/import jobs; POST controllers render a result table. Commit: `Lab 3: run shared ETL jobs through services and POST actions`.
+- Checks and corrections: repositories never commit; the import runner owns per-indicator transactions. Legacy Lab 2 imports keep their report format and exit behavior through compatibility wrappers. Expected errors become failed results, programming exceptions propagate, simultaneous local pipeline actions are serialized, and GET never starts an action. UI displays loaded/new/updated/rejected counts. Tests use stubs and rolled-back schemas, not live downloads or production writes. No manual student code edits reported.

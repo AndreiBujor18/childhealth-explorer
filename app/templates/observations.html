@@ -37,4 +37,8 @@
   <p>Sources: WHO, World Bank, UNICEF and Our World in Data. Mortality is expressed per 1,000 live births; vaccination coverage is a percentage. Check the unit before comparing indicators.</p>
   <p>A flag marks a value outside the study's IQR range. Flagged observations are retained. Some providers share underlying estimates, and associations do not establish causation.</p>
 </div></section>
+<section class="pipeline" aria-labelledby="pipeline-heading"><h2 id="pipeline-heading">Update the data</h2><p>Extract downloads new source files. Transform &amp; load imports the files already saved on this computer. Each action may take a minute; the results appear when it finishes.</p><div class="pipeline-actions">
+  <form method="post" action="/actions/extract"><button class="secondary" type="submit">Extract fresh data</button></form>
+  <form method="post" action="/actions/load"><button type="submit">Transform &amp; load saved data</button></form>
+</div></section>
 {% endblock %}
