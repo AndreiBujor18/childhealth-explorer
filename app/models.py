@@ -1,6 +1,7 @@
 """Five PostgreSQL tables corresponding to db/schema.sql."""
 from datetime import datetime
 from decimal import Decimal
+from enum import Enum
 
 from sqlalchemy import (
     BigInteger, Boolean, CheckConstraint, DateTime, ForeignKey, Index, Numeric,
@@ -11,6 +12,12 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 class Base(DeclarativeBase):
     pass
+
+
+class Sex(str, Enum):
+    BOTH = 'BTSX'
+    MALE = 'MLE'
+    FEMALE = 'FMLE'
 
 
 class Source(Base):
