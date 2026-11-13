@@ -2,7 +2,7 @@
 import json
 import pytest
 from etl.raw_files import download_json_pages, save_snapshot, read_snapshot
-from etl.transform_worldbank import transform_worldbank_file
+from etl.transform_worldbank import transform_worldbank_file, transform_worldbank_countries
 from etl.transform_who import transform_who_file
 from etl.transform_owid import transform_owid_file
 
@@ -19,6 +19,16 @@ def test_worldbank_transform_and_hash_guard(tmp_path):
     path.write_text('{}')
     with pytest.raises(ValueError, match='hash mismatch'):
         read_snapshot(path)
+
+
+def test_country_metadata_trims_region_labels_for_bookmarked_urls(tmp_path):
+    row = {'id': 'KEN', 'iso2Code': 'KE', 'name': 'Kenya',
+           'region': {'id': 'SSF', 'value': 'Sub-Saharan Africa '},
+           'incomeLevel': {'value': 'Lower middle income '}}
+    path = snapshot(tmp_path / 'countries.json', {'responses': [[{'pages': 1}, [row]]]})
+    country = transform_worldbank_countries(path).iloc[0]
+    assert country['region'] == 'Sub-Saharan Africa'
+    assert country['income_group'] == 'Lower middle income'
 
 
 def test_who_does_not_collapse_wealth_subdivisions(tmp_path):

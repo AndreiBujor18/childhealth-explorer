@@ -42,3 +42,8 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: optional Sex criterion, repository predicate, service-provided enum options, tolerant HTTP parsing and HTML select; one new test per layer. Commit: `Lab 3: add the sex filter across repository service and presentation`.
 - Checks and corrections: unknown codes are ignored as the lab requests. The exact `sex=MLE&country=ROU` assertion uses a synthetic fixture with one male row; production Lab 2 data intentionally contains both-sex totals only, so that live request truthfully returns no rows. No fabricated male/female observations were inserted into the project database. No student code edits reported.
+
+## Prompts 1-2 continuation - region metadata defect found in browser
+- Date: 2026-11-13
+- Result: trim World Bank country metadata and add a regression test. Commit: `Lab 3: trim region metadata so bookmarked region filters match`.
+- Actual defect: the provider returned `Sub-Saharan Africa ` and `Latin America & Caribbean ` with trailing spaces. Form parsing strips whitespace, so those values no longer equaled the stored region. The lab's exact Sub-Saharan Africa URL returned no rows. Normalize metadata during transformation; a normal World Bank upsert updates existing countries. Do not hide normalization SQL in controllers/services. No student code edits reported.

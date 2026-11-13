@@ -29,6 +29,7 @@ def transform_worldbank_countries(path):
             require_keys(r, ['id', 'iso2Code', 'name', 'region', 'incomeLevel'])
             if r['region']['id'] == 'NA' or r['region']['value'] == 'Aggregates':
                 continue
-            rows.append({'iso3': r['id'], 'iso2': r['iso2Code'], 'name': r['name'],
-                         'region': r['region']['value'], 'income_group': r['incomeLevel']['value']})
+            rows.append({'iso3': r['id'].strip().upper(), 'iso2': r['iso2Code'].strip().upper(),
+                         'name': r['name'].strip(), 'region': r['region']['value'].strip(),
+                         'income_group': r['incomeLevel']['value'].strip()})
     return pd.DataFrame(rows)
