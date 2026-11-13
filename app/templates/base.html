@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore vaccination, socioeconomic conditions and under-five mortality across countries.">
+  <title>{% block title %}Observations | ChildHealth Explorer{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/app.css') }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to observations</a>
+  <header class="site-header">
+    <a class="brand" href="/">ChildHealth Explorer<span>Vaccination, living conditions &amp; child survival</span></a>
+    <nav aria-label="Main"><a href="/" aria-current="page">Observations</a><a href="/#sources">About the data</a></nav>
+  </header>
+  <main id="main" class="container">{% block content %}{% endblock %}</main>
+  <footer class="site-footer"><span>ChildHealth Explorer</span><span>Country-level estimates · 2000–2023</span></footer>
+</body>
+</html>

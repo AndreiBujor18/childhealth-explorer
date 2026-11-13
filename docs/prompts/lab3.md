@@ -27,3 +27,8 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: `app/services/observation_service.py`, immutable ObservationPage and fake-repository tests. Commit: `Lab 3: add observation service pagination and browsing rules`.
 - Checks and corrections: service contains no SQL, session creation or HTTP. Empty results are page 1 of 1; a page beyond the end is clamped to the last real page; reversed year ranges raise a plain ValueError. No manual student code edits reported.
+
+## Prompts 1-2 continuation - server-rendered presentation
+- Date: 2026-11-13
+- Result: FastAPI app/dependency wiring, HTTP controllers, Jinja templates, local CSS, launch script and dependency-overridden presentation tests. Commit: `Lab 3: render database observations through controllers and templates`.
+- Checks and corrections: GET filters preserve selected values and pagination URLs; templates receive immutable records and contain no SQL/ORM operations. Invalid years are ignored, reversed ranges become an HTML error, and external labels are autoescaped. The design carries over the approved restrained colors/type hierarchy without JavaScript or fake data. No student code edits reported.

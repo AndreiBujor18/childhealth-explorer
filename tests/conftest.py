@@ -47,3 +47,20 @@ def repository_session():
     finally:
         transaction.rollback()
         connection.close()
+
+
+@pytest.fixture
+def client():
+    from fastapi.testclient import TestClient
+    from app.main import create_app
+    from app.database import get_db
+    from app.dependencies import get_observation_service
+
+    def forbidden():
+        raise AssertionError('Presentation test reached a real data/service dependency')
+
+    app = create_app()
+    app.dependency_overrides[get_db] = forbidden
+    app.dependency_overrides[get_observation_service] = forbidden
+    with TestClient(app) as test_client:
+        yield test_client

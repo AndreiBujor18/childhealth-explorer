@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="intro">
+  <div><p class="eyebrow">The observation archive</p><h1>Explore the data.</h1>
+  <p class="lede">Vaccination coverage, living conditions and mortality before age five, across 20 countries.</p></div>
+  <p class="result-count"><strong>{{ "{:,}".format(observations.total_items) }}</strong><span>matching observations</span></p>
+</section>
+<form class="filters" method="get" action="/" aria-label="Filter observations">
+  <label>Country<select name="country"><option value="">All countries</option>{% for option in options.countries %}<option value="{{ option.value }}" {% if option.value == criteria.country_iso3 %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
+  <label>Indicator<select name="indicator"><option value="">All indicators</option>{% for option in options.indicators %}<option value="{{ option.value }}" {% if option.value == criteria.indicator_code %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
+  <label>Region<select name="region"><option value="">All regions</option>{% for option in options.regions %}<option value="{{ option.value }}" {% if option.value == criteria.region %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
+  <label>Source<select name="source"><option value="">All sources</option>{% for option in options.sources %}<option value="{{ option.value }}" {% if option.value == criteria.source_name %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select></label>
+  <label>From year<input name="year_from" type="number" min="1900" max="2100" placeholder="2000" value="{{ criteria.year_from if criteria.year_from is not none else '' }}"></label>
+  <label>To year<input name="year_to" type="number" min="1900" max="2100" placeholder="2023" value="{{ criteria.year_to if criteria.year_to is not none else '' }}"></label>
+  <div class="filter-actions"><button type="submit">Apply filters</button><a href="/">Clear</a></div>
+</form>
+<section aria-labelledby="observations-heading">
+  <div class="table-heading"><h2 id="observations-heading">Observations</h2><p>{{ observations.first_item }}–{{ observations.last_item }} of {{ "{:,}".format(observations.total_items) }}</p></div>
+  <div class="table-wrap"><table>
+    <caption class="sr-only">Filtered health observations. Each source-specific series is kept separate.</caption>
+    <thead><tr><th scope="col">Country</th><th scope="col">Indicator</th><th scope="col">Source</th><th scope="col">Year</th><th scope="col">Sex</th><th scope="col" class="number">Value</th><th scope="col">Unit</th><th scope="col">IQR flag</th></tr></thead>
+    <tbody>{% for item in observations.items %}<tr>
+      <td class="country">{{ item.country_name }}<span class="detail">{{ item.country_iso3 }}</span></td>
+      <td>{{ item.indicator_name }}<span class="detail code">{{ item.indicator_code }}</span></td>
+      <td>{{ item.source_name|source_label }}</td><td class="numeric">{{ item.year }}</td><td>{{ item.sex.value }}</td>
+      <td class="number numeric">{{ item.value|measurement }}</td><td class="unit">{{ item.unit or '-' }}</td>
+      <td>{% if item.is_outlier %}<span class="flag">Flagged</span>{% else %}<span class="quiet">—</span>{% endif %}</td>
+    </tr>{% else %}<tr><td class="empty" colspan="8"><strong>No observations match these filters.</strong><br>Try a wider year range or clear a filter.</td></tr>{% endfor %}</tbody>
+  </table></div>
+  <nav class="pagination" aria-label="Observation pages">
+    {% if previous_url %}<a class="page-link" rel="prev" href="{{ previous_url }}">← Previous</a>{% else %}<span class="page-link disabled" aria-disabled="true">← Previous</span>{% endif %}
+    <span>Page {{ observations.number }} of {{ observations.total_pages }}</span>
+    {% if next_url %}<a class="page-link" rel="next" href="{{ next_url }}">Next →</a>{% else %}<span class="page-link disabled" aria-disabled="true">Next →</span>{% endif %}
+  </nav>
+</section>
+<section id="sources" class="data-notes"><h2>Reading these numbers</h2><div class="notes-grid">
+  <p>Sources: WHO, World Bank, UNICEF and Our World in Data. Mortality is expressed per 1,000 live births; vaccination coverage is a percentage. Check the unit before comparing indicators.</p>
+  <p>A flag marks a value outside the study's IQR range. Flagged observations are retained. Some providers share underlying estimates, and associations do not establish causation.</p>
+</div></section>
+{% endblock %}
