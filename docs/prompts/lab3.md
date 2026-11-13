@@ -47,3 +47,8 @@ Further implementation entries refer to these actual prompts; they do not invent
 - Date: 2026-11-13
 - Result: trim World Bank country metadata and add a regression test. Commit: `Lab 3: trim region metadata so bookmarked region filters match`.
 - Actual defect: the provider returned `Sub-Saharan Africa ` and `Latin America & Caribbean ` with trailing spaces. Form parsing strips whitespace, so those values no longer equaled the stored region. The lab's exact Sub-Saharan Africa URL returned no rows. Normalize metadata during transformation; a normal World Bank upsert updates existing countries. Do not hide normalization SQL in controllers/services. No student code edits reported.
+
+## Prompts 1-2 continuation - narrow-screen action results
+- Date: 2026-11-13
+- Result: compact per-indicator count summaries with all input/clean/rejected/loaded/new/updated values retained. Commit: `Lab 3: keep import counts readable on narrow screens`.
+- Actual defect: the initial ten-column action table squeezed the message into a few pixels in the in-app browser. Group source/item and count pairs into readable cells with minimum widths and horizontal scrolling on smaller screens. No processing rules or database values changed. No manual student edits reported.
