@@ -56,7 +56,7 @@ def client():
     from fastapi.testclient import TestClient
     from app.main import create_app
     from app.database import get_db
-    from app.dependencies import get_observation_service, get_etl_service
+    from app.dependencies import get_observation_service, get_etl_service, get_period_average_service
 
     def forbidden():
         raise AssertionError('Presentation test reached a real data/service dependency')
@@ -65,5 +65,6 @@ def client():
     app.dependency_overrides[get_db] = forbidden
     app.dependency_overrides[get_observation_service] = forbidden
     app.dependency_overrides[get_etl_service] = forbidden
+    app.dependency_overrides[get_period_average_service] = forbidden
     with TestClient(app) as test_client:
         yield test_client

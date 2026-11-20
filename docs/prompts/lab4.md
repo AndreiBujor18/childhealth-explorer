@@ -21,3 +21,8 @@
 - Scope: implement the stated API, period averages, layered JavaScript page, tests and delivery documents. Use existing vaccination, socioeconomic and mortality series; do not add life expectancy or infer unstated tasks (sex choice or an individual-indicator route) from sample commit messages.
 - First result: lookup DTOs/routes, region-aware country lookups, API-only OpenAPI paths and tests. Commit: `Lab 4: expose region country and indicator lookups through REST`.
 - Your changes: the student explicitly excluded the missing tasks and approved topic adaptation. No independently written student code is claimed. Existing SSR labels are preserved while the API returns plain country names. A history bundle was saved before changes.
+
+## Prompt 2 continuation - PostgreSQL period averages and JSON contract
+- Date: 2026-11-20
+- Result: immutable period/report types, `PeriodAverageRepository`, `PeriodAverageService`, DTO mappings, route and dependency wiring, plus service/repository/API tests. Commit: `Lab 4: compute and expose per-period averages through the existing layers`.
+- Checks and corrections: PostgreSQL computes AVG/count over BTSX observations in a bucket subquery. The service rounds half up to two decimals and retains known countries with entirely missing series. Unknown indicators become JSON 404, invalid queries become JSON 422. FastAPI resolves independent dependency factories even for invalid query parameters, so the test checks that the service method is never called, rather than incorrectly requiring its factory not to run. No manual student code edits reported.

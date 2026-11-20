@@ -6,6 +6,8 @@ from app.database import get_db
 from app.repositories.observation_repository import ObservationRepository
 from app.services.observation_service import ObservationService
 from app.services.etl_service import EtlService
+from app.repositories.period_average_repository import PeriodAverageRepository
+from app.services.period_average_service import PeriodAverageService
 from app.database import get_session_factory
 from etl.jobs import extraction_jobs, import_jobs
 from threading import Lock
@@ -19,3 +21,7 @@ def get_observation_service(session: Annotated[Session, Depends(get_db)]) -> Obs
 
 def get_etl_service() -> EtlService:
     return EtlService(extraction_jobs(), import_jobs(get_session_factory()), lock=PIPELINE_LOCK)
+
+
+def get_period_average_service(session: Annotated[Session, Depends(get_db)]) -> PeriodAverageService:
+    return PeriodAverageService(PeriodAverageRepository(session))

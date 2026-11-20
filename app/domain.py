@@ -43,3 +43,51 @@ class FilterOptions:
     regions: tuple[Option, ...]
     sources: tuple[Option, ...]
     sexes: tuple[Option, ...] = ()
+
+
+@dataclass(frozen=True)
+class IndicatorInfo:
+    code: str
+    name: str
+    unit: str | None
+
+
+@dataclass(frozen=True)
+class PeriodAverageQuery:
+    indicator_code: str
+    country_iso3s: tuple[str, ...] = ()
+    first_year: int = 2000
+    last_year: int = 2023
+    period_years: int = 5
+
+
+@dataclass(frozen=True)
+class Period:
+    start: int
+    end: int
+
+    @property
+    def label(self) -> str:
+        return f'{self.start}\N{EN DASH}{self.end}'
+
+
+@dataclass(frozen=True)
+class PeriodAverage:
+    country_iso3: str
+    period_start: int
+    average: Decimal
+    observation_count: int
+
+
+@dataclass(frozen=True)
+class CountrySeries:
+    country_iso3: str
+    country_name: str
+    averages: tuple[Decimal | None, ...]
+
+
+@dataclass(frozen=True)
+class PeriodAverageReport:
+    indicator: IndicatorInfo
+    periods: tuple[Period, ...]
+    series: tuple[CountrySeries, ...]

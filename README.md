@@ -5,6 +5,14 @@ Lab 4 extends the application with read-only JSON lookups at `/api/regions`,
 contract; `/api/docs` provides interactive documentation and `/api/openapi.json`
 describes only JSON routes. The existing Lab 3 HTML pages continue to work.
 
+`GET /api/indicators/{code}/period-averages` accepts repeated `country` ISO3
+parameters and defaults to 2000-2023 in five-year periods. PostgreSQL averages
+both-sex totals; services round half up to two decimals and preserve missing
+periods as null. The API accepts at most 20 countries, years from 1900 to 2100
+in ascending order, and period lengths of at least one year. Unknown indicators
+return JSON 404; invalid requests return JSON 422. No countries means an empty
+series list; known countries without measurements retain all-null series.
+
 **Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality**
 
 An individual global health project studying associations between vaccination coverage, economic resources, basic services and under-five mortality. It uses public country-level aggregates, with no patient records. The approved pilot covers **20 countries, 2000-2023, both sexes**. Associations are not interpreted as causal effects.

@@ -3,7 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from app.controllers import observation_controller, etl_controller
-from app.controllers.api import API_DOCS_URL, reference_data_api
+from app.controllers.api import API_DOCS_URL, reference_data_api, period_average_api
 from app.views import templates
 
 
@@ -14,6 +14,7 @@ def create_app():
     app.include_router(observation_controller.router)
     app.include_router(etl_controller.router)
     app.include_router(reference_data_api.router)
+    app.include_router(period_average_api.router)
 
     @app.exception_handler(ValueError)
     async def invalid_filters(request: Request, error: ValueError):
