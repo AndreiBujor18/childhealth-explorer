@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Averages per period | ChildHealth Explorer{% endblock %}
+{% block content %}
+<section class="intro">
+  <div><p class="eyebrow">Country comparisons</p><h1>See the longer view.</h1>
+  <p class="lede">Compare vaccination, living conditions and child mortality over time. Each point is the mean of the available years in that period.</p></div>
+</section>
+<section id="averages-app" data-max-countries="{{ max_countries }}" aria-label="Period averages">
+  <div class="filters average-filters">
+    <label>Indicator<select id="indicator" disabled></select></label>
+    <label>Region<select id="region" disabled></select></label>
+    <label>Period length<select id="period-years" disabled></select></label>
+    <div class="country-control"><span id="country-label">Countries</span>
+      <details class="country-dropdown"><summary id="country-summary">Choose countries</summary>
+        <ul id="country-list" aria-labelledby="country-label"></ul>
+      </details>
+      <span class="detail">Up to {{ max_countries }} countries</span>
+    </div>
+    <label>From year<input id="first-year" type="number" min="1900" max="2100" value="{{ first_year }}" disabled></label>
+    <label>To year<input id="last-year" type="number" min="1900" max="2100" value="{{ last_year }}" disabled></label>
+    <div class="average-links"><a href="{{ api_docs_url }}">Explore the API</a><span>Both sexes · BTSX</span></div>
+  </div>
+  <p id="status" class="averages-status" role="status" aria-live="polite">Loading indicators and regions…</p>
+</section>
+<noscript><p>This page needs JavaScript. You can still browse the data on the <a href="/">Observations page</a>.</p></noscript>
+{% endblock %}
+{% block scripts %}<script type="module" src="{{ url_for('static', path='js/period-averages-page.js') }}"></script>{% endblock %}

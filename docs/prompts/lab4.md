@@ -26,3 +26,8 @@
 - Date: 2026-11-20
 - Result: immutable period/report types, `PeriodAverageRepository`, `PeriodAverageService`, DTO mappings, route and dependency wiring, plus service/repository/API tests. Commit: `Lab 4: compute and expose per-period averages through the existing layers`.
 - Checks and corrections: PostgreSQL computes AVG/count over BTSX observations in a bucket subquery. The service rounds half up to two decimals and retains known countries with entirely missing series. Unknown indicators become JSON 404, invalid queries become JSON 422. FastAPI resolves independent dependency factories even for invalid query parameters, so the test checks that the service method is never called, rather than incorrectly requiring its factory not to run. No manual student code edits reported.
+
+## Prompt 2 continuation - client-side filters and request coordination
+- Date: 2026-11-20
+- Result: database-independent page shell, shared navigation, four JavaScript modules, country selection, API error messages and AbortController/identity guards for stale responses. Commit: `Lab 4: add client-side filters and cancellable API requests`.
+- Checks and corrections: defaults use IM_DTP3 and five European study countries. Only api-client.js performs fetch; the model has no DOM. Browser verification loaded all controls and a real report. Six JavaScript tests cover selections, stable colors, encoded URLs and HTTP errors; shell tests forbid database dependencies. Optional Node tests use only built-in modules, with no npm packages or build step. No manual student edits reported.

@@ -165,3 +165,9 @@ The four Lab 1 and five Lab 2 commits are preserved. Lab 3 uses separate commits
 ## Historical Lab 1
 
 The [checklist](docs/lab1-checklist.md), [report](output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf), [architecture](docs/architecture.md), [indicator catalog](docs/indicators.md) and [submission record](docs/submission-lab1.md) document the original stage. Its five tables were empty at submission; that schema dump and evidence remain historical snapshots. Current schema changes are in the migration chain; current data checks are the Lab 2 commands above.
+
+The client-side page is `/period-averages`. Plain JavaScript modules separately
+handle API calls, selection rules, DOM rendering and page events. The shell needs
+no database access and the original `/` page remains server-rendered. Optional
+browser-module unit tests require Node.js 22+ (`npm test`); no npm install or
+frontend build is required to run the application.
