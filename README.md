@@ -1,5 +1,10 @@
 # ChildHealth Explorer
 
+Lab 4 extends the application with read-only JSON lookups at `/api/regions`,
+`/api/countries?region=...` and `/api/indicators`. Pydantic DTOs define the public
+contract; `/api/docs` provides interactive documentation and `/api/openapi.json`
+describes only JSON routes. The existing Lab 3 HTML pages continue to work.
+
 **Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality**
 
 An individual global health project studying associations between vaccination coverage, economic resources, basic services and under-five mortality. It uses public country-level aggregates, with no patient records. The approved pilot covers **20 countries, 2000-2023, both sexes**. Associations are not interpreted as causal effects.

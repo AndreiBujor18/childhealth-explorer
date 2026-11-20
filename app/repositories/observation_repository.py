@@ -44,9 +44,12 @@ class ObservationRepository:
     def count(self, criteria) -> int:
         return self._session.scalar(select(func.count()).select_from(_matching_observations(criteria).subquery())) or 0
 
-    def list_countries(self) -> tuple[Option, ...]:
+    def list_countries(self, region: str | None = None, *, include_code: bool = True) -> tuple[Option, ...]:
         query = (select(Country.iso3, Country.name).join(Observation).distinct().order_by(Country.name))
-        return tuple(Option(code, f'{name} ({code})') for code, name in self._session.execute(query))
+        if region is not None:
+            query = query.where(Country.region == region)
+        return tuple(Option(code, f'{name} ({code})' if include_code else name)
+                     for code, name in self._session.execute(query))
 
     def list_indicators(self) -> tuple[Option, ...]:
         query = (select(Indicator.code, Indicator.name, Source.name).select_from(Indicator)

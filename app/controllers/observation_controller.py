@@ -8,7 +8,7 @@ from app.domain import ObservationCriteria
 from app.services.observation_service import ObservationService
 from app.views import templates
 
-router = APIRouter()
+router = APIRouter(include_in_schema=False)
 
 
 def observation_criteria(country: str | None = None, indicator: str | None = None,

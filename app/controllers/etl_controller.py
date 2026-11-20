@@ -6,7 +6,7 @@ from app.dependencies import get_etl_service
 from app.services.etl_service import EtlService
 from app.views import templates
 
-router = APIRouter(prefix='/actions')
+router = APIRouter(prefix='/actions', include_in_schema=False)
 
 
 @router.post('/extract', response_class=HTMLResponse)
