@@ -36,3 +36,8 @@
 - Date: 2026-11-20
 - Result: accessible table, Chart.js line chart, units, explicit missing-data gaps, adaptive colors and clear/error states. Commit: `Lab 4: render period-average tables and comparison charts in the browser`.
 - Checks and corrections: Chart.js 4.4.1 is loaded from the CDN specified by the lab; the table still works if that library is unavailable. No smoothing, fabricated zeroes or chart animation. Ten JavaScript tests include late report and region responses that deliberately ignore cancellation. Real browser checks confirmed European DTP3 and African mortality comparisons, an eight-country maximum, and clearing results for an empty selection. No JavaScript warnings/errors or manual student code edits reported.
+
+## Prompt 2 continuation - keyboard focus and singular labels
+- Date: 2026-11-20
+- Result: preserve the active country checkbox when its list redraws and use singular labels for one country/period. Commit: `Lab 4: preserve country checkbox focus and singular selection labels`.
+- Actual defect: replacing the checkbox list after a selection removed the focused element, interrupting keyboard navigation. The view restores focus to the same ISO3 code without scrolling. Verified in the browser with Space: Romania stayed focused and selection changed from five to four, then back. Ten JavaScript tests still pass. No manual student edits reported.

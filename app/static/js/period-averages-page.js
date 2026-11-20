@@ -83,7 +83,9 @@ export class PeriodAveragesPage {
       this.view.renderTable(toTable(report));
       this.view.renderChart(toChart(report, this.colors));
       const hasValues = report.series.some(series => series.averages.some(value => value !== null));
-      this.view.showStatus(hasValues ? `${report.series.length} countries · ${report.periods.length} periods · Both sexes`
+      const countries = `${report.series.length} ${report.series.length === 1 ? 'country' : 'countries'}`;
+      const periods = `${report.periods.length} ${report.periods.length === 1 ? 'period' : 'periods'}`;
+      this.view.showStatus(hasValues ? `${countries} · ${periods} · Both sexes`
         : 'No observations for these countries and years. Missing values are shown below.');
     } catch (error) {
       if (this.pendingRequest !== request || error.name === 'AbortError') return;

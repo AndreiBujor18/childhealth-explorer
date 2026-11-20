@@ -37,6 +37,7 @@ export class PeriodAveragesView {
   }
 
   renderCountries(countries, selected) {
+    const focusedCode = this.countries.contains(document.activeElement) ? document.activeElement.value : null;
     this.countries.replaceChildren(...countries.map(country => {
       const li = document.createElement('li');
       const label = document.createElement('label');
@@ -45,7 +46,10 @@ export class PeriodAveragesView {
       const text = document.createElement('span'); text.textContent = country.name;
       label.append(input, text); li.append(label); return li;
     }));
-    this.summary.textContent = selected.length ? `${selected.length} countries selected` : 'Choose countries';
+    this.summary.textContent = selected.length
+      ? `${selected.length} ${selected.length === 1 ? 'country' : 'countries'} selected` : 'Choose countries';
+    if (focusedCode) [...this.countries.querySelectorAll('input')]
+      .find(input => input.value === focusedCode)?.focus({ preventScroll: true });
   }
 
   showStatus(message, { isError = false } = {}) {
