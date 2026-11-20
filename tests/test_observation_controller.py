@@ -37,7 +37,7 @@ def test_external_labels_are_autoescaped(client):
     assert '<script>' not in page.text
 
 
-def test_json_documentation_is_disabled(client):
+def test_legacy_documentation_urls_remain_disabled(client):
     assert client.get('/docs').status_code == 404
     assert client.get('/openapi.json').status_code == 404
 

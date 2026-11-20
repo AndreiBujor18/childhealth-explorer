@@ -1,23 +1,10 @@
 # ChildHealth Explorer
 
-Lab 4 extends the application with read-only JSON lookups at `/api/regions`,
-`/api/countries?region=...` and `/api/indicators`. Pydantic DTOs define the public
-contract; `/api/docs` provides interactive documentation and `/api/openapi.json`
-describes only JSON routes. The existing Lab 3 HTML pages continue to work.
-
-`GET /api/indicators/{code}/period-averages` accepts repeated `country` ISO3
-parameters and defaults to 2000-2023 in five-year periods. PostgreSQL averages
-both-sex totals; services round half up to two decimals and preserve missing
-periods as null. The API accepts at most 20 countries, years from 1900 to 2100
-in ascending order, and period lengths of at least one year. Unknown indicators
-return JSON 404; invalid requests return JSON 422. No countries means an empty
-series list; known countries without measurements retain all-null series.
-
 **Childhood Vaccination, Socioeconomic Conditions, and Under-Five Mortality**
 
 An individual global health project studying associations between vaccination coverage, economic resources, basic services and under-five mortality. It uses public country-level aggregates, with no patient records. The approved pilot covers **20 countries, 2000-2023, both sexes**. Associations are not interpreted as causal effects.
 
-**Lab 3 is a working server-rendered application:** browse the PostgreSQL data at **http://127.0.0.1:8000/**, filter observations and run the pipeline from HTML forms. All pages are built on the server, with no browser JavaScript. The direction is **presentation -> service -> data access**: only repositories query/write data; controllers only parse HTTP input, call services and render templates.
+**Lab 4 adds country comparisons and a documented REST API.** The [Observations page](http://127.0.0.1:8000/) from Lab 3 is still rendered on the server and works without JavaScript. The new [Averages per period page](http://127.0.0.1:8000/period-averages) uses plain JavaScript to update a table and chart from JSON, without reloading. Both use **presentation -> service -> data access**: only repositories query/write data; controllers call services and return templates or DTOs.
 
 The approved 20-country, 2000-2023 dataset contains **4,309 observations and 335 retained IQR outlier flags**. The Lab 2 verification snapshot contains 18 import logs; two additional browser imports in Lab 3 increased the current log count to 36 without adding duplicate observations.
 
@@ -34,12 +21,52 @@ Or run `.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload`. Open **htt
 
 | Layer / responsibility | Implementation |
 |---|---|
-| Presentation: parse requests and render HTML | `app/controllers/`, `app/templates/`, `app/views.py` |
-| Services: pagination, validation and job orchestration | `app/services/` |
+| Presentation: HTTP, HTML and JSON DTOs | `app/controllers/`, `app/templates/`, `app/views.py` |
+| Services: pagination, period rules, validation and job orchestration | `app/services/` |
 | DAL: parameterized reads and writes, injected sessions | `app/repositories/` |
 | Shared immutable values | `app/domain.py`, `etl/step_result.py` |
 | Dependency wiring / application entry | `app/dependencies.py`, `app/main.py` |
 | Pipeline transaction owner | `etl/import_runner.py`; repositories never commit |
+| Browser: network, model, view and controller modules | `app/static/js/` |
+
+## Lab 4 - period comparisons and REST
+
+Open **http://127.0.0.1:8000/period-averages**. The defaults are DTP3 vaccination,
+five European study countries, and 2000-2023 in five-year periods. Change the
+indicator, region, years, period length or countries to update the comparison.
+Up to eight countries can be drawn at once. Keyboard selection retains focus.
+
+| GET endpoint | Response |
+|---|---|
+| `/api/regions` | Region names |
+| `/api/countries?region=...` | Country ISO3 codes and plain names; omit region for all observed countries |
+| `/api/indicators` | Source-specific indicator codes and labels |
+| `/api/indicators/{code}/period-averages` | Indicator, periods and aligned country series |
+| `/api/docs` | Interactive Swagger UI |
+| `/api/openapi.json` | OpenAPI schema; only JSON endpoints appear |
+
+Example: [DTP3 for Romania and France](http://127.0.0.1:8000/api/indicators/IM_DTP3/period-averages?country=ROU&country=FRA).
+Repeat `country` for each ISO3 code. Defaults: `first_year=2000`, `last_year=2023`,
+`period_years=5`. The API accepts at most 20 distinct countries, ordered years
+within 1900-2100, and periods of at least one year. Unknown indicators return
+JSON 404; invalid requests return JSON 422. An omitted country list returns no
+series; known countries without observations retain null values for every period.
+
+PostgreSQL computes averages of available BTSX annual values. The service rounds
+half up to two decimals and the DTO sends JSON numbers, not Decimal strings.
+Nulls remain gaps in the line and dashes in the table. Chart.js 4.4.1 loads from
+jsDelivr as in the lab; its failure leaves the table usable with a notice. No
+frontend build is required. The page follows light/dark preferences and avoids
+chart animation. Only `api-client.js` calls fetch; the model has no DOM; the view
+draws; the controller cancels stale requests.
+
+[Lab 4 results](docs/lab4_results.md), [checklist](docs/lab4-checklist.md) and
+[prompt record](docs/prompts/lab4.md) document the implementation. The user
+excluded the PDF's references to tasks without statements and approved using our
+existing topic instead of the example's life expectancy. No new source data or
+schema migration is required, and there is no separate report PDF.
+
+## Preserved Lab 3 functionality
 
 [Lab 3 results](docs/lab3_results.md) contain the three required screenshots, the request call chain, the region demonstration, sex-filter tests and the architecture-test failure demonstration. See the [checklist](docs/lab3-checklist.md), [layer guide](docs/lab3_layers.md) and [prompts](docs/prompts/lab3.md).
 
@@ -59,7 +86,7 @@ Useful URLs: [Romania 2023](http://127.0.0.1:8000/?country=ROU&year_from=2023&ye
 | Reproduction | This README and the [detailed guide](docs/lab2_setup.md) |
 | AI assistance and delivery review | [Prompts and commit trace](docs/prompts/lab2.md), [checklist](docs/lab2-checklist.md) |
 
-Lab 2 is preserved on [`master`](https://github.com/AndreiBujor18/childhealth-explorer/tree/master) at its submitted version. **Lab 3 is delivered on `main`**, as its PDF requires. The earlier [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype) branch is a historical design reference; the connected application is now on `main`. Neither lab needs a separate PDF report. ML training is a later stage.
+Lab 2 is preserved on [`master`](https://github.com/AndreiBujor18/childhealth-explorer/tree/master) at its submitted version. **Labs 3 and 4 are delivered on `main`**. The earlier [`codex/lab3-ui-prototype`](https://github.com/AndreiBujor18/childhealth-explorer/tree/codex/lab3-ui-prototype) branch is a historical design reference. No separate report PDF is required for Labs 2-4. ML training is a later stage.
 
 ## Setup from scratch (Windows / PowerShell)
 
@@ -137,13 +164,19 @@ The historical Lab 2 SQL checker is read-only and executes [lab2_checks.sql](db/
 .\.venv\Scripts\python.exe -m ruff check app etl scripts tests migrations
 ```
 
-To include the two PostgreSQL integration tests (isolated schemas, test changes rolled back):
+Repository tests use temporary schemas and skip an unavailable PostgreSQL server.
+To also include the two opt-in legacy Lab 2 integration tests:
 
 ```powershell
 $env:LAB2_TEST_DATABASE='1'
 .\.venv\Scripts\python.exe -m pytest -q --basetemp=tmp/pytest-integration
 Remove-Item Env:LAB2_TEST_DATABASE
 ```
+
+Optional JavaScript tests use Node.js 22+ and built-in modules only: `npm test`.
+No `npm install` is needed. With the app running, execute
+`.\.venv\Scripts\python.exe -m scripts.check_lab4` for 19 read-only HTTP checks.
+This refreshes `docs/evidence/lab4-http-checks.json`; it never imports data.
 
 ## Sources and interpretation
 
@@ -158,22 +191,10 @@ Definitions, attribution, provider terms, processing and retrieval dates are rec
 
 ## Libraries and commits
 
-FastAPI handles routes and dependency injection, Uvicorn serves the app, Jinja2 renders HTML, and httpx2 supports presentation tests. SQLAlchemy defines models and upserts; psycopg connects to PostgreSQL; python-dotenv loads local settings. Requests/urllib3 handle HTTP and retries. Pandas/NumPy transform and clean tables; Alembic manages migrations. Pytest/Ruff verify the implementation. Jupyter is optional for exploration; ReportLab/PDF tools remain optional Lab 1 authoring dependencies.
+FastAPI handles routes and dependency injection, Pydantic defines public JSON DTOs, Uvicorn serves the app, Jinja2 renders HTML, and httpx2 supports presentation tests. SQLAlchemy defines models and upserts; psycopg connects to PostgreSQL; python-dotenv loads local settings. Requests/urllib3 handle HTTP and retries. Pandas/NumPy transform and clean tables; Alembic manages migrations. Pytest/Ruff verify Python code. Chart.js renders client-side lines; JavaScript uses browser-native modules. Jupyter is optional for exploration; ReportLab/PDF tools remain optional Lab 1 authoring dependencies.
 
 The four Lab 1 and five Lab 2 commits are preserved. Lab 3 uses separate commits for DAL, service, presentation, pipeline actions, sex filtering and verification. Two specific fixes identify their actual defects: trailing spaces in region metadata and unreadable import counts on narrow screens. Each implementation step includes its documentation and prompt trace. `.env`, `.local/` and `data/raw/` remain outside Git.
 
 ## Historical Lab 1
 
 The [checklist](docs/lab1-checklist.md), [report](output/pdf/Lab-1-Report-ChildHealth-Explorer.pdf), [architecture](docs/architecture.md), [indicator catalog](docs/indicators.md) and [submission record](docs/submission-lab1.md) document the original stage. Its five tables were empty at submission; that schema dump and evidence remain historical snapshots. Current schema changes are in the migration chain; current data checks are the Lab 2 commands above.
-
-The client-side page is `/period-averages`. Plain JavaScript modules separately
-handle API calls, selection rules, DOM rendering and page events. The shell needs
-no database access and the original `/` page remains server-rendered. Optional
-browser-module unit tests require Node.js 22+ (`npm test`); no npm install or
-frontend build is required to run the application.
-
-The period comparison renders an accessible numeric table and a Chart.js 4.4.1
-line chart. Chart.js loads from jsDelivr as in the lab; its failure leaves the
-table usable with a clear notice. Null periods remain gaps, selected countries
-keep their colors, and outdated requests cannot overwrite newer filters. The
-page follows the browser light/dark preference and avoids chart animation.

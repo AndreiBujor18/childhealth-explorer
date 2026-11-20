@@ -1,0 +1,18 @@
+{
+  "verified_at": "2026-11-20T13:10:32.848431+00:00",
+  "counts": {
+    "observations": 4309,
+    "retained_outliers": 335,
+    "import_logs": 36,
+    "indicators": 9,
+    "duplicates": 0
+  },
+  "revision": "0002",
+  "independent_check": {
+    "indicator": "IM_DTP3",
+    "country": "ROU",
+    "period": "2020-2023",
+    "sql_round_avg": "84.25",
+    "api_average": 84.25
+  }
+}

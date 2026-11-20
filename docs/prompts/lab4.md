@@ -41,3 +41,9 @@
 - Date: 2026-11-20
 - Result: preserve the active country checkbox when its list redraws and use singular labels for one country/period. Commit: `Lab 4: preserve country checkbox focus and singular selection labels`.
 - Actual defect: replacing the checkbox list after a selection removed the focused element, interrupting keyboard navigation. The view restores focus to the same ISO3 code without scrolling. Verified in the browser with Space: Romania stayed focused and selection changed from five to four, then back. Ten JavaScript tests still pass. No manual student edits reported.
+
+## Prompt 2 continuation - final verification and delivery
+- Date: 2026-11-20
+- Result: read-only HTTP audit command, real screenshots, HTTP/database evidence, results/checklist, current README and API response documentation. Commit: `Lab 4: verify API contracts and document browser comparisons`.
+- Checks and corrections: 59 Python tests, 10 JavaScript tests and 19 live HTTP checks; an independent SQL AVG/round matches the API. Existing data remains 4,309 observations, 335 outlier flags, 36 logs and zero duplicates. Alembic/pip checks pass. Swagger Try it out returned actual JSON 200. The user's scope exclusions remain explicit. No fresh production import or extraction, no invented task statements, and no manual student code changes reported.
+- Delivery: implementation commits 9c9ab42 (lookups), 9edc9e8 (averages backend), 1baebb9 (filters/modules), c4deb34 (table/chart), af7f4a5 (keyboard focus/labels), and the verification commit identified by its full title above. Publish these on main while preserving the Lab 2 master branch.
