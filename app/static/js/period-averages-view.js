@@ -10,6 +10,11 @@ export class PeriodAveragesView {
     this.countries = root.querySelector('#country-list');
     this.summary = root.querySelector('#country-summary');
     this.status = root.querySelector('#status');
+    this.results = root.querySelector('#average-results');
+    this.table = root.querySelector('#averages-table');
+    this.canvas = root.querySelector('#averages-chart');
+    this.chart = null;
+    this.numberFormat = new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
   setOptions(select, options, value) {
@@ -59,5 +64,67 @@ export class PeriodAveragesView {
   readQuery(countryIso3s) {
     return { indicatorCode: this.indicator.value, firstYear: Number(this.firstYear.value),
       lastYear: Number(this.lastYear.value), periodYears: Number(this.period.value), countryIso3s };
+  }
+
+  renderHeading(indicator) {
+    this.root.querySelector('#report-title').textContent = indicator.name;
+    this.root.querySelector('#report-unit').textContent = indicator.unit ?? 'Unit not supplied by source';
+    this.results.hidden = false;
+  }
+
+  renderTable(model) {
+    const caption = document.createElement('caption');
+    caption.textContent = `${model.caption}. Arithmetic means of available annual observations.`;
+    caption.className = 'sr-only';
+    const head = document.createElement('thead');
+    const header = document.createElement('tr');
+    for (const [index, label] of ['Country', ...model.periods].entries()) {
+      const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = label;
+      if (index) cell.className = 'number';
+      header.append(cell);
+    }
+    head.append(header);
+    const body = document.createElement('tbody');
+    for (const row of model.rows) {
+      const tr = document.createElement('tr');
+      const name = document.createElement('th'); name.scope = 'row'; name.className = 'series-country';
+      name.textContent = row.name; tr.append(name);
+      for (const value of row.cells) {
+        const cell = document.createElement('td'); cell.className = 'number numeric';
+        cell.textContent = value === null ? '—' : this.numberFormat.format(value); tr.append(cell);
+      }
+      body.append(tr);
+    }
+    this.table.replaceChildren(caption, head, body);
+  }
+
+  renderChart(model) {
+    this.chart?.destroy(); this.chart = null;
+    const notice = this.root.querySelector('#chart-notice');
+    const available = typeof window.Chart === 'function';
+    this.canvas.parentElement.hidden = !available;
+    notice.hidden = available;
+    if (!available) return;
+    const styles = getComputedStyle(this.root);
+    const ink = getComputedStyle(document.body).color;
+    const grid = styles.getPropertyValue('--chart-grid').trim();
+    this.canvas.setAttribute('aria-label', `${model.yTitle}. ${model.lines.map(line => line.label).join(', ')}. Exact values follow in the table.`);
+    this.chart = new window.Chart(this.canvas, {
+      type: 'line',
+      data: { labels: model.labels, datasets: model.lines.map(line => ({ label: line.label,
+        data: line.values, borderColor: styles.getPropertyValue(`--series-${line.colorSlot}`).trim(),
+        backgroundColor: styles.getPropertyValue(`--series-${line.colorSlot}`).trim(),
+        borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0, spanGaps: false })) },
+      options: { responsive: true, maintainAspectRatio: false, animation: false,
+        plugins: { legend: { position: 'bottom', labels: { color: ink, usePointStyle: true, padding: 22 } } },
+        scales: { x: { ticks: { color: ink, maxRotation: 0, autoSkip: true }, grid: { display: false } },
+          y: { title: { display: true, text: model.yTitle, color: ink }, ticks: { color: ink }, grid: { color: grid } } } },
+    });
+  }
+
+  clearResults() {
+    this.results.hidden = true;
+    this.table.replaceChildren();
+    this.chart?.destroy(); this.chart = null;
   }
 }

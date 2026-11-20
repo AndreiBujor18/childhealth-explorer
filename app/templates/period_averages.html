@@ -21,7 +21,21 @@
     <div class="average-links"><a href="{{ api_docs_url }}">Explore the API</a><span>Both sexes · BTSX</span></div>
   </div>
   <p id="status" class="averages-status" role="status" aria-live="polite">Loading indicators and regions…</p>
+  <section id="average-results" hidden aria-labelledby="report-title">
+    <div class="table-heading"><h2 id="report-title"></h2><p>Mean per period</p></div>
+    <p id="report-unit" class="report-unit"></p>
+    <div class="chart-box"><canvas id="averages-chart" role="img" aria-label="Country averages by period. Exact values are available in the following table."></canvas></div>
+    <p id="chart-notice" class="report-unit" hidden>The chart library could not load. All values are available in the table below.</p>
+    <div class="table-wrap"><table id="averages-table"></table></div>
+  </section>
 </section>
+<section class="data-notes"><h2>Reading the comparison</h2><div class="notes-grid">
+  <p>Each mean uses the available yearly values for one country, indicator and period. The final period may be shorter. Missing periods appear as gaps in the chart and as — in the table.</p>
+  <p>These are national estimates for both sexes. Outlier flags do not exclude values. Source-specific mortality series stay separate; associations do not establish causation.</p>
+</div></section>
 <noscript><p>This page needs JavaScript. You can still browse the data on the <a href="/">Observations page</a>.</p></noscript>
 {% endblock %}
-{% block scripts %}<script type="module" src="{{ url_for('static', path='js/period-averages-page.js') }}"></script>{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script type="module" src="{{ url_for('static', path='js/period-averages-page.js') }}"></script>
+{% endblock %}

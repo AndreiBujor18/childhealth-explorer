@@ -1,7 +1,7 @@
 /** Page controller: requests, event wiring and stale-response cancellation. */
 import { fetchCountries, fetchIndicators, fetchPeriodAverages, fetchRegions } from './api-client.js';
-import { DEFAULT_INDICATOR, DEFAULT_REGION, PERIOD_LENGTHS, changeSelection,
-  initialCountries, validateYears } from './period-averages-model.js';
+import { ColorSlots, DEFAULT_INDICATOR, DEFAULT_REGION, PERIOD_LENGTHS, changeSelection,
+  initialCountries, toChart, toTable, validateYears } from './period-averages-model.js';
 import { PeriodAveragesView } from './period-averages-view.js';
 
 export class PeriodAveragesPage {
@@ -11,6 +11,7 @@ export class PeriodAveragesPage {
     this.countries = [];
     this.pendingRequest = null;
     this.countryRequest = null;
+    this.colors = new ColorSlots();
   }
 
   async start() {
@@ -35,6 +36,7 @@ export class PeriodAveragesPage {
     const request = new AbortController();
     this.countryRequest = request;
     this.countries = []; this.view.renderCountries([], []);
+    this.view.clearResults();
     this.view.showStatus('Loading countries…');
     try {
       const countries = await fetchCountries(this.view.region.value, request.signal);
@@ -58,16 +60,17 @@ export class PeriodAveragesPage {
       this.view.showStatus(error.message, { isError: true }); return;
     }
     this.view.renderCountries(this.countries, this.selected);
+    this.colors.update(this.selected);
     this.refresh();
   }
 
   async refresh() {
     this.pendingRequest?.abort(); this.pendingRequest = null;
     if (this.countryRequest) return;
-    if (!this.selected.length) { this.view.showStatus('Choose at least one country.'); return; }
+    if (!this.selected.length) { this.view.clearResults(); this.view.showStatus('Choose at least one country.'); return; }
     const query = this.view.readQuery([...this.selected]);
     try { validateYears(query.firstYear, query.lastYear); }
-    catch (error) { this.view.showStatus(error.message, { isError: true }); return; }
+    catch (error) { this.view.clearResults(); this.view.showStatus(error.message, { isError: true }); return; }
     const request = new AbortController();
     this.pendingRequest = request;
     this.view.showStatus('Loading averages…');
@@ -75,13 +78,20 @@ export class PeriodAveragesPage {
       const report = await fetchPeriodAverages(query, request.signal);
       if (this.pendingRequest !== request) return;
       this.report = report;
-      this.view.showStatus(`${report.series.length} countries · ${report.periods.length} periods. Data loaded.`);
+      this.colors.update(this.selected);
+      this.view.renderHeading(report.indicator);
+      this.view.renderTable(toTable(report));
+      this.view.renderChart(toChart(report, this.colors));
+      const hasValues = report.series.some(series => series.averages.some(value => value !== null));
+      this.view.showStatus(hasValues ? `${report.series.length} countries · ${report.periods.length} periods · Both sexes`
+        : 'No observations for these countries and years. Missing values are shown below.');
     } catch (error) {
       if (this.pendingRequest !== request || error.name === 'AbortError') return;
+      this.view.clearResults();
       this.view.showStatus(`Could not load the data: ${error.message}`, { isError: true });
     }
   }
 }
 
-const root = document.querySelector('#averages-app');
+const root = typeof document === 'undefined' ? null : document.querySelector('#averages-app');
 if (root) new PeriodAveragesPage(new PeriodAveragesView(root)).start();

@@ -31,3 +31,8 @@
 - Date: 2026-11-20
 - Result: database-independent page shell, shared navigation, four JavaScript modules, country selection, API error messages and AbortController/identity guards for stale responses. Commit: `Lab 4: add client-side filters and cancellable API requests`.
 - Checks and corrections: defaults use IM_DTP3 and five European study countries. Only api-client.js performs fetch; the model has no DOM. Browser verification loaded all controls and a real report. Six JavaScript tests cover selections, stable colors, encoded URLs and HTTP errors; shell tests forbid database dependencies. Optional Node tests use only built-in modules, with no npm packages or build step. No manual student edits reported.
+
+## Prompt 2 continuation - client-rendered table and Chart.js lines
+- Date: 2026-11-20
+- Result: accessible table, Chart.js line chart, units, explicit missing-data gaps, adaptive colors and clear/error states. Commit: `Lab 4: render period-average tables and comparison charts in the browser`.
+- Checks and corrections: Chart.js 4.4.1 is loaded from the CDN specified by the lab; the table still works if that library is unavailable. No smoothing, fabricated zeroes or chart animation. Ten JavaScript tests include late report and region responses that deliberately ignore cancellation. Real browser checks confirmed European DTP3 and African mortality comparisons, an eight-country maximum, and clearing results for an empty selection. No JavaScript warnings/errors or manual student code edits reported.

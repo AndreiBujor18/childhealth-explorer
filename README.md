@@ -171,3 +171,9 @@ handle API calls, selection rules, DOM rendering and page events. The shell need
 no database access and the original `/` page remains server-rendered. Optional
 browser-module unit tests require Node.js 22+ (`npm test`); no npm install or
 frontend build is required to run the application.
+
+The period comparison renders an accessible numeric table and a Chart.js 4.4.1
+line chart. Chart.js loads from jsDelivr as in the lab; its failure leaves the
+table usable with a clear notice. Null periods remain gaps, selected countries
+keep their colors, and outdated requests cannot overwrite newer filters. The
+page follows the browser light/dark preference and avoids chart animation.

@@ -25,6 +25,22 @@ export function validateYears(firstYear, lastYear) {
   }
 }
 
+export function axisTitle(indicator) {
+  return indicator.unit ? `${indicator.name} (${indicator.unit})` : indicator.name;
+}
+
+export function toTable(report) {
+  return { caption: axisTitle(report.indicator), periods: report.periods.map(period => period.label),
+    rows: report.series.map(series => ({ iso3: series.country_iso3, name: series.country_name,
+      cells: series.averages })) };
+}
+
+export function toChart(report, colors) {
+  return { labels: report.periods.map(period => period.label), yTitle: axisTitle(report.indicator),
+    lines: report.series.map(series => ({ label: series.country_name, values: series.averages,
+      colorSlot: colors.slotOf(series.country_iso3) })) };
+}
+
 export class ColorSlots {
   constructor() { this.slots = new Map(); }
   update(codes) {
